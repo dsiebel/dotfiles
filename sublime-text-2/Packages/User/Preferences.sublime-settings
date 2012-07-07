@@ -1,0 +1,11 @@
+{
+	"tab_size": 2,
+	"use_tab_stops": false,
+	"convert_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"shift_tab_unindent": true,
+	"font_size": 8,
+	"draw_white_space": "all",
+	"highlight_modified_tabs": true,
+	"bold_folder_labels": false
+}
