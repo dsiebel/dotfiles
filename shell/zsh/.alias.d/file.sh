@@ -1,10 +1,12 @@
 alias -- -='cd -'
 alias ls='ls -h --color=auto'
-alias ll='ls -l'
-alias la='ls -lA'
+alias l='ls -l'
+alias ll='ls -lA'
+alias la='ls -la'
 alias lt='ls -ltr'
-alias mv='mv -i'
-alias rm='rm -i'
+alias mv='mv -iv'
+alias cp='cp -iv'
+alias rm='rm -Iv'
 alias RM='rm -vrf'
 
 duh() { # disk usage for humans
