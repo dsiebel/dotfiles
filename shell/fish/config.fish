@@ -1,7 +1,6 @@
-# put me in ~/.config/fish/
+## put me in ~/.config/fish/
 set git_branch_color green
 set mycolor 875f5f
-
 
 function headrev
   echo (git log --pretty=%h -n 1)
@@ -58,10 +57,14 @@ function __git_ps1
 end
 
 function fish_prompt
-         if test -z (git branch --quiet 2&gt;| awk '/fatal:/ {print "no git"}')
-            printf '[%s%s@%s%s|%s|%s%s%s|%s%s%s $] '  (set_color $mycolor) (whoami) (hostname|cut -d . -f 1) (set_color normal) (headrev) (set_color $git_branch_color) (__git_ps1) 
-(set_color normal)  (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+         if test -z (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')
+            printf '[%s%s@%s%s|%s|%s%s%s|%s%s%s $] ' (set_color $mycolor) (whoami) (hostname|cut -d . -f 1) (set_color normal) (headrev) (set_color $git_branch_color) (__git_ps1) (set_color normal)  (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
          else
-            printf '[%s%s@%s%s|%s%s%s $] '  (set_color $mycolor) (whoami) (hostname|cut -d . -f 1) (set_color normal) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+            printf '[%s%s@%s%s|%s%s%s $] ' (set_color $mycolor) (whoami) (hostname|cut -d . -f 1) (set_color normal) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
          end
 end
+set --export HOME "/home/mario"
+set --export EDITOR nano
+set --export PATH "~/bin:$HOME/node_modules/.bin/:/home/mario/.gem/ruby/1.9.1/bin:$PATH"
+set --export WEBIDE_JDK "/home/mario/System/java/jdk1.7.0_03"
+set --export JAVA_HOME $WEBIDE_JDK
