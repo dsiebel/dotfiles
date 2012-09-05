@@ -22,18 +22,22 @@ ${time %A %d %B %Y} - ${time %H:%M:%S}
 $sysname $kernel ($machine) on $nodename
 $stippled_hr
 System
-${color #e49c16}CPU:$color $cpu% ${color #ffc11f}${cpubar}
+${color #e49c16}Uptime:$color $uptime
 ${cpugraph ffffff ffffff}
+${color #e49c16}CPU:$color $cpu% ${color #ffc11f}${cpubar}
+${color #e49c16}Prozesse (aktiv): $color $processes ($running_processes)
 ${color #e49c16}RAM: $color$mem/$memmax - $memperc% ${color #ffc11f}${membar}
 ${color #e49c16}Swap: $color$swap/$swapmax - $swapperc% ${color #ffc11f}${swapbar}
-${color #e49c16}Prozesse (aktiv): $color $processes ($running_processes)
-uptime: ${uptime}
+${color #ffffff}Name ${offset 85} PID     CPU%   MEM%
+${font Monospace:size=8}${top_mem name 1}     ${top_mem pid 1}  ${top_mem cpu 1}  ${top_mem mem 1}
+${top_mem name 2}     ${top_mem pid 2}  ${top_mem cpu 2}  ${top_mem mem 2}
+${top_mem name 3}     ${top_mem pid 3}  ${top_mem cpu 3}  ${top_mem mem 3}${font}
 $color$stippled_hr
 Network
 # ${color #e49c16}IP : $color Lokal: ${addr eth1} ${offset 10} ${color #e49c16}Global: $color${execi 7200 ~/.conky/publicip.sh}
-${color #e49c16}IP : $color Lokal: ${addr eth0}
-${color #e49c16}Download :$color ${downspeed eth0} kb/s ${offset 20}${color #e49c16}Upload:$color ${upspeed eth0} kb/s
+${color #e49c16}eth0:$color ${addr eth0}
 ${color #FFFFFF}${downspeedgraph eth0 32,150 ffffff ffffff} ${offset 40}${color #FFFFFF}${upspeedgraph eth0 32,150 ffffff ffffff}
+${color #e49c16}Download :$color ${downspeed eth0} kb/s ${offset 20}${color #e49c16}Upload:$color ${upspeed eth0} kb/s
 $color$stippled_hr
 Filesystem
 #${color #e49c16}HDD: ${color #FFFFFF}${fs_free /}/${fs_size /} ${color #ffc11f}${fs_bar /}
