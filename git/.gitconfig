@@ -9,5 +9,19 @@
 	co = checkout
 	df = diff
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-
+    cp = cherry-pick
 	logp = log -p
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = CHANGEME
+	smtppass = CHANGEME
+[github]
+	user = CHANGEME
+[core]
+	excludesfile = ~/.gitignore
+[push]
+    default = simple
+[svn]
+    rmdir = true
