@@ -111,6 +111,10 @@ nnoremap <leader><space> :!echo -n % \| pbcopy<CR><CR>
 " Show current file as HTML (to paste into Keynote)
 nmap <Leader>h :TOhtml<CR>:w<cr>:!open %<CR>:q<CR>
 
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 " ------------------------------------------------------------------------------
 "  Presets
 "  -----------------------------------------------------------------------------
