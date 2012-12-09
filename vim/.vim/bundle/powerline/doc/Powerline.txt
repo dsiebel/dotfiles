@@ -20,25 +20,25 @@ CONTENTS                                                  *Powerline-contents*
        3.1 Recommended settings ........... |Powerline-recommended-settings|
     4. Configuration ...................... |Powerline-configuration|
        4.1 Powerline_cache_file ........... |Powerline_cache_file|
-       4.2 Powerline_symbols .............. |Powerline_symbols|
-           4.2.1 Compatible symbols ....... |Powerline-symbols-compatible|
-           4.2.2 Fancy symbols ............ |Powerline-symbols-fancy|
-       4.3 Powerline_theme ................ |Powerline_theme|
+           4.1.1 Clearing the cache ....... |:PowerlineClearCache|
+           4.1.2 Powerline_cache_dir ...... |Powerline_cache_dir|
+       4.2 Powerline_cache_enabled ........ |Powerline_cache_enabled|
+       4.3 Powerline_symbols .............. |Powerline_symbols|
+           4.3.1 Compatible symbols ....... |Powerline-symbols-compatible|
+           4.3.2 Fancy symbols ............ |Powerline-symbols-fancy|
+           4.3.3 Overriding symbols ....... |Powerline_symbols_override|
+           4.3.4 Overriding dividers ...... |Powerline_dividers_override|
+       4.4 Powerline_theme ................ |Powerline_theme|
+       4.5 Powerline_colorscheme .......... |Powerline_colorscheme|
+       4.6 Powerline_stl_path_style ....... |Powerline_stl_path_style|
     5. Fonts .............................. |Powerline-fonts|
     6. Customization ...................... |Powerline-customization|
-       6.1 Basics ......................... |Powerline-cust-basics|
-       6.2 Functions ...................... |Powerline-cust-functions|
-           6.2.1 Pl#Statusline ............ |Pl#Statusline|
-           6.2.2 Pl#Match ................. |Pl#Match|
-           6.2.3 Pl#Segment ............... |Pl#Segment|
-           6.2.4 Pl#SegmentGroup .......... |Pl#SegmentGroup|
-           6.2.5 Pl#Split ................. |Pl#Split|
-           6.2.6 Pl#FG .................... |Pl#FG|
-           6.2.7 Pl#BG .................... |Pl#BG|
-           6.2.8 Pl#Attr .................. |Pl#Attr|
-           6.2.9 Pl#HiCurrent ............. |Pl#HiCurrent|
-           6.2.10 Pl#HiInsert ............. |Pl#HiInsert|
-           6.2.11 Pl#HiNonCurrent ......... |Pl#HiNonCurrent|
+       6.1 Basic customization ............ |Powerline-basic-customization|
+       6.2 Advanced customization ......... |Powerline-advanced-customization|
+           6.2.1 Colorschemes ............. |Powerline-cust-colorschemes|
+           6.2.2 Functions ................ |Powerline-cust-functions|
+           6.2.3 Segments ................. |Powerline-cust-segments|
+           6.2.4 Themes ................... |Powerline-cust-themes|
     7. License ............................ |Powerline-license|
     8. Known issues ....................... |Powerline-known-issues|
     9. Contributing ....................... |Powerline-contributing|
@@ -47,7 +47,7 @@ CONTENTS                                                  *Powerline-contents*
 1. Introduction                           *Powerline* *Powerline-introduction*
 
 Powerline is a utility plugin which allows you to create better-looking, more 
-functional vim statuslines.
+functional Vim statuslines.
 
 ==============================================================================
 2. Usage                                                     *Powerline-usage*
@@ -55,14 +55,21 @@ functional vim statuslines.
 Powerline is automatically enabled when it's installed, either by unzipping 
 the provided archive or by adding it as a Pathogen/Vundle bundle.
 
+Powerline replaces the standard Vim 'statusline' with a custom statusline made 
+up of Powerline segments.
+
+Powerline ignores any 'statusline' customizations you have defined in your 
+|vimrc|. If you remove Powerline, your 'statusline' customizations are 
+restored.
+
 ==============================================================================
 3. Requirements                                       *Powerline-requirements*
 
-Powerline has been developed and tested in vim 7.3, but it should run without 
-any problems in vim 7.2. The default configuration requires a Unix-like system 
+Powerline has been developed and tested in Vim 7.3, but it should run without 
+any problems in Vim 7.2. The default configuration requires a Unix-like system 
 to work properly.
 
-The plugin only works with vim running in an 88/256-color terminal or gvim.
+The plugin only works with Vim running in an 88/256-color terminal or Gvim.
 
 Vi-compatible mode must be disabled.
 
@@ -71,13 +78,14 @@ Vi-compatible mode must be disabled.
 
 The following configuration options should be set in your |vimrc|: >
 
-    set nocompatible " Disable vi-compatibility
-    set laststatus=2 " Always show the statusline
+    set nocompatible   " Disable vi-compatibility
+    set laststatus=2   " Always show the statusline
+    set encoding=utf-8 " Necessary to show Unicode glyphs
 
 Note: If you're using an 88/256-color terminal but still don't see the colored 
 statusline, you may have to set the following option as well: >
 
-    set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+    set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 
 ==============================================================================
 4. Configuration                                     *Powerline-configuration*
@@ -89,321 +97,320 @@ file.
 ------------------------------------------------------------------------------
 4.1 Powerline_cache_file                                *Powerline_cache_file*
 
-By default Powerline caches all the statuslines and colors in a temporary 
-cache file. It's recommended that you use a cache file, as this dramatically 
-improves vim startup time after the cache file has been generated.
+By default Powerline caches all the statuslines and colors in a cache file in 
+the plugin's directory (or the Vim directory, depending on the installation 
+method used).
 
-It's possible to disable the cache file by setting this option to an empty 
-string (i.e. ""). This is especially useful if you're creating a new 
-Powerline.
+It's recommended that you enable the cache, as this dramatically improves Vim 
+startup time after the cache file has been generated (the plugin usually loads 
+within ~100ms without the cache and ~1ms with the cache).
 
-Note: The default cache location is in /tmp, which is usually emptied when 
-rebooting. This causes the cache file to be regenerated the first time vim is 
-run after bootup, and may cause a slight delay. You may put the cache file in 
-a permanent location (e.g. in ~/.vim) if you want to avoid this.
+Note: The default cache filename includes the current theme, colorscheme and 
+symbol settings in order to tie the cache file to your current configuration, 
+so the cache file will be regenerated when you change any settings. This may 
+leave several old cache files in your Vim folder, and these may safely be 
+deleted.
 
-Default: "/tmp/Powerline.cache"
+Defaults: "|Powerline_cache_dir|/Powerline_<theme>_<colorscheme>_<symbols>.cache"
 
 ------------------------------------------------------------------------------
-4.2 Powerline_symbols                                      *Powerline_symbols*
+4.1.1 Powerline_cache_dir                                *Powerline_cache_dir*
+
+This is the directory used for |Powerline_cache_file|.
+
+Default: Plugin directory: >
+
+    let g:Powerline_cache_dir = simplify(expand('<sfile>:p:h') .'/..')
+<
+------------------------------------------------------------------------------
+4.1.2 Clearing the cache                                *:PowerlineClearCache*
+
+Powerline provides a command to easily clear the cache after changing your 
+settings or updating your theme. Simply run the following command to clear 
+your cache, and restart Vim afterwards: >
+
+    :PowerlineClearCache
+<
+------------------------------------------------------------------------------
+4.2 Powerline_cache_enabled                          *Powerline_cache_enabled*
+
+It's possible to disable statusline caching by setting this option to 0. This 
+is mostly useful when developing statuslines.
+
+Example: >
+
+    let g:Powerline_cache_enabled = 0
+<
+
+Default: 1
+
+------------------------------------------------------------------------------
+4.3 Powerline_symbols                                      *Powerline_symbols*
 
 This option defines which set of symbols and dividers you want to use. There 
 are currently three available options: "compatible", "unicode" and "fancy".
 
     TYPE           DESCRIPTION ~
     compatible     Doesn't use any special characters.
-    unicode        Simulates icons and arrows using similar unicode glyphs.
+    unicode        Simulates icons and arrows using similar Unicode glyphs.
     fancy          Custom icons and arrows. Requires a patched font.
 
-Symbols can be inserted into statuslines by using the following variables:
+Example: >
 
-    VARIABLE       DESCRIPTION ~
-    $branch        Inserts a branch symbol
-    $ro            Inserts a read-only symbol
-    $ft            Inserts a filetype symbol
-    $line          Inserts a line number symbol
+    let g:Powerline_symbols = 'fancy'
+<
 
 Default: "compatible"
 
-Note: You'll need to delete the |Powerline_cache_file| after changing this 
-option for the changes to take effect.
+Symbols can be inserted into statuslines by using the following variables 
+(just insert the variables as text in your segments):
+
+    VARIABLE       DESCRIPTION ~
+    $BRANCH        Inserts a branch symbol
+    $RO            Inserts a read-only symbol
+    $FT            Inserts a filetype symbol
+    $LINE          Inserts a line number symbol
 
 ------------------------------------------------------------------------------
-4.2.1 Compatible symbols                        *Powerline-symbols-compatible*
+4.3.1 Compatible symbols                        *Powerline-symbols-compatible*
 
 These symbols will work in any configuration, and do not require a special 
 font to work. This option will replace the fancy icons with plain text, and 
 the pointy dividers with straight lines.
 
 ------------------------------------------------------------------------------
-4.2.2 Fancy symbols                                  *Powerline-symbols-fancy*
+4.3.2 Fancy symbols                                  *Powerline-symbols-fancy*
 
 These symbols require a custom font to work. A font patcher is provided for 
 adding the required symbols to any outline font and some bitmap fonts, see 
 |Powerline-fonts| and the provided README file for usage details.
 
 ------------------------------------------------------------------------------
-4.3 Powerline_theme                                          *Powerline_theme*
+4.3.3 Overriding symbols                          *Powerline_symbols_override*
 
-This option defines which theme to use. See |Powerline-customization| for 
-details about creating your own Powerline theme.
+You can override symbols by adding your symbols to the 
+g:Powerline_symbols_override dictionary. Example: If you want the branch 
+symbol to be "∓" (hex code 0x2213) and the line symbol to be "L" you can add 
+the following to your |vimrc|: >
 
-Default: "distinguished"
+    let g:Powerline_symbols_override = {
+        \ 'BRANCH': [0x2213],
+        \ 'LINE': 'L',
+        \ }
+<
+------------------------------------------------------------------------------
+4.3.4 Overriding dividers                        *Powerline_dividers_override*
 
-Note: You'll need to delete the |Powerline_cache_file| after changing this 
-option for the changes to take effect.
+If you for some reason want to override the dividers then you can set 
+g:Powerline_dividers_override to a list with exactly four elements:
+
+    1: Hard right-pointing arrow
+    2: Soft right-pointing arrow
+    3: Hard left-pointing arrow
+    4: Soft left-pointing arrow
+
+Example: >
+
+    let g:Powerline_dividers_override = ['>>', '>', '<<', '<']
+<
+
+------------------------------------------------------------------------------
+4.3.5 Overriding mode names                                   *Powerline_mode*
+
+You can change the names used for modes at the far left by setting some
+variables in your |vimrc|. For example you can change "N" to "NORMAL" with: >
+
+    let g:Powerline_mode_n = 'NORMAL'
+<
+The variables are all named beginning with 'g:Powerline_mode_', as follows:
+
+mode                name    default       note ~
+Normal              n       ' N '         (surrounded by spaces)
+Insert              i       INSERT
+Replace             R       REPLACE       |Replace-mode|
+Visual              v       VISUAL        |Visual-mode|
+Visual linewise     V       V⋅LINE
+Visual blockwise    cv      V⋅BLOCK
+Select              s       SELECT        |Select-mode|
+Select linewise     S       S⋅LINE
+Select blockwise    cs      S⋅BLOCK
+
+-----------------------------------------------------------------------------
+4.4 Powerline_theme                                          *Powerline_theme*
+
+This option defines the theme Powerline uses. The available themes are located 
+in autoload/Powerline/Themes/. A theme is a pre-defined set of Powerline 
+segments which make up the statusline.
+
+Example: >
+
+    let g:Powerline_theme = 'solarized256'
+<
+
+Default: "default"
+
+------------------------------------------------------------------------------
+4.5 Powerline_colorscheme                              *Powerline_colorscheme*
+
+This option defines the colorscheme Powerline uses. The available colorschemes 
+are located in autoload/Powerline/Colorschemes/.
+
+Example: >
+
+    let g:Powerline_colorscheme = 'solarized256'
+<
+
+Default: "default"
+
+------------------------------------------------------------------------------
+4.6 Powerline_stl_path_style                        *Powerline_stl_path_style*
+
+There are currently four ways to display the current path and file name. The 
+default is to only display the file name like the %t statusline item. By 
+setting this configuration value you can choose from the following ways 
+display the current path and file name:
+
+    VALUE      DESCRIPTION ~
+    filename   Display only the file name using the %t statusline item.
+    short      Display a short path. The home directory is substituted with
+               "~", the first directory is displayed with its full name, and
+               subsequent directories are shortened to their first letter.
+               I.e. "/home/user/foo/bar/baz.vim" becomes "~/f/b/baz.vim" and
+               "long/relative/path/foo/bar/baz.vim becomes
+               "long/r/p/f/b/baz.vim".
+    relative   Display a relative path, similar to the %f statusline item.
+    full       Display the full path, similar to the %F statusline item.
+
+Example: >
+
+    let g:Powerline_stl_path_style = 'full'
+<
+
+Default: "relative"
 
 ==============================================================================
 5. Fonts                                                     *Powerline-fonts*
 
+TODO
+
 ==============================================================================
 6. Customization                                     *Powerline-customization*
 
-Please see "powerline/distinguished/00-default.vim" for a complete example of 
-a statusline theme.
+There are currently two ways of customizing Powerline: Basic customization 
+using a couple of functions to insert and remove existing segments from the 
+statusline, and advanced customization using your own autoload files. The 
+customization features of Powerline allow you to create your own statuslines 
+without ever touching the original source code.
 
 ------------------------------------------------------------------------------
-6.1 Basics                                             *Powerline-cust-basics*
+6.1 Basic customization                        *Powerline-basic-customization*
 
-------------------------------------------------------------------------------
-6.2 Functions                                       *Powerline-cust-functions*
+Powerline provides the following functions to alter the default statusline 
+look. These functions should be called from your |vimrc| file or another file 
+which is sourced at Vim startup.
 
-------------------------------------------------------------------------------
-6.2.1 Pl#Statusline({argument}[, ...])                         *Pl#Statusline*
+Note: These functions are currently applied to all statuslines, so if you 
+insert a segment after a segment which is present in many statuslines (e.g.  
+the "filename" segment), all the statuslines will have the inserted segment.  
+This behavior may be changed in a future version of Powerline.
 
-    ARGUMENT    DESCRIPTION ~
-    {argument}  [Required] The return value of any of the following functions:
+Note: Remember to clear your cache with |:PowerlineClearCache| after changing 
+your statusline!
 
-                - |Pl#Match|
-                - |Pl#Segment|
-                - |Pl#SegmentGroup|
-                - |Pl#Split|
+Example: >
 
-This is the main function which must be called for all statuslines. It accepts 
-one or more arguments which are described below.
+    " Insert the charcode segment after the filetype segment
+    call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
 
-------------------------------------------------------------------------------
-6.2.2 Pl#Match({expr}, {re})                                        *Pl#Match*
-
-    ARGUMENT    DESCRIPTION ~
-    {expr}      [Required] Will be |eval()|'ed, must return a string.
-
-                EXAMPLE ~
-                >
-                'bufname("%")'
-                '&ft'
+    " Replace the scrollpercent segment with the charcode segment
+    call Pl#Theme#ReplaceSegment('scrollpercent', 'fileinfo')
 <
-    {re}        [Required] Regular expression which will be |match()|'ed
-                against "expr".
+                                                      *Pl#Theme#InsertSegment*
+Pl#Theme#InsertSegment({newsegment}, {location}, {targetsegment})
 
-Limits the current |Pl#Statusline| to specific buffers or filetypes. An 
-example is to provide a statusline for only help files.
+This function inserts {newsegment} before or after {targetsegment}. The 
+{location} parameter specifies the location of the new segment, valid values 
+are "before" and "after". You can see all the available segments in 
+autoload/Powerline/Segments.vim and the files specified in 
+|Powerline-cust-segments|.
 
-    EXAMPLE ~
->
-    Pl#Match('&ft', 'help')
+Pl#Theme#RemoveSegment({targetsegment})               *Pl#Theme#RemoveSegment*
 
-------------------------------------------------------------------------------
-6.2.3 Pl#Segment({text}[, ...])                                   *Pl#Segment*
+This function removes the {targetsegment} segment entirely.
 
-    ARGUMENT    DESCRIPTION ~
-    {text}      [Required] The segment text. Uses |statusline| syntax. It's
-                possible to include variables from |Powerline_symbols| in each 
-                segment.
+Pl#Theme#ReplaceSegment({oldsegment}, {newsegment})  *Pl#Theme#ReplaceSegment*
 
-                EXAMPLE ~
-                >
-                '%H%W'
-                '%{&fileformat}'
-<
-    {boolean}   [Optional] If a boolean argument is false, this segment will
-                be ignored. Used to disable segments if a user doesn't have 
-                a required plugin or function.
-
-                Example: exists('g:loaded_fugitive') && g:loaded_fugitive == 1
-
-    {color}     [Optional] Color arguments decide the highlighting of this
-                segment in different modes. If a specific highlighting is 
-                missing (e.g.  |Pl#HiNonCurrent|), this segment will be 
-                disabled for that mode.
-
-Returns a segment. Segments are individual, separated "blocks" in the 
-statusline which are wrapped in divider symbols according to 
-|Powerline_symbols|.
-
-    EXAMPLE ~
->
-	" This segment will show the current mode in current windows
-
-	\ Pl#Segment(" %{substitute(mode(), '', '^V', 'g')} ",
-		\ Pl#HiCurrent(   Pl#FG(235), Pl#BG(214), Pl#Attr('bold')),
-		\ Pl#HiInsert(    Pl#FG( 23), Pl#BG(153), Pl#Attr('bold'))
-		\ )
-
-	" This segment will show the current branch with a branch symbol in all
-	" windows, IF fugitive is loaded.
-
-	\ Pl#Segment("%{substitute(fugitive#statusline(), 
-	'GIT(\\([a-z0-9\\-_\\./:]\\+\\))', ' $branch \\1 ', 'gi')}",
-		\ exists('g:loaded_fugitive') && g:loaded_fugitive == 1,
-		\
-		\ Pl#HiCurrent(   Pl#FG(250), Pl#BG(240)),
-		\ Pl#HiInsert(    Pl#FG(117), Pl#BG( 31)),
-		\ Pl#HiNonCurrent(Pl#FG(239), Pl#BG(234))
-		\ )
+This function replaces {oldsegment} with {newsegment}.
 
 ------------------------------------------------------------------------------
-6.2.4 Pl#SegmentGroup([...])                                 *Pl#SegmentGroup*
+6.2 Advanced customization                  *Powerline-advanced-customization*
 
-    ARGUMENT    DESCRIPTION ~
-    {color}     [Optional] Defines the BG highlighting for this group. Only
-                |Pl#BG| colors are used.
+Because Powerline utilizes Vim's autoload functionality, you can easily create 
+your own segments, themes, functions and colorschemes without touching the 
+original source code. This is a bit more complex than using the utility 
+functions, but it allows you to do a lot more with your statusline.
 
-    {segment}   [Optional] Adds a segment to this group.
+Your custom autoload files should be stored in your |runtimepath| (usually in 
+"~/.vim/autoload/Powerline/*").
 
-Returns a segment group. Segment groups are collections of segments with 
-a common background color and no dividers between the segments. The segment 
-group itself is wrapped in dividers. An example for segment groups is adding 
-file flags with separate FG colors or attributes directly before or after the 
-filename (with no dividers in between).
+Note: Remember to clear your cache with |:PowerlineClearCache| after changing 
+your statusline!
 
-    EXAMPLE ~
->
-	Pl#SegmentGroup(
-		\ Pl#HiCurrent(Pl#BG(240)),      <-- Gray background for the group
-		  ...
-
-		\ Pl#Segment(' %t ',             <-- Filename
-			\ Pl#HiCurrent(Pl#FG(231)),  <-- White foreground
-			  ...
-			\ ),
-
-		\ Pl#Segment('%M ',              <-- Modified flag
-			\ Pl#HiCurrent(Pl#FG(196)),  <-- Red foreground
-			  ...
-			\ )
-		\ )
-
+6.2.1 Colorschemes                               *Powerline-cust-colorschemes*
 ------------------------------------------------------------------------------
-6.2.5 Pl#Split([{color}, {color...}])                               *Pl#Split*
 
-    ARGUMENT    DESCRIPTION ~
-    {color}     [Optional] Defines the highlighting for the empty space
-                between the left and right side.
+Colorschemes should be stored as separate files in 
+{runtimepath}/autoload/Powerline/Colorschemes/.
 
-Splits the statusline. It's recommended that you provide highlighting for all 
-modes. Only |Pl#BG| colors are required.
+SYNTAX ~
 
-    EXAMPLE ~
->
-    Pl#Split(
-		\ Pl#HiCurrent(   Pl#BG(236)),
-		\ Pl#HiInsert(    Pl#BG( 24)),
-		\ Pl#HiNonCurrent(Pl#BG(234))
-		\ )
+TODO
 
+EXAMPLE ~
+
+TODO
+
+6.2.2 Functions                                     *Powerline-cust-functions*
 ------------------------------------------------------------------------------
-6.2.6 Pl#FG({cterm}[, {gui}])                                          *Pl#FG*
 
-    ARGUMENT    DESCRIPTION ~
-    {cterm}     [Required] Integer color for 256-color terminals (0-255).
+Functions should be stored as separate files in 
+{runtimepath}/autoload/Powerline/Functions/.
 
-    {gui}       [Optional] Integer color for GUI. Must be a |Number|.  Usually
-                provided as a hex number, i.e. 0xff0000. If left out the cterm 
-                color is used in the GUI.
+SYNTAX ~
 
-Returns a foreground color set for use in |Pl#HiCurrent|, |Pl#HiInsert| and 
-|Pl#HiNonCurrent|.
+TODO
 
-    EXAMPLE ~
->
-    Pl#FG(21)
-    Pl#FG(247, 0x999999)
+EXAMPLE ~
 
+TODO
+
+6.2.3 Segments                                       *Powerline-cust-segments*
 ------------------------------------------------------------------------------
-6.2.7 Pl#BG({cterm}[, {gui}])                                          *Pl#BG*
 
-    ARGUMENT    DESCRIPTION ~
-    {cterm}     [Required] Integer color for 256-color terminals (0-255).
+Segments should be stored as separate files in 
+{runtimepath}/autoload/Powerline/Segments/.
 
-    {gui}       [Optional] Integer color for GUI. Must be a |Number|.  Usually
-                provided as a hex number, i.e. 0xff0000. If left out the cterm 
-                color is used in the GUI.
+SYNTAX ~
 
-Returns a background color set for use in |Pl#HiCurrent|, |Pl#HiInsert| and 
-|Pl#HiNonCurrent|.
+TODO
 
-    EXAMPLE ~
->
-    Pl#BG(21)
-    Pl#BG(247, 0x999999)
+EXAMPLE ~
 
+TODO
+
+6.2.4 Themes                                           *Powerline-cust-themes*
 ------------------------------------------------------------------------------
-6.2.8 Pl#Attr({attr}[, {attr...}])                                   *Pl#Attr*
 
-    ARGUMENT    DESCRIPTION ~
-    {attr}      [Required] A highlighting attribute from |attr-list|.
+Themes should be stored as separate files in 
+{runtimepath}/autoload/Powerline/Themes/.
 
-Returns an attribute set for use in |Pl#HiCurrent|, |Pl#HiInsert| and 
-|Pl#HiNonCurrent|. Requires one or more attribute arguments.
+SYNTAX ~
 
-    EXAMPLE ~
->
-    Pl#Attr('bold', 'underline')
+TODO
 
-------------------------------------------------------------------------------
-6.2.9 Pl#HiCurrent({color}[, {color}[, {attr}]])                *Pl#HiCurrent*
+EXAMPLE ~
 
-    ARGUMENT    DESCRIPTION ~
-    {color}     [Required] One or more |Pl#FG| or |Pl#BG| color sets.
-    {attr}      [Optional] One |Pl#Attr| attribute set.
-
-Returns a collection of colors and attributes for the currently selected vim 
-window/split in |Normal-mode|. For use in |Pl#Segment|s, |Pl#SegmentGroup|s 
-and |Pl#Split|s.
-
-Note: If this highlighting isn't provided for a |Pl#Segment|, the segment will 
-be hidden in normal mode.
-
-    EXAMPLE ~
->
-    Pl#HiCurrent(Pl#FG(247), Pl#BG(236), Pl#Attr('bold'))
-
-------------------------------------------------------------------------------
-6.2.10 Pl#HiInsert({color}[, {color}[, {attr}]])                 *Pl#HiInsert*
-
-    ARGUMENT    DESCRIPTION ~
-    {color}     [Required] One or more |Pl#FG| or |Pl#BG| color sets.
-    {attr}      [Optional] One |Pl#Attr| attribute set.
-
-Returns a collection of colors and attributes for the currently selected vim 
-window/split in |Insert-mode|. For use in |Pl#Segment|s, |Pl#SegmentGroup|s 
-and |Pl#Split|s.
-
-Note: If this highlighting isn't provided for a |Pl#Segment|, the segment will 
-be hidden in insert mode.
-
-    EXAMPLE ~
->
-    Pl#HiInsert(Pl#FG(117), Pl#BG(24))
-
-------------------------------------------------------------------------------
-6.2.11 Pl#HiNonCurrent({color}[, {color}[, {attr}]])         *Pl#HiNonCurrent*
-
-    ARGUMENT    DESCRIPTION ~
-    {color}     [Required] One or more |Pl#FG| or |Pl#BG| color sets.
-    {attr}      [Optional] One |Pl#Attr| attribute set.
-
-Returns a collection of colors and attributes for the currently selected vim 
-window/split in non-current windows (see |hl-StatusLineNC|). For use in 
-|Pl#Segment|s, |Pl#SegmentGroup|s and |Pl#Split|s.
-
-Note: If this highlighting isn't provided for a |Pl#Segment|, the segment will 
-be hidden in non-current windows.
-
-    EXAMPLE ~
->
-    Pl#HiNonCurrent(Pl#FG(239), Pl#BG(234))
+TODO
 
 ==============================================================================
 7. License                                                 *Powerline-license*
@@ -415,16 +422,8 @@ http://creativecommons.org/licenses/by-sa/3.0/
 ==============================================================================
 8. Known issues                                       *Powerline-known-issues*
 
-- Spaces must be added manually in each segment. Unfortunately, 
-  I haven't found a reliable way of automatically padding segments 
-  without triggering rendering issues (wrong highlighting, double text, 
-  etc.)
-- Because %() is wrapped around each segment, text-only segments won't be 
-  rendered unless the text is wrapped in eval blocks like this: %{'My static 
-  text'}
-
-Note: Also see the issue tracker at
-      https://github.com/Lokaltog/vim-powerline/issues
+See the issue tracker at
+https://github.com/Lokaltog/vim-powerline/issues
 
 ==============================================================================
 9. Contributing                                       *Powerline-contributing*
