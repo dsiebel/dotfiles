@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<mateconf>
+	<entry name="scrollback_unlimited" mtime="1355297414" type="bool" value="true"/>
+	<entry name="scrollbar_position" mtime="1355297414" type="string">
+		<stringvalue>hidden</stringvalue>
+	</entry>
+	<entry name="background_darkness" mtime="1355297414" type="float" value="0.86063569784164429"/>
+	<entry name="background_type" mtime="1352277882" type="string">
+		<stringvalue>solid</stringvalue>
+	</entry>
+	<entry name="use_theme_colors" mtime="1355297414" type="bool" value="false"/>
+	<entry name="palette" mtime="1355297414" type="string">
+		<stringvalue>#070736364242:#DCDC32322F2F:#858599990000:#B5B589890000:#26268B8BD2D2:#6C6C7171C4C4:#2A2AA1A19898:#9393A1A1A1A1:#070736364242:#DCDC32322F2F:#858599990000:#B5B589890000:#26268B8BD2D2:#6C6C7171C4C4:#2A2AA1A19898:#9393A1A1A1A1</stringvalue>
+	</entry>
+	<entry name="background_color" mtime="1355297414" type="string">
+		<stringvalue>#00002B2B3636</stringvalue>
+	</entry>
+	<entry name="visible_name" mtime="1355297414" type="string">
+		<stringvalue>Default</stringvalue>
+	</entry>
+	<entry name="foreground_color" mtime="1355297414" type="string">
+		<stringvalue>#838394949696</stringvalue>
+	</entry>
+	<entry name="bold_color" mtime="1355297414" type="string">
+		<stringvalue>#000000000000</stringvalue>
+	</entry>
+</mateconf>
