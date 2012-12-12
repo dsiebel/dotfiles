@@ -4,10 +4,7 @@ alias l='ls -l'
 alias ll='ls -lA'
 alias la='ls -la'
 alias lt='ls -ltr'
-alias mv='mv -iv'
-alias cp='cp -iv'
-alias rm='rm -Iv'
-alias RM='rm -vrf'
+alias RM='rm -irf'
 
 duh() { # disk usage for humans
   test $# -eq 0 && set -- *
