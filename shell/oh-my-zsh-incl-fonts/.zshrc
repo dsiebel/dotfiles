@@ -50,7 +50,7 @@ POWERLINE_NO_BLANK_LINE="true"
 #If you want to tell if you are in a remote SSH session:
 POWERLINE_DETECT_SSH="true"
 
-plugins=(git brew autojump forklift git-extras osx sublime)
+plugins=(git svn brew autojump forklift git-extras osx sublime)
 
 source $ZSH/oh-my-zsh.sh
 
