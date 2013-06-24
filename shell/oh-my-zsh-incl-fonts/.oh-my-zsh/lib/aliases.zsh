@@ -18,10 +18,10 @@ alias history='fc -l 1'
 # List direcory contents
 alias -- -='cd -'
 alias ls='ls -h --color=auto'
-alias l='ls -l'
-alias ll='ls -lA'
-alias la='ls -la'
-alias lt='ls -ltr'
+alias l='ls -lh'
+alias ll='ls -lAh'
+alias la='ls -lah'
+alias lt='ls -ltrh'
 
 # Other file operations
 alias RM='rm -irf'
