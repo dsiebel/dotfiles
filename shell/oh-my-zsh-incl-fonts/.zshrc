@@ -16,7 +16,7 @@ ZSH_THEME="powerline"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -28,7 +28,7 @@ ZSH_THEME="powerline"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -45,13 +45,18 @@ POWERLINE_NO_BLANK_LINE="true"
 # POWERLINE_FULL_CURRENT_PATH="false"
 
 #If you want git info on right instead of left:
-#POWERLINE_SHOW_GIT_ON_RIGHT="false"
+POWERLINE_SHOW_GIT_ON_RIGHT="true"
+
+#If you want svn info on right instead of left:
+POWERLINE_SHOW_SVN_ON_RIGHT="true"
 
 #If you want to tell if you are in a remote SSH session:
 POWERLINE_DETECT_SSH="true"
 
-plugins=(git svn brew autojump forklift git-extras osx sublime)
+plugins=(git git-extras svn autojump sublime debian)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+export JAVA_HOME=/opt/java7
+
