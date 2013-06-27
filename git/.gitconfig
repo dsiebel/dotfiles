@@ -1,6 +1,6 @@
 [user]
-	name = CHANGEME
-	email = test@example.com
+	name = Dominik Siebel
+	email = code@dsiebel.de
 
 [alias]
 	st = status
@@ -11,18 +11,18 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   cp = cherry-pick
 	logp = log -p
-[sendemail]
-	smtpserver = smtp.gmail.com
-	smtpserverport = 587
-	smtpencryption = tls
-	smtpuser = CHANGEME
-	smtppass = CHANGEME
 [github]
-	user = CHANGEME
+	user = dsiebel
 [core]
   excludesfile = ~/.gitignore
   editor = vim
 [push]
     default = simple
 [svn]
-    rmdir = true
+  rmdir = true
+[color]
+  ui = true
+[merge]
+  tool = meld
+[diff]
+  external = meldDiff
