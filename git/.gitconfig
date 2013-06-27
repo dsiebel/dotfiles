@@ -20,7 +20,8 @@
 [github]
 	user = CHANGEME
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
+  editor = vim
 [push]
     default = simple
 [svn]
