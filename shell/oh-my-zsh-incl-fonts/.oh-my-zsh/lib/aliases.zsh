@@ -16,7 +16,6 @@ alias please='sudo'
 alias history='fc -l 1'
 
 # List direcory contents
-alias -- -='cd -'
 alias ls='ls -h --color=auto'
 alias l='ls -lh'
 alias ll='ls -lAh'

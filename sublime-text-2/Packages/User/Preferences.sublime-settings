@@ -7,5 +7,6 @@
 	"font_size": 8,
 	"draw_white_space": "all",
 	"highlight_modified_tabs": true,
-	"bold_folder_labels": false
+    "bold_folder_labels": false,
+    "word_wrap": true
 }
