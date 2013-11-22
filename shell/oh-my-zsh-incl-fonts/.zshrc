@@ -53,7 +53,7 @@ POWERLINE_SHOW_SVN_ON_RIGHT="true"
 #If you want to tell if you are in a remote SSH session:
 POWERLINE_DETECT_SSH="true"
 
-plugins=(git git-extras svn autojump sublime debian)
+plugins=(git git-extras svn autojump sublime debian vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
