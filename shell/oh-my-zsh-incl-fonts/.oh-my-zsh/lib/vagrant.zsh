@@ -1,1 +1,1 @@
-alias V='vargant'
+alias V='vagrant'
