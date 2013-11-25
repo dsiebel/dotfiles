@@ -1,7 +1,0 @@
-alias v='vagrant'
-alias vup='vagrant up'
-alias vhalt='vagrant up'
-alias vstat='vagrant status'
-alias vdest='vagrant destroy'
-alias vboom='vagrant destroy'
-alias vssh='vagrant ssh'
