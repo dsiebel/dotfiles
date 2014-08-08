@@ -1,6 +1,9 @@
 " ------------------------------------------------------------------------------
 " Basics
 " ------------------------------------------------------------------------------
+" Tell vim to use utf-8 encoding
+scriptencoding utf-8
+set encoding=utf-8
 " Tell vim to use the .vim path first (colors and so)
 set runtimepath=~/.vim,$VIMRUNTIME
 " Be IMproved
