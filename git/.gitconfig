@@ -16,8 +16,8 @@
 	dc = diff --cached --ignore-all-space
 	dfc = diff --cached
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  logp = log -p
 	cp = cherry-pick
-	logp = log -p
 	sh = stash
 	shl = stash list
 	shp stash pop
@@ -25,14 +25,24 @@
 	rba = rebase --abort
 	rbc = rebase --continue
 	rbs = rebase --skip
+  branches = branch -av
+  tags = tag -l
+  remotes = remote -v
+  contributors = shortlog --summary --numbered
 [github]
 	user = dsiebel
 [core]
+  # Use custom `.gitignore` and `.gitattributes`
   excludesfile = ~/.gitignore
-  editor = vim -pc ':normal gg:
+  attributesfile = ~/.gitattributes
+	editor = vim -pc ':normal gg:
   pager = less -FXR
   quotepath = false
 	whitespace = trailing-space,space-before-tab
+	
+  # Make `git rebase` safer on OS X
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
 [push]
     default = simple
 [pull]
@@ -60,6 +70,7 @@
 	changed = green
 	untracked = cyan
 [merge]
-  tool = meld
-[diff]
-  external = meldDiff
+# Include summaries of merged commits in newly created merge commit messages
+	log = true
+# Always show a diffstat at the end of a merge
+	stat = true
