@@ -1,0 +1,2 @@
+*.zip diff=zip
+*.m diff=objc

@@ -3,25 +3,62 @@
 	email = code@dsiebel.de
 
 [alias]
+	a = add
+	aa = add --all
+	ai = add --interactive
+	s = status --short --branch
 	st = status
 	ci = commit
-	br = branch
+	br = branch -vv
 	co = checkout
+  d = diff --ignore-all-space
 	df = diff
+	dc = diff --cached --ignore-all-space
+	dfc = diff --cached
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  cp = cherry-pick
+	cp = cherry-pick
 	logp = log -p
+	sh = stash
+	shl = stash list
+	shp stash pop
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbs = rebase --skip
 [github]
 	user = dsiebel
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
+  editor = vim -pc ':normal gg:
+  pager = less -FXR
+  quotepath = false
+	whitespace = trailing-space,space-before-tab
 [push]
     default = simple
+[pull]
+	rebase = true
+[page]
+	color = true
 [svn]
   rmdir = true
+	brokenSymlinkWorkaround = false
+[status]
+	submodulesummary = true
 [color]
-  ui = true
+  ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
 [merge]
   tool = meld
 [diff]

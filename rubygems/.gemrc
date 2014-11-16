@@ -1,11 +1,13 @@
 ---
-:backtrace: false
-:benchmark: false
-:bulk_threshold: 1000
-:sources:
+sources:
 - http://rubygems.org/
+- http://hems.rubyforge.org
 - http://gems.github.com/
-:update_sources: true
-:verbose: true
-gem: --user-install
-ssl_verify_mode: 0
+gem: --no-document
+search: --details --both
+test_options:
+  auto_test_on_install: false
+  install_development_dependencies: false
+  upload_results: true
+  force_install: true # set if you want to install gems even if they fail tests
+  force_uninstall_on_failure: false
