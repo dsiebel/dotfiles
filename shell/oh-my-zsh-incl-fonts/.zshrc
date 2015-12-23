@@ -58,5 +58,5 @@ plugins=(ant autojump brew git git-extras node npm osx sublime vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
