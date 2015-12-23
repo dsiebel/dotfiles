@@ -1,76 +1,139 @@
 [user]
-	name = Dominik Siebel
-	email = code@dsiebel.de
+  name = Your Name Here
+  email = yourname@example.com
 
 [alias]
-	a = add
-	aa = add --all
-	ai = add --interactive
-	s = status --short --branch
-	st = status
-	ci = commit
-	br = branch -vv
-	co = checkout
-  d = diff --ignore-all-space
-	df = diff
-	dc = diff --cached --ignore-all-space
-	dfc = diff --cached
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  # svn-like shortcuts for common commands
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+  df = diff
+  cp = cherry-pick
+
+  # view status using short format
+  s = status -s
+
+  # pretty logging with branches and everything!
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   logp = log -p
-	cp = cherry-pick
-	sh = stash
-	shl = stash list
-	shp stash pop
-	rb = rebase
-	rba = rebase --abort
-	rbc = rebase --continue
-	rbs = rebase --skip
+
+  # verbose outputs
   branches = branch -av
   tags = tag -l
   remotes = remote -v
+
+  # List contributors with number of commits
   contributors = shortlog --summary --numbered
-[github]
-	user = dsiebel
+
+  # clean up local, merged branches
+  cleanup = "!git branch --merged | grep -v master | xargs -n 1 git branch -d"
+  
+  # cleanup remote, merged branches (origin only)
+  # for older git versions
+  # cleanup-remote = "!git branch -r --merged | grep master | sed 's/origin\//:/' | args -n 1 git push origin"
+  cleanup-remote = "!git branch -r --merged | grep -v "master" | sed 's/origin\\///' | args -n 1 git push --delete origin"
+
 [core]
+
   # Use custom `.gitignore` and `.gitattributes`
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
-	editor = vim -pc ':normal gg:
-  pager = less -FXR
-  quotepath = false
-	whitespace = trailing-space,space-before-tab
-	
+
   # Make `git rebase` safer on OS X
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
+
+  # set vim as default editor
+  editor = vim
+
 [push]
-    default = simple
-[pull]
-	rebase = true
-[page]
-	color = true
-[svn]
-  rmdir = true
-	brokenSymlinkWorkaround = false
-[status]
-	submodulesummary = true
-[color]
-  ui = auto
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+
+  # Use the Git 1.x.x default to avoid errors on machines with old Git
+  # installations. To use `simple` instead, add this to your `~/.extra` file:
+  # `git config --global push.default simple`. See http://git.io/mMah-w.
+  # default = matching
+
+  default = simple
+
 [merge]
-# Include summaries of merged commits in newly created merge commit messages
-	log = true
-# Always show a diffstat at the end of a merge
-	stat = true
+
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+
+	# Always show a diffstat at the end of a merge
+  stat = true
+
+	# External merge tool.
+	tool = Kaleidoscope
+	# tool = diffmerge
+
+[mergetool]
+	
+	#keepBackup = false
+	prompt = false
+
+[diff]
+
+	# External diff tool.
+	#tool = diffmerge
+	tool = Kaleidoscope
+
+[svn]
+
+  rmdir = true
+
+[color]
+
+  # Use colors in Git commands that are capable of colored output when
+  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+  ui = auto
+	diff = auto
+  status = auto
+
+[color "branch"]
+
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+
+  meta = yellow bold
+  frag = magenta bold # line info
+  old = red # deletions
+  new = green # additions
+
+[color "status"]
+
+  added = yellow
+  changed = green
+  untracked = cyan
+
+# Diff and merge tool configuration for "sourcetree" (osx)
+[difftool "sourcetree"]
+
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh $LOCAL $REMOTE
+
+[mergetool "sourcetree"]
+
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh $LOCAL $REMOTE -ancestor $BASE -merge $MERGED
+  trustExitCode = true
+
+# Diff and merge tool configuration for "diffmerge" (osx)
+[difftool "diffmerge"]
+
+  cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge $LOCAL $REMOTE
+
+[mergetool "diffmerge"]
+
+  cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE[mergetool "Kaleidoscope"]
+
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	trustexitcode = true
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
