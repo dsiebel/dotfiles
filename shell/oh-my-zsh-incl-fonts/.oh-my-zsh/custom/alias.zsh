@@ -14,3 +14,5 @@ alias use_php70="brew unlink php56 && brew link php70"
 # alias composer='COMPOSER_DISABLE_XDEBUG_WARN=1 /usr/local/bin/php -d xdebug.remote_enable=0 -d xdebug.profiler_enable=0 -d xdebug.default_enable=0 /usr/local/bin/composer'
 alias composer='PHP_INI_SCAN_DIR=/usr/local/etc/php/composer/conf.d php -c /usr/local/etc/php/composer /usr/local/bin/composer'
 alias phpd='php -dxdebug.remote_enable=1 -dxdebug.remote_mode=req -dxdebug.remote_autostart=1 -dxdebug.remote_port=9000 -dxdebug.remote_host=127.0.0.1'
+
+alias docker-env-default='eval $(docker-machine env default)'
