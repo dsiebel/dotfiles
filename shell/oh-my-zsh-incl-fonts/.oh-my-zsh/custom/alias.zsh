@@ -15,4 +15,6 @@ alias use_php70="brew unlink php56 && brew link php70"
 alias composer='PHP_INI_SCAN_DIR=/usr/local/etc/php/composer/conf.d php -c /usr/local/etc/php/composer /usr/local/bin/composer'
 alias phpd='php -dxdebug.remote_enable=1 -dxdebug.remote_mode=req -dxdebug.remote_autostart=1 -dxdebug.remote_port=9000 -dxdebug.remote_host=127.0.0.1'
 
+# docker
 alias docker-env-default='eval $(docker-machine env default)'
+alias docker-cleanup="docker ps -a | grep 'weeks ago|months ago' | awk '{print $1}' | xargs docker rm"
