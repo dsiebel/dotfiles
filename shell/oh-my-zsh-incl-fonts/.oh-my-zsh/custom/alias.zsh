@@ -18,3 +18,5 @@ alias phpd='php -dxdebug.remote_enable=1 -dxdebug.remote_mode=req -dxdebug.remot
 # docker
 alias docker-env-default='eval $(docker-machine env default)'
 alias docker-cleanup="docker ps -a | grep 'weeks ago|months ago' | awk '{print $1}' | xargs docker rm"
+
+alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
