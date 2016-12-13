@@ -1,0 +1,2 @@
+export GOPATH="$HOME/Development/Go"
+export PATH="/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH"
