@@ -1,8 +1,7 @@
 # SublimeText project files
 *.sublime-workspace
 
-# PyCharm
-# http://www.jetbrains.com/pycharm/webhelp/project.html
+# Jetbrains IDEA based applications
 .idea/
 *.iml
 *.ipr
