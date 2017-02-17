@@ -16,6 +16,10 @@ alias VV="vagrant global-status"
 # Process based top (like Activity Monitor)
 ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 
+# some missing git shortcuts
+alias gds='git diff --staged'
+alias gbs='git branch -av'
+
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
