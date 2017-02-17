@@ -35,3 +35,7 @@ Session.vim
 # System specific metadata
 .DS_Store
 atlassian-ide-plugin.xml
+
+# Git extension configs
+.git-wtfrc
+
