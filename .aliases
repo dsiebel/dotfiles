@@ -20,6 +20,24 @@ ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 alias gds='git diff --staged'
 alias gbs='git branch -av'
 
+# Docker
+alias D="docker"
+alias DC="docker-compose"
+alias DM="docker-machine"
+
+## Damn typo!
+alias docker-composer='docker-compose'
+
+## Set docker-machine `default` environment (export env vars)
+alias docker-env-default='eval $(docker-machine env default)'
+
+## Delete all stopped containers and currently unused images
+alias docker-cleanup-all="docker ps -aq | xargs docker rm; docker images -aq | xargs docker rm"
+
+## Moar shortcuts!!!
+alias DCup='docker-compose up'
+alias Drun='docker run --rm -it'
+
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
