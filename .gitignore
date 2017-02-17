@@ -7,6 +7,9 @@
 *.ipr
 *.iws
 
+# Visual Studio Code workspace files
+.vscode/
+
 ### SASS Ignores - "Sassy CSS" http://sass-lang.com/
 *.sass-cache
 
