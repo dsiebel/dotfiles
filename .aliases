@@ -32,7 +32,9 @@ alias docker-composer='docker-compose'
 alias docker-env-default='eval $(docker-machine env default)'
 
 ## Delete all stopped containers and currently unused images
-alias docker-cleanup-all="docker ps -aq | xargs docker rm; docker images -aq | xargs docker rm"
+alias docker-cleanup-stopped='docker rm $(docker ps -aq)'
+alias docker-cleanup-untagged='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
+alias docker-cleanup="docker-cleanup-stopped; docker-cleanup-untagged"
 
 ## Moar shortcuts!!!
 alias DCup='docker-compose up'
