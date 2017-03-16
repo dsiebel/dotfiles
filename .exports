@@ -1,8 +1,6 @@
 # configure XDEBUG support
 # export XDEBUG_CONFIG="idekey=XDEBUG";
 
-export GOPATH="/Users/dsiebel/Development/Go";
-
 # use vim as default editor for everything
 export EDITOR="/usr/bin/vim";
 export GIT_EDITOR=$EDITOR;

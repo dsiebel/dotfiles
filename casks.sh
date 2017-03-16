@@ -30,4 +30,3 @@ brew cask install virtualbox
 brew cask install the-unarchiver
 brew cask install adobe-creative-cloud
 brew cask install duet
-
