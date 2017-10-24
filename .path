@@ -1,2 +1,2 @@
-export GOPATH="$HOME/Development/Go"
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH"
+export GOPATH="/Volumes/Source/Go"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH:$GOPATH/bin"
