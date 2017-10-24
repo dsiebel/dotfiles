@@ -48,7 +48,7 @@ alias DCup='docker-compose up'
 alias Drun='docker run --rm -it'
 
 # PHP
-alias composer='PHP_INI_SCAN_DIR=/usr/local/etc/php/composer/conf.d php -c /usr/local/etc/php/composer /usr/local/bin/composer'
+#alias composer='PHP_INI_SCAN_DIR=/usr/local/etc/php/composer/conf.d php -c /usr/local/etc/php/composer /usr/local/bin/composer'
 alias phpd='php -dxdebug.remote_enable=1 -dxdebug.remote_mode=req -dxdebug.remote_autostart=1 -dxdebug.remote_port=9000 -dxdebug.remote_host=127.0.0.1'
 
 # Stopwatch
