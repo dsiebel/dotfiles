@@ -7,6 +7,7 @@ export GIT_EDITOR=$EDITOR;
 export SVN_EDITOR=$EDITOR;
 
 # Prefer US English and use UTF-8
+export LC_ALL='en_US.UTF-8';
 export LANG='en_US.UTF-8';
 export LC_LANG='en_US.UTF-8';
 
@@ -21,7 +22,11 @@ export MANPAGER='less -X';
 # export DOCKER_CERT_PATH="/Users/dsiebel/.docker/machine/machines/default"
 # export DOCKER_MACHINE_NAME="default"
 # Run this command to configure your shell:
-# # eval $(docker-machine env default)
+eval $(docker-machine env default)
 
 # setup java 1.8 properly. Thanks, Steve!
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`;
+
+# check for nvm and load it if present
+export NVM_DIR="/Users/dsiebel/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
