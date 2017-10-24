@@ -1,6 +1,6 @@
 [user]
-  name = Your Name Here
-  email = yourname@example.com
+  name = Dominik Siebel
+  email = code@dsiebel.de
 
 [alias]
   # svn-like shortcuts for common commands
@@ -11,20 +11,10 @@
   df = diff
   cp = cherry-pick
 
-  # clone a repository with all submodules
-  c = clone --recursive
-
   # view status using short format
   s = status -s
 
-  # Pull in remote changes for the current repository and all its submodules
-  p = !"git pull; git submodule foreach git pull origin master"
-
-  # Commit all changes
-  ca = !git add -A && git commit -av
-
   # pretty logging with branches and everything!
-  l = log --pretty=oneline -n 20 --graph --abbrev-commit
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   logp = log -p
 
@@ -43,22 +33,6 @@
   # for older git versions
   # cleanup-remote = "!git branch -r --merged | grep master | sed 's/origin\//:/' | args -n 1 git push origin"
   cleanup-remote = "!git branch -r --merged | grep -v "master" | sed 's/origin\\///' | args -n 1 git push --delete origin"
-
-  # Find branches containing commit
-  fb = "!f() { git branch -a --contains $1; }; f"
-
-  # Find tags containing commit
-  ft = "!f() { git describe --always --contains $1; }; f"
-
-  # Find commits by source code
-  fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
-
-  # Find commits by commit message
-  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-
-  # Remove branches that have already been merged with master
-  # a.k.a. ‘delete merged’
-  dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
 [core]
 
@@ -84,13 +58,13 @@
 
 [merge]
 
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
 
 	# Always show a diffstat at the end of a merge
-  stat = true
+    stat = true
 
-	# External merge tool.
+    # External merge tool.
 	tool = Kaleidoscope
 	# tool = diffmerge
 
@@ -114,8 +88,9 @@
   # Use colors in Git commands that are capable of colored output when
   # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
   ui = auto
-	diff = auto
+  diff = auto
   status = auto
+  branch = auto
 
 [color "branch"]
 
@@ -139,31 +114,35 @@
 # Diff and merge tool configuration for "sourcetree" (osx)
 [difftool "sourcetree"]
 
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh $LOCAL $REMOTE
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 
 [mergetool "sourcetree"]
 
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh $LOCAL $REMOTE -ancestor $BASE -merge $MERGED
-  trustExitCode = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 # Diff and merge tool configuration for "diffmerge" (osx)
 [difftool "diffmerge"]
 
-  cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge $LOCAL $REMOTE
+    cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge $LOCAL $REMOTE
 
 [mergetool "diffmerge"]
 
-  cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE[mergetool "Kaleidoscope"]
+    cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
 [mergetool "Kaleidoscope"]
 	trustexitcode = true
-    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 [credential]
-    helper = osxkeychain
-
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
