@@ -44,6 +44,15 @@ brew install ngrep
 brew install xz
 brew install tree
 
+brew install go
+brew install dep
+
+brew install awscli
+
+brew install docker-machine-nfs
+
+brew install telnet
+
 # Install php & extensions
 brew install php70
 brew install php70-apcu
