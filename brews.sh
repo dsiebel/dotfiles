@@ -44,6 +44,9 @@ brew install ngrep
 brew install xz
 brew install tree
 
+brew install fzf \
+ && /usr/local/opt/fzf/install --no-bash --no-fish --key-bindings --no-completion --update-rc
+
 brew install go
 brew install dep
 
