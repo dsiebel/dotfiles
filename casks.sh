@@ -34,3 +34,5 @@ brew cask install gimp
 brew cask install bettertouchtool
 # brew cask install divvy ## need to get from AppStore
 brew cask install alfred
+# Still have to play around with it...
+# brew cask install amethyst
