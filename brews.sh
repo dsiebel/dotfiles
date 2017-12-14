@@ -16,8 +16,9 @@ brew install coreutils
 # Install some other useful utilities like `sponge`.
 brew install moreutils
 
-# Install zsh
+# Install shells
 brew install zsh
+brew install bash
 
 # Switch to using brew-installed zsh as default shell
 if ! fgrep -q '/usr/local/bin/zsh' /etc/shells; then
