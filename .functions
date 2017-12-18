@@ -234,3 +234,16 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# SSH without knwon_hosts spam
+cssh() {
+    user=`echo $1 | sed -E 's/(.*)@.*/\1/'`
+    host=`echo $1 | sed -E 's/.*@(.*)/\1/'`
+    ssh-keygen -f "$HOME/.ssh/known_hosts" -R $host > /dev/null
+    if [ "$2" != "" ]; then
+        ssh -o StrictHostKeyChecking=no -t $1 "ssh-keygen -f '/home/$user/.ssh/known_hosts' -R $2 > /dev/null"
+        ssh -tA $1 "ssh -o StrictHostKeyChecking=no $user@$2"
+    else
+        ssh -o StrictHostKeyChecking=no $1
+    fi
+}
