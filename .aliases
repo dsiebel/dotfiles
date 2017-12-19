@@ -32,8 +32,8 @@ alias docker-composer='docker-compose'
 alias docker-env-default='eval $(docker-machine env default)'
 
 ## Delete all stopped containers and untagged images
-alias docker-cleanup-stopped='docker rm $(docker ps -aq)'
-alias docker-cleanup-untagged='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
+alias docker-cleanup-stopped='docker rm $(docker ps -aq -f status=exited)'
+alias docker-cleanup-untagged='docker rmi $(docker images -q --filter dangling=true)'
 alias docker-cleanup="docker-cleanup-stopped; docker-cleanup-untagged"
 
 ## Remove all containers, images and networks created by docker-compose up
