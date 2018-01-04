@@ -14,7 +14,7 @@ alias V="vagrant"
 alias VV="vagrant global-status"
 
 # Process based top (like Activity Monitor)
-ptop='top -stats pid,command,cpu,idlew,power -o power -d'
+alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 
 # some missing git shortcuts
 alias gds='git diff --staged'
