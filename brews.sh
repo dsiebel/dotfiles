@@ -45,6 +45,7 @@ brew install ngrep
 brew install xz
 brew install tree
 brew install jq
+brew install shellcheck
 
 brew install fzf \
  && /usr/local/opt/fzf/install --no-bash --no-fish --key-bindings --no-completion --update-rc
