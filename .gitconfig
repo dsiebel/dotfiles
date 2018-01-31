@@ -75,9 +75,10 @@
 
 [diff]
 
-	# External diff tool.
-	#tool = diffmerge
-	tool = Kaleidoscope
+    # External diff tool.
+    tool = Kaleidoscope
+    colorMoved = zebra
+    mnemonicprefix=true
 
 [svn]
 
