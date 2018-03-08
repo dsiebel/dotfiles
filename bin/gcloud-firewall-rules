@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+readonly project="${1?argument 1 (project) is required}"
+shift 1
+
+args=()
+
+while (( $# > 0 )); do
+  case "$1" in
+    --full)
+      args+=(--format="table( \
+        name, \
+        network, \
+        direction, \
+        priority, \
+        sourceRanges.list():label=SRC_RANGES, \
+        destinationRanges.list():label=DEST_RANGES, \
+        allowed[].map().firewall_rule().list():label=ALLOW, \
+        denied[].map().firewall_rule().list():label=DENY, \
+        sourceTags.list():label=SRC_TAGS, \
+        targetTags.list():label=TARGET_TAGS \
+      )")
+      shift 1
+      ;;
+    --)
+      shift 1
+      break
+      ;;
+    *)
+      shift 1
+      ;;
+  esac
+done
+
+exec gcloud --project "${project}" compute firewall-rules list "${args[@]}"
