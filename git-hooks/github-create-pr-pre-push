@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+userRepo="$(git remote -v | grep fetch | awk '{print $2}' | grep "github.com" | cut -d':' -f2 | rev | cut -c5- | rev)"
+
+if [ -n "$userRepo" ]; then
+    echo
+    echo "Create PR at: https://github.com/$userRepo/compare/$branch?expand=1"
+    echo
+fi
