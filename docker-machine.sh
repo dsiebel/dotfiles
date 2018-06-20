@@ -11,7 +11,7 @@ fi
 docker-machine create --driver "virtualbox" \
  --virtualbox-cpu-count "-1" \
  --virtualbox-disk-size "40000" \
- --virtualbox-memory "4096" \
+ --virtualbox-memory "2048" \
  --virtualbox-no-share \
  --virtualbox-host-dns-resolver \
  --engine-opt max-concurrent-downloads=8 \
