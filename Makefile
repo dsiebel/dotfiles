@@ -14,6 +14,8 @@ bin: ## install bin directory files
 
 .PHONY: dotfiles
 dotfiles: ## install the dotfiles for current user
+	git submodule init
+	git submodule update
 	for file in $(shell find $(CURDIR) -name ".*" -depth 1 -not -name ".gitignore" -not -name ".travis.yml" -not -name ".git" -not -name ".*.swp" -not -name ".gnupg"); do \
 		f=$$(basename $$file); \
 		ln -sfn $$file $(HOME)/$$f; \
