@@ -28,7 +28,7 @@
 
   # clean up local, merged branches
   cleanup = "!git branch --merged | grep -v master | xargs -n 1 git branch -d"
-  
+
   # cleanup remote, merged branches (origin only)
   # for older git versions
   # cleanup-remote = "!git branch -r --merged | grep master | sed 's/origin\//:/' | args -n 1 git push origin"
@@ -71,7 +71,7 @@
 	# tool = diffmerge
 
 [mergetool]
-	
+
 	#keepBackup = false
 	prompt = false
 
@@ -118,7 +118,7 @@
 [difftool "sourcetree"]
 
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [mergetool "sourcetree"]
 
