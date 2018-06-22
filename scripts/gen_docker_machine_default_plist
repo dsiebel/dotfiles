@@ -1,12 +1,10 @@
 #!/bin/bash
 
-MACHINE=${1:-default}
-DIR=$(dirname $0)
+MACHINE="${1:-default}"
+DIR="$(dirname "$0")"
 
-cat $DIR/templates/com.docker.machine.plist.template | 
- sed -e "s?{{docker-machine}}?$(which docker-machine)?" \
-     -e "s?{{user-path}}?$(echo $PATH)?" \
+< "$DIR/templates/com.docker.machine.plist.template" sed -e "s?{{docker-machine}}?$(which docker-machine)?" \
+     -e "s?{{user-path}}?${PATH}?" \
      -e "s?{{machine-name}}?${MACHINE}?" \
- > ~/Library/LaunchAgents/com.docker.machine.${MACHINE}.plist && \
-  launchctl load ~/Library/LaunchAgents/com.docker.machine.${MACHINE}.plist
-
+ > "${HOME}/Library/LaunchAgents/com.docker.machine.${MACHINE}.plist" \
+  && launchctl load "${HOME}/Library/LaunchAgents/com.docker.machine.${MACHINE}.plist"

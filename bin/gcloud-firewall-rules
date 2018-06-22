@@ -8,7 +8,7 @@ args=()
 while (( $# > 0 )); do
   case "$1" in
     --full)
-      args+=(--format="table( \
+      args+=("--format=\"table( \
         name, \
         network, \
         direction, \
@@ -19,7 +19,7 @@ while (( $# > 0 )); do
         denied[].map().firewall_rule().list():label=DENY, \
         sourceTags.list():label=SRC_TAGS, \
         targetTags.list():label=TARGET_TAGS \
-      )")
+      )\"")
       shift 1
       ;;
     --)

@@ -40,7 +40,7 @@ alias docker-cleanup="docker-cleanup-stopped; docker-cleanup-untagged"
 alias docker-compose-cleanup="_docker_compose_cleanup"
 
 function _docker_compose_cleanup() {
-    docker-compose -f ${1:-docker-compose.yml} down --rmi all
+    docker-compose -f "${1:-docker-compose.yml}" down --rmi all
 }
 
 ## Moar shortcuts!!!
@@ -61,12 +61,12 @@ alias week='date +%V'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="sudo ifconfig | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'"
+alias ips="sudo ifconfig -a | grep -o 'inet6\\? \\(addr:\\)\\?\\s\\?\\(\\(\\([0-9]\\+\\.\\)\\{3\\}[0-9]\\+\\)\\|[a-fA-F0-9:]\\+\\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Show active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+alias ifactive="ifconfig | pcregrep -M -o '^[^\\t:]+:([^\\n]|\\n\\t)*status: active'"
 
 # Flush Directory Service cache
 alias dsflush="dscacheutil -flushcache && killall -HUP mDNSResponder"
@@ -76,7 +76,7 @@ alias hosts='sudo vim /etc/hosts; dsflush'
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\\: .*|GET \\/.*\""
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
@@ -100,7 +100,8 @@ alias badge="tput bel"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-    alias "$method"="lwp-request -m '$method'"
+	# shellcheck disable=SC2139,SC2140
+    alias "$method"="lwp-request -m \"$method\""
 done
 
 # Kill all the tabs in Chrome to free up memory
@@ -108,7 +109,7 @@ done
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk="/System/Library/CoreServices/Menu\\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # copy file interactive
 alias cp='cp -i'
@@ -120,6 +121,7 @@ alias mv='mv -i'
 alias untar='tar -xvf'
 
 # Reload the shell (i.e. invoke as a login shell)
+# shellcheck disable=SC2139
 alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line

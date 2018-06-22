@@ -7,5 +7,5 @@ dgcloud(){
 		-v "$(which docker):/usr/bin/docker" \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		--name gcloud \
-		${DOCKER_REPO_PREFIX}/gcloud "$@"
+		"${DOCKER_REPO_PREFIX}/gcloud" "$@"
 }
