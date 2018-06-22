@@ -3,7 +3,7 @@
 MACHINE="${1:-default}"
 DIR="$(dirname "$0")"
 
-< "$DIR/templates/com.docker.machine.plist.template" sed -e "s?{{docker-machine}}?$(which docker-machine)?" \
+< "$DIR/templates/com.docker.machine.plist.template" sed -e "s?{{docker-machine}}?$(command -v docker-machine)?" \
      -e "s?{{user-path}}?${PATH}?" \
      -e "s?{{machine-name}}?${MACHINE}?" \
  > "${HOME}/Library/LaunchAgents/com.docker.machine.${MACHINE}.plist" \
