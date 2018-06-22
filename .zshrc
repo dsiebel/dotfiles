@@ -56,6 +56,7 @@ plugins=(git autojump brew git-extras node npm osx sublime vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
