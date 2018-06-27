@@ -6,6 +6,12 @@ export EDITOR="/usr/bin/vim";
 export GIT_EDITOR=$EDITOR;
 export SVN_EDITOR=$EDITOR;
 
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
 # Prefer US English and use UTF-8
 export LC_ALL='en_US.UTF-8';
 export LANG='en_US.UTF-8';
@@ -16,6 +22,7 @@ export LESS_TERMCAP_md="${yellow}";
 
 # Don't clear screen after quitting man page
 export MANPAGER='less -X';
+# export MANPATH="/usr/local/man:$MANPATH"
 
 # export DOCKER_TLS_VERIFY="1"
 # export DOCKER_HOST="tcp://192.168.99.100:2376"

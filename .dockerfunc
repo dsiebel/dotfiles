@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
 dgcloud(){
-	docker run --rm -it \
-		-v "${HOME}/.gcloud:/root/.config/gcloud" \
-		-v "${HOME}/.ssh:/root/.ssh:ro" \
-		-v "$(command -v docker):/usr/bin/docker" \
-		-v /var/run/docker.sock:/var/run/docker.sock \
-		--name gcloud \
-		"${DOCKER_REPO_PREFIX}/gcloud" "$@"
+	docker run --rm --tty --interactive \
+		--volume "${HOME}/.gcloud:/root/.config/gcloud" \
+		--entrypoint gcloud \
+		"google/cloud-sdk" "$@"
+}
+
+docker_machine_nfs_volumes() {
+	readonly machine="${1:-default}"
+	docker-machine-nfs "${machine}" \
+	--shared-folder=/Volumes/Source/ \
+	--shared-folder="${HOME}/" \
+	--mount-opts="noacl,async,noatime" \
+	--nfs-config="-alldirs -mapall=$(id -u):$(id -g)" \
+	--force
 }
