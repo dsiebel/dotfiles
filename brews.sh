@@ -48,6 +48,9 @@ brew install awscli
 
 brew install docker-machine-nfs
 
+brew install kubernetes-cli
+brew install kubectx
+
 brew install telnet
 
 # Install php & extensions
