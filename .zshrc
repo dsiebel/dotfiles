@@ -51,7 +51,7 @@ ZSH_CUSTOM="${HOME}/.zsh-custom"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump brew git-extras node npm osx sublime vagrant)
+plugins=(git autojump brew git-extras node npm osx sublime vagrant kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
