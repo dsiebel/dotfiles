@@ -42,6 +42,9 @@ macos: bin dotfiles vim brews casks docker-machine ## setup macos
 linux-mint: bin dotfiles vim
 	$(CURDIR)/linux-mint.sh
 
+.PHONY: fzf
+fzf:
+	$(CURDIR)/fzf.sh
 
 .PHONY: vim
 vim: ## install amix/vimrc
