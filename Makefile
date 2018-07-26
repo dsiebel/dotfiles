@@ -17,24 +17,31 @@ all: bin dotfiles macos vim brews casks docker-machine ## Installs everything
 
 .PHONY: bin
 bin: ## install bin directory files
-	for file in $(shell find $(CURDIR)/bin -type f -not -name "meldDiff" -not -name ".*.swp" -not -name "vgaswitcheroo.sh"); do \
-		f=$$(basename $$file); \
-		sudo ln -sf $$file /usr/local/bin/$$f; \
+	for file in $(shell find $(CURDIR)/bin -type f -not -name "meldDiff" \
+	 -not -name ".*.swp" -not -name "vgaswitcheroo.sh"); do
+		f=$$(basename $$file);
+		sudo ln -sf $$file /usr/local/bin/$$f
 	done
 
 .PHONY: dotfiles
 dotfiles: ## install the dotfiles for current user
 	git submodule init
 	git submodule update
-	for file in $(shell find $(CURDIR) -name ".*" -depth 1 -not -name ".gitignore" -not -name ".travis.yml" -not -name ".git" -not -name ".*.swp" -not -name ".gnupg"); do \
-		f=$$(basename $$file); \
-		ln -sfn $$file $(HOME)/$$f; \
-	done; \
-	ln -sfn $(CURDIR)/gitignore $(HOME)/.gitignore;
+	for file in $(shell find $(CURDIR) -maxdepth 1 -name ".*" -not -name ".gitignore" \
+	 -not -name ".travis.yml" -not -name ".git" -not -name ".*.swp" -not -name ".gnupg"); do
+		f=$$(basename $$file)
+		ln -sfn $$file $(HOME)/$$f
+	done
+	ln -sfn $(CURDIR)/gitignore $(HOME)/.gitignore
 
 .PHONY: macos
-macos: ## setup macos
+macos: bin dotfiles vim brews casks docker-machine ## setup macos
 	$(CURDIR)/macos.sh
+
+.PHONY: linux-mint
+linux-mint: bin dotfiles vim
+	$(CURDIR)/linux-mint.sh
+
 
 .PHONY: vim
 vim: ## install amix/vimrc
