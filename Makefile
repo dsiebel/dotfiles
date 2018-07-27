@@ -34,10 +34,13 @@ dotfiles: ## install the dotfiles for current user
 .PHONY: macos
 macos: bin dotfiles vim brews casks docker-machine ## setup macos
 	$(CURDIR)/macos.sh
+	$(CURDIR)/vscode.ext.sh
 
 .PHONY: linux-mint
 linux-mint: bin dotfiles vim ## setup linux mint
 	$(CURDIR)/linux-mint.sh
+	$(CURDIR)/vscode.deb.sh
+	$(CURDIR)/vscode.ext.sh
 
 .PHONY: fzf ## install fzf
 fzf:

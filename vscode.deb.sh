@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+#curl -L -o "/tmp/vscode.deb" "https://go.microsoft.com/fwlink/?LinkID=760868"
+#sudo dpkg -i /tmp/vscode.deb
+
+echo "vscode version information:"
+echo "------------------------------------"
+code --version
+echo "------------------------------------"
+
