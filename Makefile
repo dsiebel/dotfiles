@@ -48,17 +48,6 @@ dotfiles: ## install the dotfiles for current user
 	done
 	ln -sfn $(CURDIR)/gitignore $(HOME)/.gitignore
 
-.PHONY: darwin
-darwin: bin dotfiles vim brews casks docker-machine ## setup macos
-	setup-darwin
-	install-vscode-extensions
-
-.PHONY: linux-mint
-linux-mint: bin dotfiles vim ## setup linux mint
-	setup-linux-mint
-	install-vscode-deb
-	install-vscode-extensions
-
 .PHONY: fzf ## install fzf
 fzf:
 	install-fzf
@@ -112,3 +101,16 @@ shellcheck: ## Runs the shellcheck tests on the scripts.
 		--workdir /usr/src \
 		--entrypoint scripts/run-shellcheck \
 		dsiebel/shellcheck-docker
+
+
+# OS specific targets, see `install`
+.PHONY: darwin
+darwin: bin dotfiles vim brews casks docker-machine ## setup macos
+	setup-darwin
+	install-vscode-extensions
+
+.PHONY: linux-mint
+linux-mint: bin dotfiles vim ## setup linux mint
+	setup-linux-mint
+	install-vscode-deb
+	install-vscode-extensions
