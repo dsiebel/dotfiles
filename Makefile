@@ -8,6 +8,8 @@ SHELL := bash
 
 .ONESHELL:
 
+# add local scripts to PATH for easy reference
+# try to avoid nesting scripts!
 PATH := $(PATH):$(CURDIR)/scripts
 
 OS=$(shell source scripts/detect-os; echo $$OS_NAME | tr '[:upper:]' '[:lower:]' | sed 's/ /-/')
