@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -eu
+
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get update
+sudo apt-get -qq install -yu --auto-remove --no-install-recommends --no-install-suggests "$@"

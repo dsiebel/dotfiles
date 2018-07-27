@@ -8,10 +8,12 @@ SHELL := bash
 
 .ONESHELL:
 
-OS=$(shell source scripts/os.sh; echo $$OS_NAME | tr '[:upper:]' '[:lower:]' | sed 's/ /-/')
+PATH := $(PATH):$(CURDIR)/scripts
+
+OS=$(shell source scripts/detect-os; echo $$OS_NAME | tr '[:upper:]' '[:lower:]' | sed 's/ /-/')
 KERNEL=$(shell uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(shell uname -m | sed 's/x86_//;s/i[3-6]86/32/')
-VERSION=$(shell source scripts/os.sh; echo $$VERSION)
+VERSION=$(shell source scripts/detect-os; echo $$VERSION)
 
 .PHONY: help
 help:
@@ -44,22 +46,22 @@ dotfiles: ## install the dotfiles for current user
 
 .PHONY: darwin
 darwin: bin dotfiles vim brews casks docker-machine ## setup macos
-	$(CURDIR)/macos.sh
-	$(CURDIR)/vscode.ext.sh
+	setup-darwin
+	install-vscode-extensions
 
 .PHONY: linux-mint
 linux-mint: bin dotfiles vim ## setup linux mint
-	$(CURDIR)/linux-mint.sh
-	$(CURDIR)/vscode.deb.sh
-	$(CURDIR)/vscode.ext.sh
+	setup-linux-mint
+	install-vscode-deb
+	install-vscode-extensions
 
 .PHONY: fzf ## install fzf
 fzf:
-	$(CURDIR)/fzf.sh
+	install-fzf
 
 .PHONY: vim
 vim: ## install amix/vimrc
-	$(CURDIR)/vim.sh
+	install-vimrc
 
 .PHONY: homebrew (macos)
 homebrew: ## install homebrew
@@ -70,22 +72,22 @@ homebrew: ## install homebrew
 
 .PHONY: brews
 brews: homebrew ## install brews (macos)
-	$(CURDIR)/brews.sh
+	install-brews
 
 
 .PHONY: casks
 casks: homebrew ## install homebrew casks (macos)
-	$(CURDIR)/casks.sh
+	install-casks
 
 DOCKER_MACHINE_NAME ?= default
 
 .PHONY: docker-machine
 docker-machine: ## set up docker-machine (macos). Use DOCKER_MACHINE_NAME to overwrite machine name
-	$(CURDIR)/docker-machine.sh $(DOCKER_MACHINE_NAME)
+	setup-docker-machine $(DOCKER_MACHINE_NAME)
 
 .PHONY: composer
 composer: ## install composer (requires php)
-	$(CURDIR)/composer.sh
+	install-composer
 
 .PHONY: test
 test: shellcheck ## Runs all the tests on the files in the repository.
@@ -104,5 +106,5 @@ shellcheck: ## Runs the shellcheck tests on the scripts.
 		--name df-shellcheck \
 		--volume $(CURDIR):/usr/src:ro \
 		--workdir /usr/src \
-		--entrypoint ./test.sh \
+		--entrypoint scripts/run-shellcheck \
 		dsiebel/shellcheck-docker
