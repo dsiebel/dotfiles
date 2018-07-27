@@ -8,9 +8,20 @@ SHELL := bash
 
 .ONESHELL:
 
+OS=$(shell source scripts/os.sh; echo $$OS_NAME | tr '[:upper:]' '[:lower:]' | sed 's/ /-/')
+KERNEL=$(shell uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$(shell uname -m | sed 's/x86_//;s/i[3-6]86/32/')
+VERSION=$(shell source scripts/os.sh; echo $$VERSION)
+
 .PHONY: help
 help:
+	@echo "Kernel: $(KERNEL), OS: $(OS), Architecture: $(ARCH), Version: $(VERSION)"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+
+.PHONY: install
+install: $(OS)
+	@echo "your $(OS) is all set up for you."
 
 .PHONY: bin
 bin: ## install bin directory files
@@ -31,8 +42,8 @@ dotfiles: ## install the dotfiles for current user
 	done
 	ln -sfn $(CURDIR)/gitignore $(HOME)/.gitignore
 
-.PHONY: macos
-macos: bin dotfiles vim brews casks docker-machine ## setup macos
+.PHONY: darwin
+darwin: bin dotfiles vim brews casks docker-machine ## setup macos
 	$(CURDIR)/macos.sh
 	$(CURDIR)/vscode.ext.sh
 
