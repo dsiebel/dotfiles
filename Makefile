@@ -12,20 +12,22 @@ SHELL := bash
 # try to avoid nesting scripts!
 PATH := $(PATH):$(CURDIR)/scripts
 
-OS=$(shell source scripts/detect-os; echo $$OS_NAME | tr '[:upper:]' '[:lower:]' | sed 's/ /-/')
+OS_NAME=$(shell source scripts/detect-os; echo $$OS_NAME | tr '[:upper:]' '[:lower:]' | sed 's/ /-/')
 KERNEL=$(shell uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(shell uname -m | sed 's/x86_//;s/i[3-6]86/32/')
-VERSION=$(shell source scripts/detect-os; echo $$VERSION)
+OS_VERSION=$(shell source scripts/detect-os; echo $$OS_VERSION)
 
 .PHONY: help
 help:
-	@echo "Kernel: $(KERNEL), OS: $(OS), Architecture: $(ARCH), Version: $(VERSION)"
+	@echo
+	@echo "Kernel: $(KERNEL), OS: $(OS_NAME), Architecture: $(ARCH), Version: $(OS_VERSION)"
+	@echo
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-
+	@echo
 
 .PHONY: install
-install: $(OS)
-	@echo "your $(OS) is all set up for you."
+install: $(OS_NAME)
+	@echo "your $(OS_NAME) is all set up for you."
 
 .PHONY: bin
 bin: ## install bin directory files
