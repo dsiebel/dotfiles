@@ -86,9 +86,9 @@ endif
 
 .PHONY: shellcheck
 shellcheck: ## Runs the shellcheck tests on the scripts.
-	docker run --rm --interactive $(DOCKER_FLAGS)
-		--name df-shellcheck
-		--volume $(CURDIR):/usr/src:ro
-		--workdir /usr/src
-		--entrypoint ./test.sh
+	docker run --rm --interactive $(DOCKER_FLAGS) \
+		--name df-shellcheck \
+		--volume $(CURDIR):/usr/src:ro \
+		--workdir /usr/src \
+		--entrypoint ./test.sh \
 		dsiebel/shellcheck-docker
