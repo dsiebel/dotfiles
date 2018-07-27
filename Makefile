@@ -36,10 +36,10 @@ macos: bin dotfiles vim brews casks docker-machine ## setup macos
 	$(CURDIR)/macos.sh
 
 .PHONY: linux-mint
-linux-mint: bin dotfiles vim
+linux-mint: bin dotfiles vim ## setup linux mint
 	$(CURDIR)/linux-mint.sh
 
-.PHONY: fzf
+.PHONY: fzf ## install fzf
 fzf:
 	$(CURDIR)/fzf.sh
 
