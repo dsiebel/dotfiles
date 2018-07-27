@@ -47,7 +47,7 @@ fzf:
 vim: ## install amix/vimrc
 	$(CURDIR)/vim.sh
 
-.PHONY: homebrew
+.PHONY: homebrew (macos)
 homebrew: ## install homebrew
 	if ! which brew; then
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -55,18 +55,18 @@ homebrew: ## install homebrew
 	brew update
 
 .PHONY: brews
-brews: homebrew ## install brews
+brews: homebrew ## install brews (macos)
 	$(CURDIR)/brews.sh
 
 
 .PHONY: casks
-casks: homebrew ## install homebrew casks
+casks: homebrew ## install homebrew casks (macos)
 	$(CURDIR)/casks.sh
 
 DOCKER_MACHINE_NAME ?= default
 
 .PHONY: docker-machine
-docker-machine: ## set up docker-machine. Use DOCKER_MACHINE_NAME to overwrite machine name
+docker-machine: ## set up docker-machine (macos). Use DOCKER_MACHINE_NAME to overwrite machine name
 	$(CURDIR)/docker-machine.sh $(DOCKER_MACHINE_NAME)
 
 .PHONY: composer
