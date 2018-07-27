@@ -1,0 +1,54 @@
+{
+	"workbench.colorTheme": "Default Light+",
+	"diffEditor.ignoreTrimWhitespace": false,
+    "editor.renderWhitespace": "all",
+    "editor.fontSize": 12,
+    "editor.rulers": [80,120],
+	"editor.minimap.renderCharacters": false,
+    "editor.fontFamily": "Noto Mono, Menlo, Monaco, 'Courier New', monospace",
+	"editor.renderLineHighlight": "gutter",
+	"explorer.openEditors.visible": 0,
+    "explorer.autoReveal": false,
+    "files.associations": {
+		"*.sls": "yaml",
+		"*.job": "hcl",
+		"Makefile.*": "makefile",
+		"*.docker": "dockerfile"
+    },
+    "files.autoSave": "onFocusChange",
+    "python.pythonPath": "python2",
+    "python.venvPath": "taste_env",
+    "python.disablePromptForFeatures": [
+        "pylint"
+	],
+	"todohighlight.keywords": [/*
+		{
+			"text": "TODO",
+			//"color": "#082149",
+			"backgroundColor": "#eaf2ff",
+			"isWholeLine": true
+		},
+		{
+			"text": "FIXME",
+			//"color": "#630a56",
+			"backgroundColor": "#ffedfc",
+			"isWholeLine": true
+		},
+		{
+			"text": "NOTE",
+			//"color": "#725609",
+			"backgroundColor": "#fff8e5",
+			"isWholeLine": true
+		}
+	*/],
+	"window.zoomLevel": 0,
+	"workbench.startupEditor": "none",
+	"workbench.editor.openSideBySideDirection": "down",
+	"extensions.ignoreRecommendations": false,
+	"[plaintext]": {},
+	"gitlens.advanced.messages": {
+		"suppressShowKeyBindingsNotice": true
+	},
+	"gitlens.showWhatsNewAfterUpgrades": false,
+	"gitlens.hovers.enabled": false
+}
