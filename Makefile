@@ -114,3 +114,8 @@ linux-mint: bin dotfiles vim ## setup linux mint
 	setup-linux-mint
 	install-vscode-deb
 	install-vscode-extensions
+
+solus: bin dotfiles vim
+	setup-solus
+	install-vscode-extensions
+
