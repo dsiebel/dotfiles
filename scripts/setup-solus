@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -eu
+
+# Ask for the administrator password upfront
+sudo -v
+
+eopkg install git make curl wget vim tmux xz docker docker-compose \
+ kubectl minikube
