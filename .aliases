@@ -48,7 +48,11 @@ alias DCup='docker-compose up'
 alias Drun='docker run --rm -it'
 
 # Google Cloud SDK
+gcloudcfg() {
+	gcloud config configurations activate "$1"
+}
 alias G="gcloud"
+alias Gcfg="gcloudcfg"
 
 # Kubernetes and tools
 alias K="kubectl"
