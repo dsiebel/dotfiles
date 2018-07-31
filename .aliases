@@ -52,6 +52,7 @@ gcloudcfg() {
 	gcloud config configurations activate "$1"
 }
 alias G="gcloud"
+alias GX="gcloudcfg"
 alias Gcfg="gcloudcfg"
 
 # Kubernetes and tools
