@@ -53,11 +53,11 @@ gcloudcfg() {
 }
 alias G="gcloud"
 alias GX="gcloudcfg"
-alias Gcfg="gcloudcfg"
 
 # Kubernetes and tools
 alias K="kubectl"
 alias KX="kubectx"
+alias KNS="kubens"
 alias I="istioctl"
 
 # PHP
