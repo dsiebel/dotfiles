@@ -22,6 +22,7 @@ alias gbs='git branch -av'
 
 # Docker
 alias D="docker"
+alias DR="docker run --rm -it"
 alias DC="docker-compose"
 alias DM="docker-machine"
 
@@ -42,10 +43,6 @@ alias docker-compose-cleanup="_docker_compose_cleanup"
 function _docker_compose_cleanup() {
     docker-compose -f "${1:-docker-compose.yml}" down --rmi all
 }
-
-## Moar shortcuts!!!
-alias DCup='docker-compose up'
-alias Drun='docker run --rm -it'
 
 # Google Cloud SDK
 gcloudcfg() {
