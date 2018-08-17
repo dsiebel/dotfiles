@@ -34,6 +34,7 @@ docker_env_mac() {
 		unset DOCKER_CERT_PATH
 		unset DOCKER_MACHINE_NAME
 	fi
+	unset DOCKER_ENV
 }
 
 dgcloud(){
