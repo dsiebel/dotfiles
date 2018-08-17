@@ -29,9 +29,6 @@ alias DM="docker-machine"
 ## Damn typo!
 alias docker-composer='docker-compose'
 
-## Set docker-machine `default` environment (export env vars)
-alias docker-env-default='eval $(docker-machine env default)'
-
 ## Delete all stopped containers and untagged images
 alias docker-cleanup-stopped='docker rm $(docker ps -aq -f status=exited)'
 alias docker-cleanup-untagged='docker rmi $(docker images -q --filter dangling=true)'

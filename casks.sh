@@ -14,6 +14,7 @@ brew cask install spotify
 brew cask install sequel-pro
 brew cask install skype
 brew cask install docker-toolbox
+brew cask install docker
 brew cask install minikube
 brew cask install dash
 brew cask install ccmenu
