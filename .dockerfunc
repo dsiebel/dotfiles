@@ -10,14 +10,14 @@ docker_env() {
 
 docker_env_minikube() {
 	if command -v minikube; then
-		eval $(minikube docker-env)
+		eval "$(minikube docker-env)"
 		export DOCKER_ENV=minikube
 	fi
 }
 
 docker_env_machine() {
 	if command -v docker-machine; then
-		eval $(docker-machine env)
+		eval "$(docker-machine env)"
 		export DOCKER_ENV=docker-machine
 	fi
 }
@@ -25,9 +25,9 @@ docker_env_machine() {
 docker_env_mac() {
 	readonly denv=${DOCKER_ENV:-}
 	if [[ ${denv} == "minikube" ]]; then
-		eval $(minikube docker-env -u)
+		eval "$(minikube docker-env -u)"
 	elif [[ ${denv} == "docker-machine" ]]; then
-		eval $(docker-machine env -u)
+		eval "$(docker-machine env -u)"
 	else
 		unset DOCKER_TLS_VERIFY
 		unset DOCKER_HOST
