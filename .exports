@@ -28,5 +28,5 @@ export MANPAGER='less -X';
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`;
 
 # check for nvm and load it if present
-export NVM_DIR="/Users/dsiebel/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#export NVM_DIR="/Users/dsiebel/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
