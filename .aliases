@@ -62,6 +62,7 @@ alias K="kubectl"
 alias KX="kubectx"
 alias KNS="kubens"
 alias I="istioctl"
+alias MK="minikube"
 
 # PHP
 #alias composer='PHP_INI_SCAN_DIR=/usr/local/etc/php/composer/conf.d php -c /usr/local/etc/php/composer /usr/local/bin/composer'
