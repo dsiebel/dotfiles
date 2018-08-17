@@ -1,5 +1,41 @@
 #!/usr/bin/env bash
 
+docker_env() {
+	if [[ -v DOCKER_ENV ]]; then
+		echo "${DOCKER_ENV}"
+	else
+		env | grep -e "^DOCKER_" --color=never
+	fi
+}
+
+docker_env_minikube() {
+	if command -v minikube; then
+		eval $(minikube docker-env)
+		export DOCKER_ENV=minikube
+	fi
+}
+
+docker_env_machine() {
+	if command -v docker-machine; then
+		eval $(docker-machine env)
+		export DOCKER_ENV=docker-machine
+	fi
+}
+
+docker_env_mac() {
+	readonly denv=${DOCKER_ENV:-}
+	if [[ ${denv} == "minikube" ]]; then
+		eval $(minikube docker-env -u)
+	elif [[ ${denv} == "docker-machine" ]]; then
+		eval $(docker-machine env -u)
+	else
+		unset DOCKER_TLS_VERIFY
+		unset DOCKER_HOST
+		unset DOCKER_CERT_PATH
+		unset DOCKER_MACHINE_NAME
+	fi
+}
+
 dgcloud(){
 	docker run --rm --tty --interactive \
 		--volume "${HOME}/.gcloud:/root/.config/gcloud" \
