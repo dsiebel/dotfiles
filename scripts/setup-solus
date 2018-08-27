@@ -5,7 +5,7 @@ set -eu
 sudo -v
 
 sudo eopkg install git make curl wget vim tmux xz docker docker-compose \
- kubectl minikube vscode
+ kubectl minikube vscode tilix
 
 sudo ln -sf "$(command -v code-oss)" /usr/local/bin/code
 
