@@ -24,7 +24,7 @@ docker_env_minikube() {
 	args=()
 
 	if [[ -n "$1" ]]; then
-		args+=(--profile="$1")
+		args+=("--profile=$1")
 	fi
 
 	if command -v minikube; then
