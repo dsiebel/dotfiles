@@ -1,23 +1,47 @@
 #!/usr/bin/env bash
 
+alias denv='docker_env'
 docker_env() {
-	if [[ -v DOCKER_ENV ]]; then
-		echo "${DOCKER_ENV}"
+	if [[ "$1" == minikube ]]; then
+		shift
+		docker_env_minikube "$@"
+	elif [[ "$1" == mac ]]; then
+		shift
+		docker_env_mac "$@"
+	elif [[ "$1" == docker-machine ]]; then
+		shift
+		docker_env_docker_machine "$@"
 	else
-		env | grep -e "^DOCKER_" --color=never
+		if [[ -v DOCKER_ENV ]]; then
+			echo "${DOCKER_ENV}"
+		else
+			env | grep -e "^DOCKER_" --color=never
+		fi
 	fi
 }
 
 docker_env_minikube() {
+	args=()
+
+	if [[ -n "$1" ]]; then
+		args+=(--profile="$1")
+	fi
+
 	if command -v minikube; then
-		eval "$(minikube docker-env)"
+		eval "$(minikube "${args[@]}" docker-env)"
 		export DOCKER_ENV=minikube
 	fi
 }
 
-docker_env_machine() {
+docker_env_docker_machine() {
+	machine_name=
+
+	if [[ -n "$1" ]]; then
+		machine_name="$1"
+	fi
+
 	if command -v docker-machine; then
-		eval "$(docker-machine env)"
+		eval "$(docker-machine env "${machine_name}")"
 		export DOCKER_ENV=docker-machine
 	fi
 }
