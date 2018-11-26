@@ -51,6 +51,8 @@ brew install docker-machine-nfs
 
 brew install kubernetes-cli
 brew install kubectx
+brew tap johanhaleby/kubetail && brew install kubetail
+brew install txn2/tap/kubefwd
 
 brew install telnet
 
