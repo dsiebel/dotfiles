@@ -1,2 +1,3 @@
 export GOPATH="/Volumes/Source/Go"
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH:$GOPATH/bin"
+export GRADLE_USER_HOME="${HOME}/.gradle"
