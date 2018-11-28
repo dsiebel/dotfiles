@@ -55,6 +55,8 @@ brew tap johanhaleby/kubetail && brew install kubetail
 brew install txn2/tap/kubefwd
 
 brew install telnet
+brew install ipcalc
+brew install prips
 
 # Install php & extensions
 brew tap homebrew/php
