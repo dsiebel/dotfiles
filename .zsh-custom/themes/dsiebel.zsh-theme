@@ -12,7 +12,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✱%{$reset_color%}"
 KUBE_PS1_PREFIX=""
 KUBE_PS1_SUFFIX=""
 KUBE_PS1_SEPERATOR=""
-KUBE_PS1_DIVIDER="/"
+KUBE_PS1_DIVIDER=":"
 
 PROMPT='%{$fg[green]%}%~%{$reset_color%} '
 RPROMPT='%(?..%{$fg[red]%} ⏎ %? %{$reset_color%})$(git_prompt_info)$(kube_ps1)%{$reset_color%}'
