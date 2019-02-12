@@ -25,7 +25,7 @@ export MANPAGER='less -X';
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # setup java 1.8 properly. Thanks, Steve!
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`;
+export JAVA_HOME=`/usr/libexec/java_home -v 11`;
 
 # check for nvm and load it if present
 #export NVM_DIR="/Users/dsiebel/.nvm"
