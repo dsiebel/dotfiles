@@ -66,7 +66,7 @@ alias kns="kubens"
 
 alias kgpall="kubectl get pods --all-namespaces"
 alias kgpwall="kubectl get pods --all-namespaces -w"
-alias kdebug="kubectl run test-$(whoami)-$(date +"%Y%m%d%H%M%S") --rm --restart=Never -it --image=fleshgrinder/debian:stretch-debug -- bash"
+alias kdebug="kubectl run test-\$(whoami)-\$(date +"%Y%m%d%H%M%S") --rm --restart=Never -it --image=fleshgrinder/debian:stretch-debug -- bash"
 
 alias kg="kubectl get"
 alias kd="kubectl describe"
@@ -93,7 +93,7 @@ __kubectl_kill_container() {
 }
 
 __kubectl_patch_date() {
-	kubectl patch $1 $2 -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date -u +"%s")\"}}}}}"
+	kubectl patch "$1" "$2" -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date -u +"%s")\"}}}}}"
 }
 
 # PHP
