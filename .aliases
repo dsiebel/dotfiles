@@ -61,6 +61,41 @@ alias KNS="kubens"
 alias I="istioctl"
 alias MK="minikube"
 
+alias kx="kubectx"
+alias kns="kubens"
+
+alias kgpall="kubectl get pods --all-namespaces"
+alias kgpwall="kubectl get pods --all-namespaces -w"
+alias kdebug="kubectl run test-$(whoami)-$(date +"%Y%m%d%H%M%S") --rm --restart=Never -it --image=fleshgrinder/debian:stretch-debug -- bash"
+
+alias kg="kubectl get"
+alias kd="kubectl describe"
+alias kdel="kubectl delete"
+alias ke="kubectl edit"
+alias ka="kubectl apply"
+
+alias kcl="kubectl config get-contexts"
+alias kcv="kubectl config view"
+alias kcx="kubectl config current-context"
+alias kcux="kubectl config use-context"
+
+alias krs="kubectl rollout status"
+
+
+alias kp="kubectl patch"
+alias kpd="kubectl patch deployment"
+alias kpdd="__kubectl_patch_date deployment"
+
+alias kkill="__kubectl_kill_container"
+
+__kubectl_kill_container() {
+	kubectl exec -i "$1" -c "$2" -- kill -15 1
+}
+
+__kubectl_patch_date() {
+	kubectl patch $1 $2 -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date -u +"%s")\"}}}}}"
+}
+
 # PHP
 #alias composer='PHP_INI_SCAN_DIR=/usr/local/etc/php/composer/conf.d php -c /usr/local/etc/php/composer /usr/local/bin/composer'
 alias phpd='php -dxdebug.remote_enable=1 -dxdebug.remote_mode=req -dxdebug.remote_autostart=1 -dxdebug.remote_port=9000 -dxdebug.remote_host=127.0.0.1'
