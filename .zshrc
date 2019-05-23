@@ -63,4 +63,3 @@ source $ZSH/oh-my-zsh.sh
 
 # The next line enables shell command completion for gcloud.
 [ -f '/usr/local/opt/google-cloud-sdk/completion.zsh.inc' ] && source '/usr/local/opt/google-cloud-sdk/completion.zsh.inc'
-
