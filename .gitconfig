@@ -49,6 +49,14 @@
 
   ignorecase = false
 
+  # "cat" instead of paging if content fits onto one screen
+  pager = less -RXF
+
+# alternatively disable / change pager per command:
+# [pager]
+  # branch = false
+  # tag = false
+
 [push]
 
   # Use the Git 1.x.x default to avoid errors on machines with old Git
