@@ -29,6 +29,7 @@ brew install homebrew/dupes/screen
 # Install git tools
 brew install git
 brew install git-lfs
+brew install lazygit
 
 # Install other usefull binaries
 brew install hugo
@@ -48,6 +49,9 @@ brew install dep
 brew install awscli
 
 brew install docker-machine-nfs
+
+brew tap jesseduffield/lazydocker
+brew install lazydocker
 
 brew install kubernetes-cli
 brew install kubectx
