@@ -71,17 +71,17 @@
     # Include summaries of merged commits in newly created merge commit messages
     log = true
 
-	# Always show a diffstat at the end of a merge
+  # Always show a diffstat at the end of a merge
     stat = true
 
     # External merge tool.
-	tool = Kaleidoscope
-	# tool = diffmerge
+    tool = Kaleidoscope
+    # tool = diffmerge
 
 [mergetool]
 
-	#keepBackup = false
-	prompt = false
+  #keepBackup = false
+  prompt = false
 
 [diff]
 
@@ -125,13 +125,13 @@
 # Diff and merge tool configuration for "sourcetree" (osx)
 [difftool "sourcetree"]
 
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
 
 [mergetool "sourcetree"]
 
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 
 # Diff and merge tool configuration for "diffmerge" (osx)
 [difftool "diffmerge"]
@@ -144,16 +144,16 @@
     cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
-	prompt = false
+  prompt = false
 [mergetool "Kaleidoscope"]
-	trustexitcode = true
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustexitcode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  process = git-lfs filter-process
