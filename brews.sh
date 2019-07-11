@@ -39,6 +39,7 @@ brew install tree
 brew install jq
 brew install shellcheck
 brew install ranger
+brew install direnv
 
 brew install fzf \
  && /usr/local/opt/fzf/install --no-bash --no-fish --key-bindings --no-completion --update-rc

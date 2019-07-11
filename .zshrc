@@ -55,6 +55,9 @@ plugins=(git brew osx sublime kubectl kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 
+# direnv hook
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
 # load fzf
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
