@@ -79,7 +79,7 @@ alias kcv="kubectl config view"
 alias kcx="kubectl config current-context"
 alias kcux="kubectl config use-context"
 
-alias kgimg="kubectl get pods -o jsonpath='{..image}' | tr -s '[[:space:]]' '\n' | sort -u"
+alias kgimg="kubectl get pods -o jsonpath='{..image}' | tr -s '[[:space:]]' \"\\n\" | sort -u"
 
 alias krs="kubectl rollout status"
 
