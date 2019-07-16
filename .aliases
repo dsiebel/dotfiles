@@ -87,8 +87,9 @@ alias krs="kubectl rollout status"
 alias kp="kubectl patch"
 alias kpd="kubectl patch deployment"
 alias kpdd="__kubectl_patch_date deployment"
+alias kpddw="__kubectl_patch_date_watch deployment"
 
-alias kkill="__kubectl_kill_container"
+alias kkillc="__kubectl_kill_container"
 
 __kubectl_kill_container() {
 	kubectl exec -i "$1" -c "$2" -- kill -15 1
@@ -96,6 +97,11 @@ __kubectl_kill_container() {
 
 __kubectl_patch_date() {
 	kubectl patch "$1" "$2" -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date -u +"%s")\"}}}}}"
+}
+
+__kubectl_patch_date_watch() {
+	kubectl patch "$1" "$2" -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date -u +"%s")\"}}}}}"
+	kubectl rollout status "$1" "$2"
 }
 
 # PHP
