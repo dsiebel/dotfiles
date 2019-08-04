@@ -62,10 +62,6 @@ DOCKER_MACHINE_NAME ?= default
 docker-machine: ## set up docker-machine. Use DOCKER_MACHINE_NAME to overwrite machine name
 	$(CURDIR)/docker-machine.sh $(DOCKER_MACHINE_NAME)
 
-.PHONY: composer
-composer: ## install composer (requires php)
-	$(CURDIR)/composer.sh
-
 .PHONY: test
 test: shellcheck ## Runs all the tests on the files in the repository.
 

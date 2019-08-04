@@ -62,15 +62,3 @@ brew install txn2/tap/kubefwd
 brew install telnet
 brew install ipcalc
 brew install prips
-
-# Install php & extensions
-brew tap homebrew/php
-brew install php71
-brew install php71-apcu
-brew install php71-imagick
-brew install php71-intl
-brew install php71-mcrypt
-brew install php71-memcached
-brew install php71-opcache
-brew install php71-redis
-brew install php71-xdebug
