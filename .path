@@ -1,3 +1,4 @@
 export GOPATH="/Volumes/Source/Go"
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH:$GOPATH/bin"
+export MAKEPATH="/usr/local/opt/make/libexec/gnubin"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:${MAKEPATH}:$PATH:$GOPATH/bin"
 export GRADLE_USER_HOME="${HOME}/.gradle"

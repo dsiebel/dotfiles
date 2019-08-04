@@ -8,8 +8,7 @@ brew install coreutils
 brew install moreutils
 
 # Install shells
-brew install zsh
-brew install bash
+brew install zsh bash
 
 # Switch to using brew-installed zsh as default shell
 if ! grep -F -q '/usr/local/bin/zsh' /etc/shells; then
@@ -27,38 +26,21 @@ brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
 
 # Install git tools
-brew install git
-brew install git-lfs
-brew install lazygit
+brew install git lazygit
 
 # Install other usefull binaries
-brew install hugo
-brew install ngrep
-brew install xz
-brew install tree
-brew install jq
-brew install shellcheck
-brew install ranger
-brew install direnv
+brew install hugo ngrep xz tree jq shellcheck ranger direnv make
 
 brew install fzf \
  && /usr/local/opt/fzf/install --no-bash --no-fish --key-bindings --no-completion --update-rc
 
-brew install go
-brew install dep
-
-brew install awscli
-
-brew install docker-machine-nfs
+brew install go dep
 
 brew tap jesseduffield/lazydocker
 brew install lazydocker
 
-brew install kubernetes-cli
-brew install kubectx
+brew install kubernetes-cli kubectx
 brew tap johanhaleby/kubetail && brew install kubetail
 brew install txn2/tap/kubefwd
 
-brew install telnet
-brew install ipcalc
-brew install prips
+brew install telnet ipcalc prips
