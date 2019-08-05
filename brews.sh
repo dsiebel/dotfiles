@@ -33,8 +33,11 @@ brew install go dep
 brew tap jesseduffield/lazydocker
 brew install lazydocker
 
+brew install terraform
+
 brew install kubernetes-cli kubectx
 brew tap johanhaleby/kubetail && brew install kubetail
 brew install txn2/tap/kubefwd
+brew install kubernetes-helm
 
 brew install telnet ipcalc prips wget
