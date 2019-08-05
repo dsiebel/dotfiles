@@ -16,20 +16,14 @@ if ! grep -F -q '/usr/local/bin/zsh' /etc/shells; then
   chsh -s /usr/local/bin/bash;
 fi;
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
-
 # Install more recent versions of some macOS tools.
-brew install vim --override-system-vi
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
+brew install vim grep
 
 # Install git tools
 brew install git lazygit
 
 # Install other usefull binaries
-brew install hugo ngrep xz tree jq shellcheck ranger direnv make
+brew install hugo ngrep xz tree jq shellcheck ranger direnv make tmux
 
 brew install fzf \
  && /usr/local/opt/fzf/install --no-bash --no-fish --key-bindings --no-completion --update-rc
@@ -43,4 +37,4 @@ brew install kubernetes-cli kubectx
 brew tap johanhaleby/kubetail && brew install kubetail
 brew install txn2/tap/kubefwd
 
-brew install telnet ipcalc prips
+brew install telnet ipcalc prips wget
