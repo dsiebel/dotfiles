@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
+# open casks taps for logitech options, firefox-dev-edition, etc.
+brew tap homebrew/cask-drivers
+brew tap homebrew/cask-versions
+
 # Install all the applications
-#brew cask install 1password ## need to get from AppStore
+brew cask install 1password6 ## need to get from AppStore?
 brew cask install 1password-cli
 brew cask install adobe-creative-cloud
 brew cask install alfred
@@ -16,7 +20,6 @@ brew cask install docker
 brew cask install docker-toolbox
 brew cask install dropbox
 brew cask install duet
-brew tap homebrew/cask-versions
 brew cask install firefox
 brew cask install firefox-developer-edition
 brew cask install gimp
