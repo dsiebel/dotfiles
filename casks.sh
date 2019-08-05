@@ -16,9 +16,12 @@ brew cask install docker
 brew cask install docker-toolbox
 brew cask install dropbox
 brew cask install duet
-brew cask install firefox firefox-developer-edition
+brew tap homebrew/cask-versions
+brew cask install firefox
+brew cask install firefox-developer-edition
 brew cask install gimp
 brew cask install google-chrome
+brew cask install google-chrome-canary
 brew cask install iterm2
 brew cask install istat-menus
 brew cask install jetbrains-toolbox
