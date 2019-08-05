@@ -26,6 +26,7 @@ brew cask install firefox-developer-edition
 brew cask install gimp
 brew cask install google-chrome
 brew cask install google-chrome-canary
+brew cask install google-cloud-sdk
 brew cask install iterm2
 brew cask install istat-menus
 brew cask install jetbrains-toolbox
