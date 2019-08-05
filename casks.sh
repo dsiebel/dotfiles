@@ -14,6 +14,7 @@ brew cask install alfred
 brew cask install bettertouchtool
 #brew cask install carbon-copy-cloner ## no license currently
 brew cask install ccmenu
+brew cask install controlplane
 brew cask install dash
 # brew cask install divvy ## need to get from AppStore
 brew cask install docker
