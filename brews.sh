@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
-# Install GNU core utilities (those that come with macOS are outdated).
+# GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 
-# Install some other useful utilities like `sponge`.
+# other useful utilities like `sponge`.
 brew install moreutils
 
-# Install shells
+# networking
+brew install telnet ipcalc prips wget
+
+# shells
 brew install zsh bash
 
 # Switch to using brew-installed zsh as default shell
@@ -16,13 +19,13 @@ if ! grep -F -q '/usr/local/bin/zsh' /etc/shells; then
   chsh -s /usr/local/bin/bash;
 fi;
 
-# Install more recent versions of some macOS tools.
+# more recent versions of some macOS tools.
 brew install vim grep
 
-# Install git tools
+# git tools
 brew install git lazygit
 
-# Install other usefull binaries
+# other usefull binaries
 brew install hugo ngrep xz tree jq shellcheck ranger direnv make tmux
 
 brew install fzf \
@@ -30,14 +33,16 @@ brew install fzf \
 
 brew install go dep
 
-brew tap jesseduffield/lazydocker
-brew install lazydocker
+brew tap jesseduffield/lazydocker \
+ && brew install lazydocker
 
-brew install terraform
-
+# Kubernetes
 brew install kubernetes-cli kubectx
-brew tap johanhaleby/kubetail && brew install kubetail
+brew tap johanhaleby/kubetail \
+ && brew install kubetail
+brew install stern
 brew install txn2/tap/kubefwd
 brew install kubernetes-helm
 
-brew install telnet ipcalc prips wget
+# Hashicorp
+brew install terraform
