@@ -61,6 +61,9 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 # load fzf
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
+# load iterm2 shell integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 # The next line updates PATH for the Google Cloud SDK.
 [ -f '/usr/local/opt/google-cloud-sdk/path.zsh.inc' ] && source '/usr/local/opt/google-cloud-sdk/path.zsh.inc'
 

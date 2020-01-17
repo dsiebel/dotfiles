@@ -260,3 +260,10 @@ man() {
 		LESS_TERMCAP_us="$(printf '\e[1;32m')" \
 		man "$@"
 }
+
+# iterm user vars
+iterm2_print_user_vars() {
+  iterm2_set_user_var kube_ps1_context "$(kubectl config current-context 2>/dev/null)"
+  iterm2_set_user_var kube_ps1_namespace "$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)"
+  iterm2_set_user_var pwd "$(pwd)"
+}
