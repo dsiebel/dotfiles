@@ -13,7 +13,7 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: all
-all: bin dotfiles macos vim brews casks appstore ## Installs everything
+all: bin dotfiles macos vim homebrew-dep ## Installs everything
 
 .PHONY: bin
 bin: ## install bin directory files
@@ -42,26 +42,18 @@ vim: ## install amix/vimrc
 
 .PHONY: homebrew
 homebrew: ## install homebrew
-	if ! which brew; then
+	if ! command -v brew; then
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
 	brew update
 
-.PHONY: brews
-brews: homebrew ## install brews
-	$(CURDIR)/brews.sh
+.PHONY: homebrew-dep
+homebrew-dep: homebrew ## install brews
+	$(CURDIR)/homebrew-dep.sh
 
-
-.PHONY: casks
-casks: homebrew ## install homebrew casks
-	$(CURDIR)/casks.sh
-
-/usr/local/bin/mas: homebrew
-	brew install mas
-
-.PHONY: appstore
-appstore: /usr/local/bin/mas
-	$(CURDIR)/appstore.sh
+.PHONY: homebrew-dep
+homebrew-fonts: homebrew ## install brews
+	brew bundle install --file $(CURDIR)/Brewfile-fonts
 
 DOCKER_MACHINE_NAME ?= default
 
