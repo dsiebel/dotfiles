@@ -12,6 +12,7 @@ brew cask install alfred
 # Still have to play around with it...
 # brew cask install amethyst
 brew cask install bettertouchtool
+brew cask install bloomrpc
 #brew cask install carbon-copy-cloner ## no license currently
 brew cask install ccmenu
 brew cask install controlplane
