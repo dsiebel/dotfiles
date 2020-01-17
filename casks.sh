@@ -30,7 +30,7 @@ brew cask install google-cloud-sdk
 brew cask install iterm2
 brew cask install istat-menus
 brew cask install jetbrains-toolbox
-brew cask install kaleidoscope
+# brew cask install kaleidoscope ## need to get from AppStore
 brew cask install kubernetic
 brew cask install logitech-options
 brew cask install macdown

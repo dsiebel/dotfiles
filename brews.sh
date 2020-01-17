@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Install cli for the Mac App Store
+brew install mas
 
 # GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.

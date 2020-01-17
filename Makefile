@@ -13,7 +13,7 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: all
-all: bin dotfiles macos vim brews casks ## Installs everything
+all: bin dotfiles macos vim brews casks appstore ## Installs everything
 
 .PHONY: bin
 bin: ## install bin directory files
@@ -55,6 +55,13 @@ brews: homebrew ## install brews
 .PHONY: casks
 casks: homebrew ## install homebrew casks
 	$(CURDIR)/casks.sh
+
+/usr/local/bin/mas: homebrew
+	brew install mas
+
+.PHONY: appstore
+appstore: /usr/local/bin/mas
+	$(CURDIR)/appstore.sh
 
 DOCKER_MACHINE_NAME ?= default
 
