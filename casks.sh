@@ -5,7 +5,7 @@ brew tap homebrew/cask-drivers
 brew tap homebrew/cask-versions
 
 # Install all the applications
-brew cask install 1password6 ## need to get from AppStore?
+brew cask install 1password
 brew cask install 1password-cli
 brew cask install adobe-creative-cloud
 brew cask install alfred
