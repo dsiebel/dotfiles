@@ -1,4 +1,6 @@
 export GOPATH="/Volumes/Source/Go"
 export MAKEPATH="/usr/local/opt/make/libexec/gnubin"
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:${MAKEPATH}:$PATH:$GOPATH/bin"
+export KREW_ROOT="${HOME}/.krew"
+export KREW_PATH="${KREW_ROOT}/bin"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:${MAKEPATH}:$PATH:$GOPATH/bin:${KREW_PATH}"
 export GRADLE_USER_HOME="${HOME}/.gradle"
