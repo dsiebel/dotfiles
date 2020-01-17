@@ -32,6 +32,9 @@ Session.vim
 !.gitignore
 *~
 
+# direnv config
+.envrc
+
 # System specific metadata
 .DS_Store
 atlassian-ide-plugin.xml
