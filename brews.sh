@@ -35,8 +35,11 @@ brew install fzf \
 
 brew install go dep
 
+# docker
 brew tap jesseduffield/lazydocker \
  && brew install lazydocker
+
+brew install dive
 
 # Kubernetes
 brew install kubernetes-cli kubectx
