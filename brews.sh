@@ -48,6 +48,8 @@ brew tap johanhaleby/kubetail \
 brew install stern
 brew install txn2/tap/kubefwd
 brew install kubernetes-helm
+brew tap k14s/tap \
+ && brew install ytt kbld kapp kwt
 
 # Hashicorp
 brew install terraform
