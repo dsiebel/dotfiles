@@ -51,7 +51,7 @@ homebrew: ## install homebrew
 homebrew-dep: homebrew ## install brews
 	$(CURDIR)/homebrew-dep.sh
 
-.PHONY: homebrew-dep
+.PHONY: homebrew-fonts
 homebrew-fonts: homebrew ## install brews
 	brew bundle install --file $(CURDIR)/Brewfile-fonts
 
