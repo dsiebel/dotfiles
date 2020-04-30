@@ -93,6 +93,7 @@ cask "opera"
 cask "paw"
 cask "proxyman"
 cask "sequel-pro"
+cask "simplenote"
 cask "skype"
 cask "sourcetree"
 cask "spotify"
@@ -110,5 +111,4 @@ cask "wireshark"
 cask "yed"
 
 mas "Amphetamine", id: 937984704
-mas "Bear", id: 1091189122
 mas "Kaleidoscope", id: 587512244
