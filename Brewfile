@@ -110,5 +110,4 @@ cask "vlc"
 cask "wireshark"
 cask "yed"
 
-mas "Amphetamine", id: 937984704
 mas "Kaleidoscope", id: 587512244
