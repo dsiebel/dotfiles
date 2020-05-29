@@ -12,6 +12,8 @@ alias h="history"
 alias j="jobs"
 alias V="vagrant"
 alias VV="vagrant global-status"
+alias tf="terraform"
+alias tf11="terraform11"
 
 # Process based top (like Activity Monitor)
 alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
