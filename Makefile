@@ -55,6 +55,10 @@ homebrew-dep: homebrew ## install brews
 homebrew-fonts: homebrew ## install brews
 	brew bundle install --file $(CURDIR)/Brewfile-fonts
 
+.PHONY: vscode-ext
+vscode-ext:
+	$(CURDIR)/vscode/install-vscode-extensions $(CURDIR)/vscode/extensions.txt
+
 DOCKER_MACHINE_NAME ?= default
 
 .PHONY: docker-machine
