@@ -89,7 +89,8 @@ alias krs="kubectl rollout status"
 alias kp="kubectl patch"
 alias kpd="kubectl patch deployment"
 alias kpdd="__kubectl_patch_date deployment"
-alias kpddw="__kubectl_patch_date_watch deployment"
+alias kpdw="__kubectl_patch_date_watch"
+alias kpdwd="__kubectl_patch_date_watch deployment"
 
 alias kkillc="__kubectl_kill_container"
 
