@@ -17,9 +17,9 @@ set -e
 
 # when invoked as git-reup, run as `git pull --rebase'
 
-if [[ "$(basename $0)" = "git-reup" ]]; then
+if [[ "$(basename "$0")" = "git-reup" ]]; then
 	PULL_FLAGS=("--rebase")
-elif [[ "$(basename $0)" = "git-ffup" ]]; then
+elif [[ "$(basename "$0")" = "git-ffup" ]]; then
 	PULL_FLAGS=("--ff-only")
 else
 	PULL_FLAGS=("--no-rebase")
@@ -29,12 +29,11 @@ git pull "${PULL_FLAGS[@]}" "$@"
 
 # show diffstat of all changes if we're pulling with --rebase. not
 # sure why git-pull only does this when merging.
-test "$(basename "$0")" = "git-reup" && {
+if [[ "$(basename "$0")" = "git-reup" ]]; then
     echo "Diff:"
     git --no-pager diff --color --stat "HEAD@{1}.." | sed 's/^/ /'
-}
+fi
 
 # show an abbreviated commit log of stuff that was just merged.
 echo "Log:"
-git log --color --pretty=oneline --abbrev-commit HEAD@{1}.. |
-sed 's/^/  /'
+git log --color --pretty=oneline --abbrev-commit "HEAD@{1}.." | sed 's/^/  /'
