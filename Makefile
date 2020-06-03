@@ -23,8 +23,8 @@ bin: ## install bin directory files
 	done
 	# Hack to make git reup, git ffup work as well
 	# TODO: come up with a better solution
-	sudo ln -sd /usr/local/bin/git-up /usr/local/bin/git-reup
-	sudo ln -sd /usr/local/bin/git-up /usr/local/bin/git-ffup
+	sudo ln -sf /usr/local/bin/git-up /usr/local/bin/git-reup
+	sudo ln -sf /usr/local/bin/git-up /usr/local/bin/git-ffup
 
 .PHONY: dotfiles
 dotfiles: ## install the dotfiles for current user
