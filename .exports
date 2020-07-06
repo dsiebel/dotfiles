@@ -30,3 +30,5 @@ export JAVA_HOME=`/usr/libexec/java_home -v 11`;
 # check for nvm and load it if present
 #export NVM_DIR="/Users/dsiebel/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export GRADLE_USER_HOME="${HOME}/.gradle"
