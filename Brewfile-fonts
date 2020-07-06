@@ -1,4 +1,5 @@
 tap homebrew/cask-fonts
+
 # List by https://github.com/joelparkerhenderson/brewfile/blob/master/Brewfile
 cask 'font-3270'
 cask 'font-abeezee'
@@ -281,8 +282,8 @@ cask 'font-fira-code'
 cask 'font-fira-mono-for-powerline'
 cask 'font-fira-mono'
 cask 'font-fira-sans'
-cask 'font-firacode-nerd-font-mono'
-cask 'font-firacode-nerd-font'
+cask 'font-fira-code-nerd-font-mono'
+cask 'font-fira-code-nerd-font'
 cask 'font-fjalla-one'
 cask 'font-fjord-one'
 cask 'font-flamenco'
