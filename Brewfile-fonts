@@ -1,3 +1,4 @@
+tap homebrew/cask-fonts
 # List by https://github.com/joelparkerhenderson/brewfile/blob/master/Brewfile
 cask 'font-3270'
 cask 'font-abeezee'
