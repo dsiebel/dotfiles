@@ -35,6 +35,7 @@ dotfiles: ## install the dotfiles for current user
 		ln -sfn $$file $(HOME)/$$f; \
 	done; \
 	ln -sfn $(CURDIR)/gitignore $(HOME)/.gitignore;
+	ln -sfn $(CURDIR)/.config/starship.toml $(HOME)/.config/starship.toml;
 
 .PHONY: macos
 macos: ## setup macos

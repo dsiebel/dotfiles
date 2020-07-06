@@ -1,0 +1,62 @@
+prompt_order = [
+    "username",
+    "hostname",
+	"kubernetes",
+	"git_branch",
+	"git_commit",
+	"git_state",
+	"git_status",
+    "docker_context",
+    "terraform",
+	"cmd_duration",
+	"line_break",
+	"username",
+	"hostname",
+	"directory",
+    "battery",
+    "time",
+	"character",
+]
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[character]
+error_symbol = "✗"
+style_failure = "red"
+style_success = "green"
+#symbol = "►"
+symbol = "»"
+use_symbol_for_status = true
+#vicmd_symbol = "◀︎"
+vicmd_symbol = "«"
+
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+style = "green"
+
+[docker]
+symbol = ""
+
+[git_branch]
+style = "green"
+symbol = " "
+
+[golang]
+symbol = " "
+
+[kubernetes]
+disabled = false
+style = "blue"
+
+[kubernetes.context_aliases]
+
+[php]
+disabled = true
+
+[terraform]
+symbol = "₸ "
+style = "purple"

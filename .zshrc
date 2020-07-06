@@ -51,7 +51,8 @@ ZSH_CUSTOM="${HOME}/.zsh-custom"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew osx sublime kubectl kube-ps1)
+# plugins=(git brew osx sublime kubectl kube-ps1)
+plugins=(git brew osx kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,10 +63,7 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
 # load iterm2 shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# The next line updates PATH for the Google Cloud SDK.
-[ -f '/usr/local/opt/google-cloud-sdk/path.zsh.inc' ] && source '/usr/local/opt/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-[ -f '/usr/local/opt/google-cloud-sdk/completion.zsh.inc' ] && source '/usr/local/opt/google-cloud-sdk/completion.zsh.inc'
+# https://starship.rs
+eval "$(starship init zsh)"
