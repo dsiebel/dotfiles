@@ -20,9 +20,9 @@ prompt_order = [
 ]
 
 [battery]
-full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
+full_symbol = ""
 
 [character]
 error_symbol = "✗"
@@ -35,9 +35,9 @@ use_symbol_for_status = true
 vicmd_symbol = "«"
 
 [directory]
-truncation_length = 5
-truncate_to_repo = false
 style = "green"
+truncate_to_repo = false
+truncation_length = 5
 
 [docker]
 symbol = ""
@@ -66,5 +66,5 @@ style = "blue"
 disabled = true
 
 [terraform]
-symbol = "₸ "
 style = "purple"
+symbol = "₸ "
