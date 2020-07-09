@@ -1,21 +1,22 @@
 prompt_order = [
-    "username",
-    "hostname",
-	"kubernetes",
-	"git_branch",
-	"git_commit",
-	"git_state",
-	"git_status",
-    "docker_context",
-    "terraform",
-	"cmd_duration",
-	"line_break",
-	"username",
-	"hostname",
-	"directory",
-    "battery",
-    "time",
-	"character",
+  "username",
+  "hostname",
+  "kubernetes",
+  "custom.git_user",
+  "git_branch",
+  "git_commit",
+  "git_state",
+  "git_status",
+  "docker_context",
+  "terraform",
+  "cmd_duration",
+  "line_break",
+  "username",
+  "hostname",
+  "directory",
+  "battery",
+  "time",
+  "character",
 ]
 
 [battery]
@@ -40,6 +41,13 @@ style = "green"
 
 [docker]
 symbol = ""
+
+[custom.git_user]
+command = "git config user.email"
+directories = [".git"]
+prefix = ""
+shell = ["sh"]
+style = "green"
 
 [git_branch]
 style = "green"
