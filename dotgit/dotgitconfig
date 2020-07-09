@@ -1,6 +1,7 @@
 [user]
   name = Dominik Siebel
   email = code@dsiebel.de
+	signingkey = E02D1E3058EEC901
 
 [alias]
   # svn-like shortcuts for common commands

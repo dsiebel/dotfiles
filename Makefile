@@ -30,11 +30,18 @@ bin: ## install bin directory files
 dotfiles: ## install the dotfiles for current user
 	git submodule init
 	git submodule update
-	for file in $(shell find $(CURDIR) -name ".*" -depth 1 -not -name ".gitignore" -not -name ".travis.yml" -not -name ".git" -not -name ".*.swp" -not -name ".gnupg"); do \
-		f=$$(basename $$file); \
+
+	for file in $(shell find $(CURDIR) -name ".*" -depth 1 -not -name ".git*" -not -name ".travis.yml" -not -name ".*.swp" -not -name ".gnupg"); do \
+		f=$$(basename $${file}); \
 		ln -sfn $$file $(HOME)/$$f; \
 	done; \
-	ln -sfn $(CURDIR)/gitignore $(HOME)/.gitignore;
+
+	# special handling for .git* files to not mess with the repo
+	for gitfile in $(shell find $(CURDIR)/dotgit -name "dotgit*" -depth 1); do \
+		f=$$(basename $${gitfile}); \
+		ln -sfn $$gitfile $(HOME)/$${f/#dot/\.}; \
+	done;
+
 	ln -sfn $(CURDIR)/.config/starship.toml $(HOME)/.config/starship.toml;
 
 .PHONY: macos
