@@ -36,8 +36,9 @@ vicmd_symbol = "«"
 
 [directory]
 style = "green"
-truncate_to_repo = false
+truncate_to_repo = true
 truncation_length = 5
+fish_style_pwd_dir_length = 1
 
 [docker]
 symbol = ""
