@@ -10,11 +10,11 @@ prompt_order = [
   "docker_context",
   "terraform",
   "cmd_duration",
+#  "battery",
   "line_break",
   "username",
   "hostname",
   "directory",
-  "battery",
   "time",
   "character",
 ]
