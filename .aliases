@@ -28,6 +28,11 @@ alias DR="docker run --rm -it"
 alias DC="docker-compose"
 alias DM="docker-machine"
 
+alias deti="docker exec -ti"
+alias drti="docker run --rm -ti"
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+
 ## Damn typo!
 alias docker-composer='docker-compose'
 
