@@ -65,5 +65,12 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 # load iterm2 shell integration
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# google-cloud-sdk PATH and completions
+[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] \
+	&& source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
+[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] \
+	&& source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
 # https://starship.rs
 eval "$(starship init zsh)"
