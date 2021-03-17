@@ -1,23 +1,22 @@
-prompt_order = [
-  "username",
-  "hostname",
-  "kubernetes",
-  "custom.git_user",
-  "git_branch",
-  "git_commit",
-  "git_state",
-  "git_status",
-  "docker_context",
-  "terraform",
-  "cmd_duration",
-#  "battery",
-  "line_break",
-  "username",
-  "hostname",
-  "directory",
-  "time",
-  "character",
-]
+format = """\
+  $username\
+  $hostname\
+  $kubernetes\
+  ${custom.git_user}\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_status\
+  $docker_context\
+  $terraform\
+  $cmd_duration\
+  $line_break\
+  $username\
+  $hostname\
+  $directory\
+  $time\
+  $character\
+"""
 
 [battery]
 charging_symbol = ""
@@ -25,13 +24,9 @@ discharging_symbol = ""
 full_symbol = ""
 
 [character]
-error_symbol = "✗"
-style_failure = "red"
-style_success = "green"
-#symbol = "►"
-symbol = "»"
-use_symbol_for_status = true
-#vicmd_symbol = "◀︎"
+format = "$symbol "
+error_symbol = "[✗](red)"
+success_symbol = "[»](green)"
 vicmd_symbol = "«"
 
 [directory]
@@ -46,7 +41,7 @@ symbol = ""
 [custom.git_user]
 command = "git config user.email"
 directories = [".git"]
-prefix = ""
+format = "[$symbol($output )]($style)"
 shell = ["sh"]
 style = "green"
 
@@ -59,6 +54,7 @@ symbol = " "
 
 [kubernetes]
 disabled = false
+format = "[$symbol$context($namespace)]($style) "
 style = "blue"
 
 [kubernetes.context_aliases]
