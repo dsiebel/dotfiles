@@ -1,20 +1,15 @@
 format = """\
-  $username\
-  $hostname\
-  $kubernetes\
+  $time \
+  $kubernetes \
   ${custom.git_user}\
   $git_branch\
   $git_commit\
   $git_state\
   $git_status\
-  $docker_context\
   $terraform\
   $cmd_duration\
   $line_break\
-  $username\
-  $hostname\
   $directory\
-  $time\
   $character\
 """
 
@@ -29,32 +24,33 @@ error_symbol = "[✗](red)"
 success_symbol = "[»](green)"
 vicmd_symbol = "«"
 
+[custom.git_user]
+command = "git config user.email"
+directories = [".git"]
+format = "[$symbol ($output )]($style)"
+shell = ["sh"]
+style = "green"
+symbol = ""
+
 [directory]
 style = "green"
 truncate_to_repo = true
 truncation_length = 5
 fish_style_pwd_dir_length = 1
 
-[docker]
+[docker_context]
 symbol = ""
-
-[custom.git_user]
-command = "git config user.email"
-directories = [".git"]
-format = "[$symbol($output )]($style)"
-shell = ["sh"]
-style = "green"
 
 [git_branch]
 style = "green"
-symbol = " "
+symbol = ""
 
 [golang]
 symbol = " "
 
 [kubernetes]
 disabled = false
-format = "[$symbol$context($namespace)]($style) "
+format = '[$symbol$context( \($namespace\))]($style)'
 style = "blue"
 
 [kubernetes.context_aliases]
@@ -65,3 +61,8 @@ disabled = true
 [terraform]
 style = "purple"
 symbol = "₸ "
+
+[time]
+disabled = false
+format = '[\[$time\]]($style)'
+style = "#a0a0a0"
