@@ -9,6 +9,7 @@ tap "k14s/tap"
 tap "txn2/tap"
 tap "little-angry-clouds/homebrew-my-brews"
 
+brew "autojump"
 brew "bash"
 brew "bat"
 brew "blackbox"

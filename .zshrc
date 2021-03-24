@@ -52,7 +52,7 @@ ZSH_CUSTOM="${HOME}/.zsh-custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git brew osx sublime kubectl kube-ps1)
-plugins=(git brew osx kubectl)
+plugins=(brew git kubectl helm osx zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -71,6 +71,9 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] \
 	&& source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
+# autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # https://starship.rs
 eval "$(starship init zsh)"
