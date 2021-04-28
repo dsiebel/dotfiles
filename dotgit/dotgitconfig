@@ -1,31 +1,11 @@
-[user]
-  name = Dominik Siebel
-  email = code@dsiebel.de
-  signingkey = E02D1E3058EEC901
-
 [alias]
-  # svn-like shortcuts for common commands
-  st = status
-  ci = commit
-  co = checkout
   br = branch
-  df = diff
-  cp = cherry-pick
-
-  # view status using short format
-  s = status -s
-
-  # pretty logging with branches and everything!
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  logp = log -p
-
-  # verbose outputs
   branches = branch -av
-  tags = tag -l
-  remotes = remote -v
 
-  # List contributors with number of commits
-  contributors = shortlog --summary --numbered
+  # git change-commits GIT_COMMITTER_NAME "old name" "new name"
+  change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+
+  ci = commit
 
   # clean up local, merged branches
   cleanup = "!git branch --merged | grep -v master | xargs -n 1 git branch -d"
@@ -35,10 +15,58 @@
   # cleanup-remote = "!git branch -r --merged | grep master | sed 's/origin\//:/' | args -n 1 git push origin"
   cleanup-remote = "!git branch -r --merged | grep -v "master" | sed 's/origin\\///' | args -n 1 git push --delete origin"
 
-  # git change-commits GIT_COMMITTER_NAME "old name" "new name"
-  change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+  co = checkout
+  contributors = shortlog --summary --numbered
+  cp = cherry-pick
+  df = diff
+
+  # pretty logging with branches and everything!
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  logp = log -p
+
+  remotes = remote -v
+
   # from https://help.github.com/articles/remove-sensitive-data
   remove-file = "!f() { git filter-branch -f --index-filter \"git rm --cached --ignore-unmatch $1\" --prune-empty --tag-name-filter cat -- --all; }; f"
+
+  # view status using short format
+  s = status -s
+
+  st = status
+  tags = tag -l
+  undo = !git reset HEAD~1 --mixed
+
+[color]
+
+  # Use colors in Git commands that are capable of colored output when
+  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+
+[color "branch"]
+
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+
+  meta = yellow bold
+  frag = magenta bold # line info
+  old = red # deletions
+  new = green # additions
+
+[color "status"]
+
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[commit]
+  gpgsign = true
 
 [core]
 
@@ -63,109 +91,77 @@
   # branch = false
   # tag = false
 
-[commit]
-  gpgsign = true
-
-[init]
-	defaultBranch = main
-
-[push]
-
-  # Use the Git 1.x.x default to avoid errors on machines with old Git
-  # installations. To use `simple` instead, add this to your `~/.extra` file:
-  # `git config --global push.default simple`. See http://git.io/mMah-w.
-  # default = matching
-
-  default = simple
-
-[merge]
-
-    # Include summaries of merged commits in newly created merge commit messages
-    log = true
-
-  # Always show a diffstat at the end of a merge
-    stat = true
-
-    # External merge tool.
-    tool = Kaleidoscope
-    # tool = diffmerge
-
-[mergetool]
-
-  #keepBackup = false
-  prompt = false
+[credential]
+  helper = osxkeychain
 
 [diff]
+  # External diff tool.
+  tool = Kaleidoscope
+  colorMoved = zebra
+  mnemonicprefix=true
 
-    # External diff tool.
-    tool = Kaleidoscope
-    colorMoved = zebra
-    mnemonicprefix=true
-
-[svn]
-
-  rmdir = true
-
-[color]
-
-  # Use colors in Git commands that are capable of colored output when
-  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-  ui = auto
-  diff = auto
-  status = auto
-  branch = auto
-
-[color "branch"]
-
-  current = yellow reverse
-  local = yellow
-  remote = green
-
-[color "diff"]
-
-  meta = yellow bold
-  frag = magenta bold # line info
-  old = red # deletions
-  new = green # additions
-
-[color "status"]
-
-  added = yellow
-  changed = green
-  untracked = cyan
-
-# Diff and merge tool configuration for "sourcetree" (osx)
-[difftool "sourcetree"]
-
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-
-[mergetool "sourcetree"]
-
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+[difftool]
+  prompt = false
 
 # Diff and merge tool configuration for "diffmerge" (osx)
 [difftool "diffmerge"]
-
-    cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge $LOCAL $REMOTE
-
-[mergetool "diffmerge"]
-
-    cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE[mergetool "Kaleidoscope"]
-    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge $LOCAL $REMOTE
 
 [difftool "Kaleidoscope"]
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-  prompt = false
-[mergetool "Kaleidoscope"]
-  trustexitcode = true
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-[credential]
-  helper = osxkeychain
+
+# Diff and merge tool configuration for "sourcetree" (osx)
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   required = true
   process = git-lfs filter-process
+
+[init]
+  defaultBranch = main
+
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+
+  # Always show a diffstat at the end of a merge
+  stat = true
+
+  # External merge tool.
+  tool = Kaleidoscope
+  # tool = diffmerge
+
+[mergetool]
+  #keepBackup = false
+  prompt = false
+
+[mergetool "diffmerge"]
+  cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+
+[mergetool "Kaleidoscope"]
+  trustexitcode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+
+[push]
+  # Use the Git 1.x.x default to avoid errors on machines with old Git
+  # installations. To use `simple` instead, add this to your `~/.extra` file:
+  # `git config --global push.default simple`. See http://git.io/mMah-w.
+  # default = matching
+  default = simple
+
+[svn]
+  rmdir = true
+
+[user]
+  name = Dominik Siebel
+  email = code@dsiebel.de
+  signingkey = E02D1E3058EEC901
