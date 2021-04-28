@@ -37,7 +37,6 @@
   undo = !git reset HEAD~1 --mixed
 
 [color]
-
   # Use colors in Git commands that are capable of colored output when
   # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
   ui = auto
@@ -47,20 +46,17 @@
   interactive = auto
 
 [color "branch"]
-
   current = yellow reverse
   local = yellow
   remote = green
 
 [color "diff"]
-
   meta = yellow bold
   frag = magenta bold # line info
   old = red # deletions
   new = green # additions
 
 [color "status"]
-
   added = yellow
   changed = green
   untracked = cyan
@@ -69,7 +65,6 @@
   gpgsign = true
 
 [core]
-
   # Use custom `.gitignore` and `.gitattributes`
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
@@ -78,13 +73,15 @@
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
 
-  # set vim as default editor
-  editor = vim
+  # set system editor as default editor
+  editor = $EDITOR
 
   ignorecase = false
 
   # "cat" instead of paging if content fits onto one screen
   pager = less -RXF
+
+  whitespace = fix
 
 # alternatively disable / change pager per command:
 # [pager]
@@ -151,17 +148,17 @@
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
 
+[pull]
+  rebase = merges
+  default = current
+
 [push]
-  # Use the Git 1.x.x default to avoid errors on machines with old Git
-  # installations. To use `simple` instead, add this to your `~/.extra` file:
-  # `git config --global push.default simple`. See http://git.io/mMah-w.
-  # default = matching
-  default = simple
+  default = current
 
 [svn]
   rmdir = true
 
 [user]
   name = Dominik Siebel
-  email = code@dsiebel.de
+  email = dominik.siebel@trivago.com
   signingkey = E02D1E3058EEC901
