@@ -52,7 +52,7 @@ ZSH_CUSTOM="${HOME}/.zsh-custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git brew osx sublime kubectl kube-ps1)
-plugins=(brew git kubectl helm osx zsh-syntax-highlighting)
+plugins=(brew git kubectl helm osx)
 
 source $ZSH/oh-my-zsh.sh
 
