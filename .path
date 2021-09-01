@@ -1,5 +1,5 @@
 export BREW_PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin"
-export GOPATH="/Volumes/Source/Go"
+export GOPATH="${HOME}/workspace/source/Go"
 export MAKE_PATH="/usr/local/opt/make/libexec/gnubin"
 export KREW_ROOT="${HOME}/.krew"
 export KREW_PATH="${KREW_ROOT}/bin"
