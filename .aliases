@@ -69,8 +69,8 @@ alias KNS="kubens"
 alias I="istioctl"
 alias MK="minikube"
 
-alias kx="kubectx"
-alias kns="kubens"
+alias kx="kubie ctx"
+alias kns="kubie ns"
 
 alias kgpall="kubectl get pods --all-namespaces"
 alias kgpwall="kubectl get pods --all-namespaces -w"
