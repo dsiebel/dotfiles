@@ -53,7 +53,7 @@ symbol = ""
 symbol = " "
 
 [kubernetes]
-disabled = false
+disabled = true
 format = '[$symbol$context( \($namespace\))]($style)'
 style = "blue"
 
