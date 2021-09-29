@@ -30,7 +30,7 @@ vicmd_symbol = "«"
 command = "git config user.email"
 directories = [".git"]
 format = "[$symbol ($output )]($style)"
-shell = ["zsh"]
+shell = ["sh"]
 style = "green"
 symbol = ""
 
