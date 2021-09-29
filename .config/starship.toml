@@ -70,5 +70,5 @@ symbol = "₸ "
 
 [time]
 disabled = false
-format = '⌛︎[$time]($style)'
+format = '[$time]($style)'
 style = "#a0a0a0"
