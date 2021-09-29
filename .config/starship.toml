@@ -13,6 +13,8 @@ format = """\
   $character\
 """
 
+command_timeout = 1000
+
 [battery]
 charging_symbol = ""
 discharging_symbol = ""
@@ -28,7 +30,7 @@ vicmd_symbol = "«"
 command = "git config user.email"
 directories = [".git"]
 format = "[$symbol ($output )]($style)"
-shell = ["sh"]
+shell = ["zsh"]
 style = "green"
 symbol = ""
 
