@@ -24,6 +24,7 @@ brew "git"
 brew "gnu-sed"
 brew "go-jira"
 brew "grep"
+brew "gron"
 # brew "helm", link: false
 # brew "helm@2"
 brew "helmenv"
