@@ -158,6 +158,9 @@
 [svn]
   rmdir = true
 
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+
 [user]
   name = Dominik Siebel
   email = dominik.siebel@trivago.com
