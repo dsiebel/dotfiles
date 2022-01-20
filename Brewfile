@@ -10,6 +10,7 @@ tap "vmware-tanzu/carvel"
 tap "txn2/tap"
 tap "little-angry-clouds/homebrew-my-brews"
 
+brew "asdf"
 brew "autojump"
 brew "bash"
 brew "bat"
