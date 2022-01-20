@@ -29,6 +29,7 @@ vicmd_symbol = "«"
 [custom.git_user]
 command = "git config user.email"
 directories = [".git"]
+files = [".git"]
 format = "[$symbol ($output )]($style)"
 shell = ["sh"]
 style = "green"

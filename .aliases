@@ -23,6 +23,19 @@ alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 alias gds='git diff --staged'
 alias gbs='git branch -av'
 
+## git worktree
+alias gw='git worktree'
+alias gws=''
+alias gwa='git worktree add'
+alias gwaf='git worktree add -f'
+alias gwab='git worktree add -b'
+alias gwls='git worktree list'
+alias gwl='git worktree lock'
+alias gwmv='git worktree move'
+alias gwp='git worktree prune'
+alias gwrm='git worktree remove'
+alias gwul='git worktree unlock'
+
 # Docker
 alias D="docker"
 alias DR="docker run --rm -it"
