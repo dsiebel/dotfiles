@@ -71,7 +71,6 @@ dgcloud(){
 docker_machine_nfs_volumes() {
 	readonly machine="${1:-default}"
 	docker-machine-nfs "${machine}" \
-	--shared-folder=/Volumes/Source/ \
 	--shared-folder="${HOME}/" \
 	--mount-opts="noacl,async,noatime" \
 	--nfs-config="-alldirs -mapall=$(id -u):$(id -g)" \
