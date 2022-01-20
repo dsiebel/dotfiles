@@ -75,5 +75,9 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
+# asdf version manager
+
+source $(brew --prefix asdf)/libexec/asdf.sh
+
 # https://starship.rs
 eval "$(starship init zsh)"
