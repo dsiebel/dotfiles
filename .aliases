@@ -19,14 +19,14 @@ alias tf11="terraform11"
 # Process based top (like Activity Monitor)
 alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 
-# some missing git shortcuts
+# Git
 alias gds='git diff --staged'
 alias gbs='git branch -av'
 alias gbls="git branch --list --format='%(refname:short)'"
 alias gbll="git for-each-ref --format='%(refname)' 'refs/heads/**'"
 
 ## git worktree
-alias gw='git worktree'
+alias gw='cd $(git worktree list | cut -f1 -d' ' | grep -v '.bare' | fzf --height 30% || echo '.')'
 alias gwa='git worktree add'
 alias gwaf='git worktree add -f'
 alias gwab='git worktree add -b'
@@ -59,7 +59,7 @@ alias docker-cleanup="docker-cleanup-stopped; docker-cleanup-untagged"
 ## Remove all containers, images and networks created by docker-compose up
 alias docker-compose-cleanup="_docker_compose_cleanup"
 
-function _docker_compose_cleanup() {
+_docker_compose_cleanup() {
     docker-compose -f "${1:-docker-compose.yml}" down --rmi all
 }
 
