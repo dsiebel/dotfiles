@@ -27,7 +27,6 @@ alias gbll="git for-each-ref --format='%(refname)' 'refs/heads/**'"
 
 ## git worktree
 alias gw='git worktree'
-alias gws=''
 alias gwa='git worktree add'
 alias gwaf='git worktree add -f'
 alias gwab='git worktree add -b'
