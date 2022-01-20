@@ -11,3 +11,6 @@ fi
 # Key bindings
 # ------------
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+# Default options
+export FZF_DEFAULT_OPTS='--height 40% --border --info=inline'
