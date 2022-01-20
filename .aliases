@@ -22,6 +22,8 @@ alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 # some missing git shortcuts
 alias gds='git diff --staged'
 alias gbs='git branch -av'
+alias gbls="git branch --list --format='%(refname:short)'"
+alias gbll="git for-each-ref --format='%(refname)' 'refs/heads/**'"
 
 ## git worktree
 alias gw='git worktree'
