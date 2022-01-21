@@ -27,7 +27,7 @@ alias gds='git diff --staged'
 alias glf="git log --oneline | fzf --height 100% --multi --preview 'git show {+1}'"
 
 ## git worktree
-alias gw='cd $(git worktree list | cut -f1 -d' ' | grep -v '.bare' | fzf --height 30% || echo '.')'
+alias gw='cd "$(git worktree list | cut -f1 -d" " | grep -v ".bare" | fzf || echo ".")"'
 alias gwa='git worktree add'
 alias gwaf='git worktree add -f'
 alias gwab='git worktree add -b'
