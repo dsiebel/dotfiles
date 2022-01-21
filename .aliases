@@ -27,6 +27,7 @@ alias gds='git diff --staged'
 alias glf="git log --oneline | fzf --height 100% --multi --preview 'git show {+1}'"
 
 ## git worktree
+alias gwinit='__git_worktree_init'
 alias gw='cd "$(git worktree list | cut -f1 -d" " | grep -v ".bare" | fzf || echo ".")"'
 alias gwa='git worktree add'
 alias gwaf='git worktree add -f'
@@ -37,6 +38,19 @@ alias gwmv='git worktree move'
 alias gwp='git worktree prune'
 alias gwrm='git worktree remove'
 alias gwul='git worktree unlock'
+
+__git_worktree_init() {
+	if [[ -f "${PWD}/.git" || -d "${PWD}/.git" ]]; then
+		echo "ERROR: .git file/directory already exists."
+		return
+	fi
+	local repo="${1?Argument 1 (repository) is required}"
+	git clone --bare "${repo}" .bare
+	echo "gitdir: ${PWD}/.bare" > .git
+	if [[ -n "$2" ]]; then
+		git worktree add "$2"
+	fi
+}
 
 # Docker
 alias D="docker"
