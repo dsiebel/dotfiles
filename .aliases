@@ -20,10 +20,10 @@ alias tf11="terraform11"
 alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 
 # Git
-alias gds='git diff --staged'
-alias gbs='git branch -av'
-alias gbls="git branch --list --format='%(refname:short)'"
+alias gbav='git branch -av'
 alias gbll="git for-each-ref --format='%(refname)' 'refs/heads/**'"
+alias gbls="git branch --list --format='%(refname:short)'"
+alias gds='git diff --staged'
 alias glf="git log --oneline | fzf --height 100% --multi --preview 'git show {+1}'"
 
 ## git worktree
