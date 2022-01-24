@@ -141,6 +141,8 @@ alias kpdwd="__kubectl_patch_date_watch deployment"
 
 alias kkillc="__kubectl_kill_container"
 
+alias kdaf="__kubectl_diff_apply"
+
 __kubectl_kill_container() {
 	kubectl exec -i "$1" -c "$2" -- kill -15 1
 }
@@ -152,6 +154,46 @@ __kubectl_patch_date() {
 __kubectl_patch_date_watch() {
 	kubectl patch "$1" "$2" -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date -u +"%s")\"}}}}}"
 	kubectl rollout status "$1" "$2"
+}
+
+__kubectl_diff_apply() {
+	local target="${1?Argument 1 (directory/file) is required}"
+	shift
+	local args=("$@")
+
+	if [[ -d "${target}" ]]; then
+		args+=("--recursive")
+	fi
+
+	kubectl diff "${args[@]}" --filename "${target}"
+	local has_diff="$?"
+
+	if (( has_diff == 0 )); then
+		echo "No changes"
+		return 0
+	elif (( has_diff > 1)); then
+		return "${has_diff}"
+	fi
+
+	echo
+
+	while true; do
+		# Ask the question (not using "read -p" as it uses stderr not stdout)
+		echo -n "Proceed? [y/n]: "
+		# Read the answer (use /dev/tty in case stdin is redirected from somewhere else)
+		read -r yn </dev/tty
+		case $yn in
+			Y*|y*)
+			kubectl apply "${args[@]}" --filename "${target}"
+			return 0
+			#return $(kubectl apply "${args[@]}" --filename "${target}")
+			;;
+			N*|n*)
+			echo "Aborted."
+			return 1
+			;;
+		esac
+	done
 }
 
 # Get week number
