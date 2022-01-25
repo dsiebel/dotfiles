@@ -85,18 +85,18 @@ alias docker-cleanup="docker-cleanup-stopped; docker-cleanup-untagged"
 alias docker-compose-cleanup="_docker_compose_cleanup"
 
 _docker_compose_cleanup() {
-    docker-compose -f "${1:-docker-compose.yml}" down --rmi all
+	docker-compose -f "${1:-docker-compose.yml}" down --rmi all
 }
 
 # Google Cloud SDK
 gcloudcfg() {
-    if (( $# == 0 )); then
-        gcloud config configurations list
-    elif (( $# == 1 )); then
-        gcloud config configurations activate "$@"
-    else
-	    gcloud config configurations "$@"
-    fi
+	if (( $# == 0 )); then
+		gcloud config configurations list
+	elif (( $# == 1 )); then
+		gcloud config configurations activate "$@"
+	else
+		gcloud config configurations "$@"
+	fi
 }
 alias G="gcloud"
 alias GX="gcloudcfg"
@@ -247,7 +247,7 @@ alias badge="tput bel"
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	# shellcheck disable=SC2139,SC2140
-    alias "$method"="lwp-request -m \"$method\""
+	alias "$method"="lwp-request -m \"$method\""
 done
 
 # Kill all the tabs in Chrome to free up memory
