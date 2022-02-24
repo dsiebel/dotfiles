@@ -18,6 +18,15 @@ alias VV="vagrant global-status"
 alias tf="terraform"
 alias tffr="terraform fmt -recursive -diff"
 
+# Just
+new_justfile() {
+	if [[ -f justfile ]]; then
+		echo "Error: justfile already exists"
+		return 1
+	fi
+	curl -sL "https://raw.githubusercontent.com/dsiebel/just-bootstrap/main/Justfile" > justfile
+}
+
 # Process based top (like Activity Monitor)
 alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 
