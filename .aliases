@@ -27,6 +27,16 @@ new_justfile() {
 	curl -sL "https://raw.githubusercontent.com/dsiebel/just-bootstrap/main/Justfile" > justfile
 }
 
+# Make
+make_bootstrap() {
+	if [[ -f Makefile || -f .bootstrap.mk ]]; then
+		echo "Error: make-bootstrap seems to be installed already."
+		return 1
+	fi
+	curl -LO "https://raw.githubusercontent.com/dsiebel/make-bootstrap/master/.bootstrap.mk"
+	curl -LO "https://raw.githubusercontent.com/dsiebel/make-bootstrap/master/Makefile"
+}
+
 # Process based top (like Activity Monitor)
 alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 
