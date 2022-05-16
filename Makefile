@@ -54,10 +54,9 @@ vim: ## install amix/vimrc
 
 .PHONY: homebrew
 homebrew: ## install homebrew
-	if ! command -v brew; then
-		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	if ! command -v brew; then \
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
 	fi
-	brew update
 
 .PHONY: homebrew-dep
 homebrew-dep: homebrew ## install brews
