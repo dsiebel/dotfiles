@@ -24,8 +24,8 @@ export LESS_TERMCAP_md="${yellow}";
 export MANPAGER='less -X';
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# setup java 1.8 properly. Thanks, Steve!
-export JAVA_HOME=`/usr/libexec/java_home -v 11`;
+# setup java properly. Thanks, Steve!
+export JAVA_HOME="$(/usr/libexec/java_home)";
 
 # check for nvm and load it if present
 #export NVM_DIR="/Users/dsiebel/.nvm"
