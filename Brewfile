@@ -1,3 +1,5 @@
+tap "derailed/popeye"
+tap "fujiwara/tap"
 tap "hendrikmaus/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
