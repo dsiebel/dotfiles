@@ -33,4 +33,4 @@ export JAVA_HOME="$(/usr/libexec/java_home)";
 
 export GRADLE_USER_HOME="${HOME}/.gradle"
 
-export GPG_TTY=$(tty)
+export GPG_TTY="$(tty)"
