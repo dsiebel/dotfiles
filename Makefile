@@ -42,7 +42,10 @@ dotfiles: ## install the dotfiles for current user
 		ln -sfn $$gitfile $(HOME)/$${f/#dot/\.}; \
 	done;
 
+	# special handling for directories
 	ln -sfn $(CURDIR)/.config/starship.toml $(HOME)/.config/starship.toml;
+	ln -sfn $(CURDIR)/.oh-my-zsh $(HOME)/.oh-my-zsh;
+	ln -sfn $(CURDIR)/.zsh-custom $(HOME)/.zsh-custom;
 
 .PHONY: macos
 macos: ## setup macos
