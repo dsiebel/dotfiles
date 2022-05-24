@@ -47,18 +47,22 @@ alias gbls="git branch --list --format='%(refname:short)'"
 alias gds='git diff --staged'
 alias glf="git log --oneline | fzf --height 100% --multi --preview 'git show {+1}'"
 
+## git branches via fzf
+alias gw='git branch | fzf | xargs git switch'
+alias gwr="git branch --remotes | fzf | xargs git switch"
+
 ## git worktree
-alias gwinit='__git_worktree_init'
-alias gw='cd "$(git worktree list | cut -f1 -d" " | grep -v ".bare" | fzf || echo ".")"'
-alias gwa='git worktree add'
-alias gwaf='git worktree add -f'
-alias gwab='git worktree add -b'
-alias gwls='git worktree list'
-alias gwl='git worktree lock'
-alias gwmv='git worktree move'
-alias gwp='git worktree prune'
-alias gwrm='git worktree remove'
-alias gwul='git worktree unlock'
+#alias gwinit='__git_worktree_init'
+#alias gw='cd "$(git worktree list | cut -f1 -d" " | grep -v ".bare" | fzf || echo ".")"'
+#alias gwa='git worktree add'
+#alias gwaf='git worktree add -f'
+#alias gwab='git worktree add -b'
+#alias gwls='git worktree list'
+#alias gwl='git worktree lock'
+#alias gwmv='git worktree move'
+#alias gwp='git worktree prune'
+#alias gwrm='git worktree remove'
+#alias gwul='git worktree unlock'
 
 __git_worktree_init() {
 	local repo="${1?Argument 1 (repository) is required}"
