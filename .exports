@@ -43,3 +43,6 @@ export JAVA_HOME="$(/usr/libexec/java_home)";
 export GRADLE_USER_HOME="${HOME}/.gradle"
 
 export GPG_TTY="$(tty)"
+
+# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
