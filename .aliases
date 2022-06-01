@@ -17,6 +17,11 @@ alias VV="vagrant global-status"
 # Terraform
 alias tf="terraform"
 alias tffr="terraform fmt -recursive -diff"
+alias tfpl="tf providers lock \
+  -platform=linux_amd64 \
+  -platform=darwin_amd64 \
+  -platform=darwin_arm64 \
+  -platform=windows_amd64"
 
 # Just
 new_justfile() {
