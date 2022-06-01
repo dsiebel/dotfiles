@@ -24,7 +24,7 @@ alias tfpl="tf providers lock \
   -platform=windows_amd64"
 
 # Just
-new_justfile() {
+just_bootstrap() {
 	if [[ -f justfile ]]; then
 		echo "Error: justfile already exists"
 		return 1
