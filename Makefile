@@ -33,19 +33,23 @@ dotfiles: ## install the dotfiles for current user
 
 	for file in $(shell find $(CURDIR) -type f -name ".*" -depth 1 -not -name ".git*" -not -name ".travis.yml" -not -name ".*.swp" -not -name ".gnupg"); do \
 		f=$$(basename $${file}); \
-		ln -sfn $$file $(HOME)/$$f; \
+		ln -sfn $$file $${HOME}/$$f; \
 	done; \
 
 	# special handling for .git* files to not mess with the repo
 	for gitfile in $(shell find $(CURDIR)/dotgit -name "dotgit*" -depth 1); do \
 		f=$$(basename $${gitfile}); \
-		ln -sfn $$gitfile $(HOME)/$${f/#dot/\.}; \
+		ln -sfn $$gitfile $${HOME}/$${f/#dot/\.}; \
 	done;
 
 	# special handling for directories
-	ln -sfn $(CURDIR)/.config/starship.toml $(HOME)/.config/starship.toml;
-	ln -sfn $(CURDIR)/.oh-my-zsh $(HOME)/.oh-my-zsh;
-	ln -sfn $(CURDIR)/.zsh-custom $(HOME)/.zsh-custom;
+	ln -sfn $(CURDIR)/.oh-my-zsh $${HOME}/.oh-my-zsh;
+	ln -sfn $(CURDIR)/.zsh-custom $${HOME}/.zsh-custom;
+
+	# we can not link the entire `.config` dir, it would only clutter up the git checkout
+	mkdir -p $${HOME}/.config
+	ln -sfn $(CURDIR)/.config/starship.toml $${HOME}/.config/starship.toml;
+
 
 .PHONY: macos
 macos: ## setup macos
