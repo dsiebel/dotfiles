@@ -42,6 +42,9 @@ make_bootstrap() {
 	curl -LO "https://raw.githubusercontent.com/dsiebel/make-bootstrap/master/Makefile"
 }
 
+# Process chooser for caffeinate, to prevent mac from sleeping
+alias caf='ps | fzf | cut -w -f 1 | xargs caffeinate -dimw'
+
 # Process based top (like Activity Monitor)
 alias ptop='top -stats pid,command,cpu,idlew,power -o power -d'
 
