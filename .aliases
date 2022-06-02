@@ -57,7 +57,6 @@ alias glf="git log --oneline | fzf --height 100% --multi --preview 'git show {+1
 
 ## git branches via fzf
 alias gw='git branch | fzf | xargs git switch'
-alias gwr="git branch --remotes | fzf | xargs git switch"
 
 ## git worktree
 #alias gwinit='__git_worktree_init'
