@@ -52,12 +52,9 @@ ZSH_CUSTOM="${HOME}/.zsh-custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git brew osx sublime kubectl kube-ps1)
-plugins=(brew git kubectl helm macos)
+plugins=(brew direnv git kubectl helm macos)
 
 source $ZSH/oh-my-zsh.sh
-
-# direnv hook
-command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 # load fzf
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
