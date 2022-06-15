@@ -14,20 +14,19 @@ export PATH="${PATH}:${GOPATH}/bin"
 # homebrew
 # TODO: `/usr/local/bin` might already be part of the original $PATH. If so, this handling can be removed.´`
 if [[ "$(/usr/bin/arch)" == "i386" ]]; then
-export PATH="${PATH}:/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin"
+export PATH="${PATH}:${HOMEBREW_PREFIX_X86}/bin:${HOMEBREW_PREFIX_X86}/sbin:${HOMEBREW_PREFIX_ARM64}/bin:${HOMEBREW_PREFIX_ARM64}/sbin"
 else
-export PATH="${PATH}:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin"
+export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/bin:${HOMEBREW_PREFIX_ARM64}/sbin:${HOMEBREW_PREFIX_X86}/bin:${HOMEBREW_PREFIX_X86}/sbin"
 fi
 
 # GNU Make
-export PATH="${PATH}:/opt/homebrew/opt/make/libexec/gnubin"
+export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/make/libexec/gnubin"
 
 # Google Cloud SDK
-export PATH="${PATH}:/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/"
+export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/"
 
 # asdf version manager
-# TODO: use this or source /opt/homebrew/opt/asdf/libexec/asdf.sh ?
-export PATH="${PATH}:/opt/homebrew/opt/asdf/libexec/bin"
+export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/asdf/libexec/bin"
 
 # krew - kubectl plugin manager
 export PATH="${PATH}:${KREW_ROOT}/bin"
