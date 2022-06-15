@@ -4,6 +4,7 @@ set -e
 brew bundle install --no-upgrade
 
 # Switch to using brew-installed zsh as default shell
+# TODO: this seems to require $PATH to be setup properly beforehand.
 readonly zsh_path="$(command -v zsh)"
 if ! grep -F -q "${zsh_path}" /etc/shells; then
   echo "${zsh_path}" | sudo tee -a /etc/shells;
