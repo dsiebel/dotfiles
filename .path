@@ -1,6 +1,39 @@
-export GOPATH="${HOME}/workspace/source/Go"
-export MAKE_PATH="${HOMEBREW_PREFIX}/opt/make/libexec/gnubin"
-export KREW_ROOT="${HOME}/.krew"
-export KREW_PATH="${KREW_ROOT}/bin"
-export GCLOUD_PATH="${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/"
-export PATH="${HOME}/bin:${HOME}/.bin:${MAKE_PATH}:${GCLOUD_PATH}:$PATH:$GOPATH/bin:${KREW_PATH}"
+# ------------------------------------------------------------------------ $PATH
+
+# ZSH seems to load `/etc/profile` which runs eval `/usr/libexec/path_helper -s`
+# which messes with $PATH.
+# The global /etc/profile gets sourced after `.zshenv` and before `.zprofile`.
+# This is why we set up $PATH in here, instead of `.zshenv` where it belongs.
+
+# User ${HOME} bin
+export PATH="${HOME}/bin:${HOME}/.bin"
+
+# Golang $GOPATH
+export PATH="${PATH}:${GOPATH}/bin"
+
+# homebrew
+# TODO: `/usr/local/bin` might already be part of the original $PATH. If so, this handling can be removed.´`
+if [[ "$(/usr/bin/arch)" == "i386" ]]; then
+export PATH="${PATH}:/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin"
+else
+export PATH="${PATH}:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin"
+fi
+
+# GNU Make
+export PATH="${PATH}:/opt/homebrew/opt/make/libexec/gnubin"
+
+# Google Cloud SDK
+export PATH="${PATH}:/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/"
+
+# asdf version manager
+# TODO: use this or source /opt/homebrew/opt/asdf/libexec/asdf.sh ?
+export PATH="${PATH}:/opt/homebrew/opt/asdf/libexec/bin"
+
+# krew - kubectl plugin manager
+export PATH="${PATH}:${KREW_ROOT}/bin"
+
+# Original macos zsh path - Part 1
+export PATH="${PATH}:/usr/bin:/usr/sbin:/bin:/sbin"
+
+# Original macos zsh $PATH - Part 2 (GPG and Wireshark)
+export PATH="${PATH}:/usr/local/MacGPG2/bin:/Applications/Wireshark.app/Contents/MacOS"
