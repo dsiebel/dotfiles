@@ -305,3 +305,6 @@ alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# quickly generate a random hexadecimal 32 character password
+alias genpwd='openssl rand hex 32'
