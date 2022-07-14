@@ -103,6 +103,8 @@ alias DM="docker-machine"
 
 alias deti="docker exec -ti"
 alias drti="docker run --rm -ti"
+alias drtib="docker run --rm -ti --entrypoint bash"
+alias drtis="docker run --rm -ti --entrypoint sh"
 alias dps="docker ps"
 alias dpsa="docker ps -a"
 
