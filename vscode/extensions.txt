@@ -1,5 +1,4 @@
 4ops.terraform
-CoenraadS.bracket-pair-colorizer-2
 eamodio.gitlens
 EdgardMessias.clipboard-manager
 EditorConfig.EditorConfig
@@ -9,13 +8,10 @@ Gruntfuggly.todo-tree
 ivory-lab.jenkinsfile-support
 jebbs.plantuml
 mathiasfrohlich.Kotlin
-mauve.terraform
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools
-ms-vscode.Go
 PKief.material-icon-theme
 redhat.vscode-yaml
 timonwong.shellcheck
 wayou.vscode-todo-highlight
-wholroyd.HCL
 yzhang.markdown-all-in-one
