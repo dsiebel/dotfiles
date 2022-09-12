@@ -15,6 +15,7 @@ alias V="vagrant"
 alias VV="vagrant global-status"
 
 # Terraform
+alias tg="terragrunt"
 alias tf="terraform"
 alias tffr="terraform fmt -recursive -diff"
 alias tfpl="tf providers lock \
