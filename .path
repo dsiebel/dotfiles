@@ -31,6 +31,9 @@ export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/asdf/libexec/bin"
 # krew - kubectl plugin manager
 export PATH="${PATH}:${KREW_ROOT}/bin"
 
+# Rancher Desktop
+export PATH="${PATH}:$HOME/.rd/bin"
+
 # Original macos zsh path - Part 1
 export PATH="${PATH}:/usr/bin:/usr/sbin:/bin:/sbin"
 
