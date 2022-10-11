@@ -232,6 +232,13 @@ __kubectl_diff_apply() {
 	done
 }
 
+# Skaffold
+alias S="\${SKAFFOLD_EXEC_PATH:-skaffold}"
+alias s="\${SKAFFOLD_EXEC_PATH:-skaffold}"
+alias sbi="S build --build-image"
+alias srt="S run --tail"
+alias stt="S render --digest-source tag"
+
 # Get week number
 alias week='date +%V'
 
