@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,direnv,visualstudiocode,vim,sublimetext,jetbrains
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,direnv,visualstudiocode,vim,sublimetext,jetbrains
+# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,direnv,visualstudiocode,vim,sublimetext,jetbrains
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,direnv,visualstudiocode,vim,sublimetext,jetbrains
 
 ### direnv ###
 .direnv
@@ -118,6 +118,21 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
 
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
 ### macOS ###
 # General
 .DS_Store
@@ -199,7 +214,6 @@ Sessionx.vim
 
 # Temporary
 .netrwhist
-*~
 # Auto-generated tag files
 tags
 # Persistent undo
@@ -224,4 +238,4 @@ tags
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,direnv,visualstudiocode,vim,sublimetext,jetbrains
+# End of https://www.toptal.com/developers/gitignore/api/macos,linux,direnv,visualstudiocode,vim,sublimetext,jetbrains
