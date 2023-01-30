@@ -30,7 +30,7 @@ just_bootstrap() {
 		echo "Error: justfile already exists"
 		return 1
 	fi
-	curl -sL "https://raw.githubusercontent.com/dsiebel/just-bootstrap/main/Justfile" > justfile
+	curl -sL "https://raw.githubusercontent.com/dsiebel/repository-template/main/Justfile" > justfile
 }
 
 # Make
