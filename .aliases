@@ -166,6 +166,8 @@ alias kdf="kubectl diff -f"
 
 alias kgimg="kubectl get pods -o jsonpath='{..image}' | tr -s '[[:space:]]' \"\\n\" | sort -u"
 
+alias khealth="kubectl get --raw='/healthz?verbose'"
+
 alias krs="kubectl rollout status"
 
 
