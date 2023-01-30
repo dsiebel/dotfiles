@@ -1,9 +1,24 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,direnv,visualstudiocode,vim,sublimetext,jetbrains
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,direnv,visualstudiocode,vim,sublimetext,jetbrains
+# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,git,direnv,visualstudiocode,vim,sublimetext,jetbrains
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,git,direnv,visualstudiocode,vim,sublimetext,jetbrains
 
 ### direnv ###
 .direnv
 .envrc
+
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
 
 ### JetBrains ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -238,4 +253,4 @@ tags
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,linux,direnv,visualstudiocode,vim,sublimetext,jetbrains
+# End of https://www.toptal.com/developers/gitignore/api/macos,linux,git,direnv,visualstudiocode,vim,sublimetext,jetbrains
