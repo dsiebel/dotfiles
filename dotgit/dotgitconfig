@@ -27,7 +27,7 @@
   remotes = remote -v
 
   # from https://help.github.com/articles/remove-sensitive-data
-  remove-file = "!f() { git filter-branch -f --index-filter \"git rm --cached --ignore-unmatch $1\" --prune-empty --tag-name-filter cat -- --all; }; f"
+  remove-file = "!f() { git filter-branch -f --index-filter \"git rm --cached --ignore-unmatch $1\" --prune-empty --tag-name-filter cat -- --all; }; f "
 
   # view status using short format
   s = status -s
@@ -35,6 +35,36 @@
   st = status
   tags = tag -l
   undo = !git reset HEAD~1 --mixed
+
+  # git pull with some defaults
+  up = !git pull --no-rebase --summary --autostash
+  reup = !git pull --rebase --summary --autostash
+  ffup = !git pull --ff-only --summary --autostash
+
+  # Show the diff of everything you haven't pushed yet
+  unpushed = "!f() { b=\"$(git rev-parse --abbrev-ref HEAD)\"; git diff \"origin/${b}..HEAD\"; }; f "
+
+  # find the top level of current repository
+  top = !git rev-parse --show-toplevel
+
+  # Written by Corey Haines
+  # Scriptified by Gary Bernhardt
+  # Put into git alias by Dominik Siebel
+  #
+  # List churn (edits-over time) to identify where the most time is being spent.
+  # Idea: https://youtu.be/7hL6g1aTGvo?t=16m53s
+  #
+  # Show churn for whole repo:
+  #   $ git churn
+  #
+  # Show churn for specific directories:
+  #   $ git churn app lib
+  #
+  # Show churn for a time range:
+  #   $ git churn --since='1 month ago'
+  #
+  # (These are all standard arguments to `git log`.)
+  churn = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count,file"} {print $1 "," $2}'
 
 [color]
   # Use colors in Git commands that are capable of colored output when
