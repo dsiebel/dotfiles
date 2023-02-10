@@ -244,6 +244,8 @@ alias stt="S render --digest-source tag"
 # Get week number
 alias week='date +%V'
 
+alias dad='curl -H "Accept: text/plain" https://icanhazdadjoke.com/'
+
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
