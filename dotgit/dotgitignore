@@ -254,3 +254,7 @@ tags
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,git,direnv,visualstudiocode,vim,sublimetext,jetbrains
+
+# scratch files & notes
+SCRATCH.md
+_.md
