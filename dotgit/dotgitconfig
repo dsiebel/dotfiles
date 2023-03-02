@@ -34,17 +34,18 @@
 
   st = status
   tags = tag -l
-  undo = !git reset HEAD~1 --mixed
+  undo = reset HEAD~1 --mixed
 
   # git pull with some defaults
-  up = !git pull --no-rebase --summary --autostash
-  reup = !git pull --rebase --summary --autostash
-  ffup = !git pull --ff-only --summary --autostash
+  up = pull --no-rebase --summary --autostash
+  reup = pull --rebase --summary --autostash
+  ffup = pull --ff-only --summary --autostash
 
   # Show the diff of everything you haven't pushed yet
   unpushed = "!f() { b=\"$(git rev-parse --abbrev-ref HEAD)\"; git diff \"origin/${b}..HEAD\"; }; f "
 
   # find the top level of current repository
+  top = rev-parse --show-toplevel
 
   # Skaffold-like build tag for e.g. use as container image tag
   id = describe --tags --dirty --always
@@ -198,5 +199,5 @@
 
 [user]
   name = Dominik Siebel
-  email = code@dsiebel.de
+  email = dominik.siebel@trivago.com
   signingkey = E02D1E3058EEC901
