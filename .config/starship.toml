@@ -1,5 +1,4 @@
 format = """\
-  $kubernetes \
   ${custom.git_user}\
   $git_branch\
   $git_commit\
