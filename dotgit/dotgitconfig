@@ -45,7 +45,9 @@
   unpushed = "!f() { b=\"$(git rev-parse --abbrev-ref HEAD)\"; git diff \"origin/${b}..HEAD\"; }; f "
 
   # find the top level of current repository
-  top = !git rev-parse --show-toplevel
+
+  # Skaffold-like build tag for e.g. use as container image tag
+  id = describe --tags --dirty --always
 
   # Written by Corey Haines
   # Scriptified by Gary Bernhardt
