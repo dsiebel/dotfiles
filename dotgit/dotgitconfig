@@ -37,9 +37,9 @@
   undo = reset HEAD~1 --mixed
 
   # git pull with some defaults
-  up = pull --no-rebase --summary --autostash
-  reup = pull --rebase --summary --autostash
-  ffup = pull --ff-only --summary --autostash
+  up = pull --no-rebase --stat --autostash
+  reup = pull --rebase --stat --autostash
+  ffup = pull --ff-only --stat --autostash
 
   # Show the diff of everything you haven't pushed yet
   unpushed = "!f() { b=\"$(git rev-parse --abbrev-ref HEAD)\"; git diff \"origin/${b}..HEAD\"; }; f "
