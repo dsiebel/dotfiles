@@ -1,0 +1,16 @@
+name: 'CI'
+'on':
+  push: ~
+defaults:
+  run:
+    shell: 'bash'
+permissions:
+  contents: 'read'
+jobs:
+  test:
+    name: 'Run Tests'
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: 'actions/checkout@v4' #ratchet: actions/checkout@v4
+      - run: |
+          make test
