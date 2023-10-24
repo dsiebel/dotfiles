@@ -19,8 +19,9 @@ else
 export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/bin:${HOMEBREW_PREFIX_ARM64}/sbin:${HOMEBREW_PREFIX_X86}/bin:${HOMEBREW_PREFIX_X86}/sbin"
 fi
 
-# GNU Make
+# GNU Tools
 export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/make/libexec/gnubin"
+export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/curl/bin"
 
 # Google Cloud SDK
 export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/share/google-cloud-sdk/bin"
@@ -33,6 +34,9 @@ export PATH="${PATH}:${KREW_ROOT}/bin"
 
 # Rancher Desktop
 export PATH="${PATH}:$HOME/.rd/bin"
+
+# Docker CLI tools
+export PATH="${PATH}:${HOME}/.docker/bin"
 
 # Original macos zsh path - Part 1
 export PATH="${PATH}:/usr/bin:/usr/sbin:/bin:/sbin"
