@@ -1,0 +1,22 @@
+# Infil
+Fill Density		15%			25%
+Fill Pattern		Grid		Gyroid
+
+# Speed (orig)
+Perimiters			40mm/s
+Small perimiters	25mm/s		62,5%
+External perim.		25mm/s		62,5%
+
+Infil				50mm/s
+Solid Infill		40mm/s		80%
+Top Solid Infill	30mm/s		60%
+
+Support material	40mm/s		100%
+Supp mat. interface	100%
+
+Bridges				25mm/s
+Ironing				15mm/s
+
+Travel				150mm/s		130mm/s
+
+First Layer Speed	20mm/s
