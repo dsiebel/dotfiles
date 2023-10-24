@@ -6,6 +6,8 @@ MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 .SHELLFLAGS := -euo pipefail -c
 
+DOCKER_FLAGS ?=
+
 .ONESHELL:
 
 .PHONY: help
