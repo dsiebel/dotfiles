@@ -22,6 +22,7 @@ fi
 # GNU Tools
 export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/make/libexec/gnubin"
 export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/curl/bin"
+export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/gnu-sed/libexec/gnubin"
 
 # Google Cloud SDK
 export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/share/google-cloud-sdk/bin"
