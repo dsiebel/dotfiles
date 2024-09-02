@@ -151,6 +151,12 @@
   required = true
   process = git-lfs filter-process
 
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
 [help]
   autocorrect = 30
 
@@ -200,4 +206,4 @@
 [user]
   name = Dominik Siebel
   email = dominik.siebel@trivago.com
-  signingkey = E02D1E3058EEC901
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICH7LJ5wAIWlKhsOgmkAC5E2s7A7Bs7+etEO1vFRw/nz
