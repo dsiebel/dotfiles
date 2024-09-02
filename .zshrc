@@ -1,3 +1,12 @@
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(git brew osx sublime kubectl kube-ps1)
+plugins=(brew copyfile copypath direnv docker git kubectl helm macos web-search)
+
+source $ZSH/oh-my-zsh.sh
+
 # Load the shell dotfiles, and then some:
 # # * ~/.aliases      Shell aliases
 # # * ~/.functions    Helper functions
@@ -8,15 +17,6 @@ for file in ~/.{aliases,functions,dockerfunc,extra,path}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(git brew osx sublime kubectl kube-ps1)
-plugins=(brew copyfile copypath direnv docker git kubectl helm macos web-search)
-
-source $ZSH/oh-my-zsh.sh
 
 # load fzf
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
