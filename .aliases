@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Eza / Exa
+alias eza="eza -oghla --time-style long-iso --git-repos-no-status"
+alias exa="eza"
+alias ls="eza"
+alias lg="eza --git --git-ignore"
+
 # Easier navigation: .., ..., ...., ..... and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -18,11 +24,12 @@ alias VV="vagrant global-status"
 alias tg="terragrunt"
 alias tf="terraform"
 alias tffr="terraform fmt -recursive -diff"
-alias tfpl="tf providers lock \
+alias tfppl="terraform providers lock \
   -platform=linux_amd64 \
   -platform=darwin_amd64 \
   -platform=darwin_arm64 \
   -platform=windows_amd64"
+alias tfpo="terraform plan -out=out.tfplan"
 
 # Just
 just_bootstrap() {
@@ -232,6 +239,17 @@ __kubectl_diff_apply() {
 			;;
 		esac
 	done
+}
+
+__kubectl_delete_evicted_pods() {
+	args=()
+	if [[ "$1" == "all" ]]; then
+		args+=("--all-namespaces")
+	else
+		args+=("--namespace" "$1")
+	fi
+
+	kubectl get pods "${args[@]}" -o json | jq '.items[] | select(.status.reason!=null) | select(.status.reason | contains("Evicted")) | "kubectl delete pods \(.metadata.name) -n \(.metadata.namespace)"' | xargs -n 1 bash -c
 }
 
 # Skaffold
