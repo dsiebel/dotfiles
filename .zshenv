@@ -72,3 +72,6 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # https://krew.sigs.k8s.io/docs/user-guide/advanced-configuration/
 # used in `.path`
 export KREW_ROOT="${HOME}/.krew"
+
+# Allow `tenv` to automatically install missing versions
+export TENV_AUTO_INSTALL=true
