@@ -20,9 +20,8 @@
   cp = cherry-pick
   df = diff
 
-  # pretty logging with branches and everything!
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  logp = log -p
+  lg = "!echo 'use `glol` or `glod` instead!'"
+  logp = "!echo 'use `glgp` instead!'"
 
   remotes = remote -v
 
