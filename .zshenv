@@ -75,3 +75,6 @@ export KREW_ROOT="${HOME}/.krew"
 
 # Allow `tenv` to automatically install missing versions
 export TENV_AUTO_INSTALL=true
+
+# Terragrunt: Default to Terraform instead of OpenTofo
+# export TERRAGRUNT_TFPATH="terraform"
