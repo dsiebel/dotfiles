@@ -28,6 +28,8 @@ curl -L https://iterm2.com/shell_integration/install_shell_integration.sh \
   ./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" install \
     --manifest=krew.yaml --archive=krew.tar.gz
 )
-
 "${HOME}/.krew/bin/kubectl-krew" install \
  doctor get-all krew outdated preflight restart sniff tail
+
+# setup nano prerequisites
+mkdir -p ~/.cache/nano/backups/
