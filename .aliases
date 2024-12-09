@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# cat / bat
+alias cat='bat'
+
 # Eza / Exa
 alias eza="eza -oghla --time-style long-iso --git-repos-no-status"
 alias exa="eza"
