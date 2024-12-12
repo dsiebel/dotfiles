@@ -8,11 +8,11 @@
 # User ${HOME} bin
 export PATH="${HOME}/bin:${HOME}/.bin"
 
-# Golang $GOPATH
+# Golang $GOPATH bin
 export PATH="${PATH}:${GOPATH}/bin"
 
 # homebrew
-# TODO: `/usr/local/bin` might already be part of the original $PATH. If so, this handling can be removed.´`
+# TODO: `/usr/local/bin` might already be part of the original $PATH. If so, this handling can be removed.
 if [[ "$(/usr/bin/arch)" == "i386" ]]; then
 export PATH="${PATH}:${HOMEBREW_PREFIX_X86}/bin:${HOMEBREW_PREFIX_X86}/sbin:${HOMEBREW_PREFIX_ARM64}/bin:${HOMEBREW_PREFIX_ARM64}/sbin"
 else
@@ -30,14 +30,16 @@ export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/share/google-cloud-sdk/bin"
 # asdf version manager
 export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/asdf/libexec/bin"
 
+# Volta
+export PATH="${PATH}:${HOME}/.volta/bin"
+
 # krew - kubectl plugin manager
 export PATH="${PATH}:${KREW_ROOT}/bin"
 
 # Rancher Desktop
-export PATH="${PATH}:$HOME/.rd/bin"
+export PATH="${PATH}:/.rd/bin"
 
-# Original macos zsh path - Part 1
+# Original macos path
 export PATH="${PATH}:/usr/bin:/usr/sbin:/bin:/sbin"
-
-# Original macos zsh $PATH - Part 2 (GPG and Wireshark)
-export PATH="${PATH}:/usr/local/MacGPG2/bin:/Applications/Wireshark.app/Contents/MacOS"
+export PATH="${PATH}:/usr/local/MacGPG2/bin"
+export PATH="${PATH}:/Applications/Wireshark.app/Contents/MacOS"
