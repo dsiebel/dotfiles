@@ -68,11 +68,15 @@
   # (These are all standard arguments to `git log`.)
   churn = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count,file"} {print $1 "," $2}'
 
+[branch]
+  autoSetupRebase = always
+
 [color]
   # Use colors in Git commands that are capable of colored output when
   # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
   ui = auto
   diff = auto
+  pager = true
   status = auto
   branch = auto
   interactive = auto
@@ -83,10 +87,18 @@
   remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold # line info
-  old = red # deletions
-  new = green # additions
+  commit = 227 bold
+  frag = magenta bold
+  meta = 227
+  new = green bold
+  old = red bold
+  whitespace = red reverse
+
+[color "diff-highlight"]
+  newHighlight = green bold 22
+  newNormal = green bold
+  oldHighlight = red bold 52
+  oldNormal = red bold
 
 [color "status"]
   added = yellow
@@ -94,12 +106,20 @@
   untracked = cyan
 
 [commit]
+  # Ensures all commits are signed for improved security and author verification
   gpgsign = true
+  # Shows diff of changes, by file, at the bottom of the commit message
+  verbose = true
 
 [core]
+  # Use only the first 12 characters of a commit SHA instead of the full 40 characters
+  abbrev = 12
   # Use custom `.gitignore` and `.gitattributes`
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
+
+  # Tells Git where to look for my Dotfiles managed Git Hooks XDG configuration
+  hooksPath = ~/.config/git/hooks
 
   # Make `git rebase` safer on OS X
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
@@ -110,39 +130,35 @@
 
   ignorecase = false
 
-  # "cat" instead of paging if content fits onto one screen
-  pager = less -RXF
+  # Use git-delta for proper pagination and syntax highlighting
+  pager = delta
 
-  whitespace = fix
-
-# alternatively disable / change pager per command:
-# [pager]
-  # branch = false
-  # tag = false
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [credential]
   helper = osxkeychain
 
+[delta]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  hunk-header-decoration-style = yellow box
+  line-numbers = true
+  minus-color = "#340001"
+  navigate = true  # use n and N to move between diff sections
+  plus-color = "#012800"
+  side-by-side = true
+  whitespace-error-style = 22 reverse
+
 [diff]
-  # External diff tool.
-  tool = Kaleidoscope
-  colorMoved = zebra
-  mnemonicprefix=true
+  algorithm = histogram
+  colorMoved = default
+  indentHeuristic = true
+  mnemonicprefix = true
+  renames = copies
+  srcPrefix = before
 
 [difftool]
   prompt = false
-
-# Diff and merge tool configuration for "diffmerge" (osx)
-[difftool "diffmerge"]
-  cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge $LOCAL $REMOTE
-
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
-# Diff and merge tool configuration for "sourcetree" (osx)
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -150,54 +166,96 @@
   required = true
   process = git-lfs filter-process
 
+[fetch]
+  prune = true
+  pruneTags = true
+  writeCommitGraph = true
+
 [gpg]
   format = ssh
 
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
+[grep]
+  column = true
+  fullname = true
+  lineNumber = true
+
 [help]
   autocorrect = 30
 
 [init]
   defaultBranch = main
+  templateDir = ~/.config/git/template
+
+[interactive]
+  # Ensures Delta is used to handle the diff filter for interactive commands
+  diffFilter = delta --color-only
+  # Ensures only a single key is used without having to hit enter for interactive commands
+  singleKey = true
+
+[maintenance]
+  auto = false
+  strategy = incremental
 
 [merge]
+  # See what is on HEAD, what is common, and what is local
+  conflictstyle = zdiff3
+  # Ensures no extra commit is made when merging
+  ff = only
   # Include summaries of merged commits in newly created merge commit messages
   log = true
-
   # Always show a diffstat at the end of a merge
   stat = true
 
-  # External merge tool.
-  tool = Kaleidoscope
-  # tool = diffmerge
-
 [mergetool]
-  #keepBackup = false
   prompt = false
 
-[mergetool "diffmerge"]
-  cmd = /Applications/DiffMerge.app/Contents/Resources/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[notes]
+  # Ensures notes are not lost when rebasing
+  rewriteRef = refs/notes/commits
 
-[mergetool "Kaleidoscope"]
-  trustexitcode = true
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-
-[mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+[pack]
+  # Ensures bitmaps are used for improved index traversal performance.
+  useBitmapBoundaryTraversal = true
 
 [pull]
+  # Enforces a Git Rebase workflow instead of the default merge workflow when pulling.
   rebase = merges
   default = current
 
 [push]
+  # Assume that the current branch is set upstream (i.e. same name as branch)
+  autoSetupRemote = true
   default = current
 
-[svn]
-  rmdir = true
+  # Ensures you can’t force push changes to remote branch if commit history doesn’t have same parent.
+  # This is extremely handy for preventing obliteration of remote changes if the histories don’t align
+  # especially in rare cases your local branch managed to get misaligned with the remote branch.
+  # useForceIfIncludes = true
+
+[rebase]
+  # Ensures each rebase automatically moves fixup!, squash!, and amend! commits
+  # to their corresponding commit for reduced manual labor
+  autoSquash = true
+  # Ensures untracked, modified, or staged files are automatically pushed
+  # onto the stash before a rebase and auto-popped after the rebase completes.
+  autoStash = true
+
+  # Ensures any branches, which references the same commits, are automatically
+  # rebased along with the current branch being rebased.
+  updateRefs = true
+
+[status]
+  # Ensures all untracked files in all directories are shown.
+  showUntrackedFiles = all
+
+[tag]
+  # Ensures tags are always cryptographically signed like commits
+  gpgSign = true
+  # Ensures repository tags are sorted by version.
+  sort = version:refname
 
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
@@ -206,3 +264,5 @@
   name = Dominik Siebel
   email = dominik.siebel@trivago.com
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICH7LJ5wAIWlKhsOgmkAC5E2s7A7Bs7+etEO1vFRw/nz
+  # Ensures Git never attempts to guess user email and name from the local system but uses your configuration instead.
+  useConfigOnly = true
