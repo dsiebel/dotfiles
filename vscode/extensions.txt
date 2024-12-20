@@ -30,5 +30,6 @@ redhat.vscode-yaml
 skellock.just
 timonwong.shellcheck
 usernamehw.errorlens
+vsliveshare.vsliveshare
 wayou.vscode-todo-highlight
 yzhang.markdown-all-in-one
