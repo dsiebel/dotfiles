@@ -228,7 +228,7 @@
 [push]
   # Assume that the current branch is set upstream (i.e. same name as branch)
   autoSetupRemote = true
-  default = current
+  default = simple
 
   # Ensures you can’t force push changes to remote branch if commit history doesn’t have same parent.
   # This is extremely handy for preventing obliteration of remote changes if the histories don’t align
@@ -246,6 +246,15 @@
   # Ensures any branches, which references the same commits, are automatically
   # rebased along with the current branch being rebased.
   updateRefs = true
+
+[rerere]
+  # Ensures the rerere cache is automatically updated when resolving
+  # a rebase conflict for improved rebase speed.
+  autoUpdate = true
+  # Ensures Reuse Recorded Resolution (rerere) is enabled for an improved
+  # rebase workflow so you can reduce the number of times you have to resolve
+  # the same conflict when rebasing multiple times.
+  enabled = true
 
 [status]
   # Ensures all untracked files in all directories are shown.
