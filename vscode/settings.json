@@ -1,26 +1,133 @@
 {
-	"diffEditor.ignoreTrimWhitespace": false,
-	"editor.renderWhitespace": "all",
-	"editor.rulers": [80,120],
+	"ansible.validation.lint.enabled": false,
+	"breadcrumbs.enabled": true,
+	"dev.containers.defaultExtensions": [
+		"skellock.just",
+		"EditorConfig.EditorConfig",
+		"yzhang.markdown-all-in-one",
+		"timonwong.shellcheck",
+		"wayou.vscode-todo-highlight",
+		"redhat.vscode-yaml",
+		" eamodio.gitlens"
+	],
+	"diffEditor.ignoreTrimWhitespace": true,
+	"diffEditor.experimental.useTrueInlineView": true,
+	"diffEditor.renderSideBySide": true,
+	"editor.renderControlCharacters": true,
+	"editor.minimap.enabled": true,
 	"editor.minimap.renderCharacters": false,
-	"editor.fontFamily": "Fira Code, Noto Mono, Menlo, Monaco, monospace, 'Courier New'",
+	"editor.suggest.selectionMode": "never",
+	"editor.inlineSuggest.enabled": true,
+	"editor.renderWhitespace": "all",
+	"editor.rulers": [
+		80,
+		120
+	],
+	"editor.fontFamily": "FiraCode Nerd Font Mono, Fira Code, Noto Mono, Menlo, Monaco, monospace",
 	"editor.fontLigatures": true,
-	"editor.fontWeight": "400",
 	"editor.renderLineHighlight": "gutter",
 	"explorer.openEditors.visible": 0,
-	"explorer.autoReveal": false,
+	"extensions.ignoreRecommendations": false,
+	"extensions.supportUntrustedWorkspaces": {},
 	"files.associations": {
 		"*.sls": "yaml",
-		"*.job": "hcl",
+		"*.job": "terraform",
+		"*.tftpl": "terraform",
 		"Makefile.*": "makefile",
-		"*.docker": "dockerfile"
+		"*.docker": "dockerfile",
+		"*.hcl": "hcl"
 	},
 	"files.autoSave": "onFocusChange",
-	"python.pythonPath": "python2",
-	"python.venvPath": "taste_env",
-	"python.disablePromptForFeatures": [
-		"pylint"
+	"git.showPushSuccessNotification": true,
+	"git.suggestSmartCommit": false,
+	"git.confirmSync": false,
+	"git.enableCommitSigning": true,
+	"git.rebaseWhenSync": true,
+	"git.openRepositoryInParentFolders": "never",
+	"githubPullRequests.pullBranch": "never",
+	"githubPullRequests.terminalLinksHandler": "github",
+
+	"githubPullRequests.createOnPublishBranch": "never",
+	"githubPullRequests.defaultMergeMethod": "squash",
+	"github.copilot.advanced": {
+	},
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": true,
+		"markdown": true,
+		"scminput": false
+	},
+	"github.copilot.editor.enableAutoCompletions": true,
+	"gitlens.advanced.messages": {
+		"suppressShowKeyBindingsNotice": true
+	},
+	"gitlens.codeLens.recentChange.enabled": false,
+	"gitlens.codeLens.authors.enabled": false,
+	"gitlens.showWhatsNewAfterUpgrades": false,
+	"gitlens.hovers.enabled": false,
+	"go.alternateTools": {},
+	"go.toolsManagement.autoUpdate": true,
+	"go.toolsManagement.go": "/opt/homebrew/bin/go",
+	"json.schemas": [
+		{
+			"fileMatch": ["release-please-config.json"],
+			"url": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+		}
 	],
+	"markdown.extension.toc.unorderedList.marker": "*",
+	"markdown.extension.toc.omittedFromToc": {
+		"*": ["# ", "## Table of Contents"]
+	},
+	"markdown.extension.toc.levels": "2..6",
+	"php.suggest.basic": false,
+	"[plaintext]": {},
+	"redhat.telemetry.enabled": false,
+	"remote.SSH.configFile": "~/.ssh/config.d/vscode",
+	"search.collapseResults": "auto",
+	"security.workspace.trust.untrustedFiles": "open",
+	"shellcheck.run": "onSave",
+	"terminal.external.osxExec": "iTerm.app",
+	"terminal.integrated.rightClickBehavior": "default",
+	"terminal.integrated.scrollback": 10000,
+	"terminal.integrated.copyOnSelection": true,
+	"terminal.integrated.profiles.windows": {
+		"Git Bash": {
+			"source": "Git Bash"
+		}
+	},
+	"terminal.integrated.profiles.linux": {
+		"bash": {
+			"path": "bash",
+			"icon": "terminal-bash"
+		},
+		"zsh": {
+			"path": "zsh"
+		},
+		"fish": {
+			"path": "fish"
+		},
+		"tmux": {
+			"path": "tmux",
+			"icon": "terminal-tmux"
+		},
+		"pwsh": {
+			"path": "pwsh",
+			"icon": "terminal-powershell"
+		}
+	},
+	"terminal.integrated.persistentSessionScrollback": 10000,
+	"terminal.integrated.localEchoStyle": "dim",
+	"terminal.integrated.minimumContrastRatio": 1,
+	"[terraform]": {
+		"editor.defaultFormatter": "hashicorp.terraform",
+		"editor.formatOnSave": true,
+		"editor.formatOnSaveMode": "file"
+	},
+	"[terraform-vars]": {
+		"editor.defaultFormatter": "hashicorp.terraform",
+		"editor.formatOnSave": true,
+		"editor.formatOnSaveMode": "file"
+	},
 	"todohighlight.keywords": [/*
 		{
 			"text": "TODO",
@@ -40,27 +147,60 @@
 			"backgroundColor": "#fff8e5",
 			"isWholeLine": true
 		}
-	*/],
-	"window.zoomLevel": 0,
-	"workbench.startupEditor": "none",
-	"workbench.editor.openSideBySideDirection": "down",
-	"extensions.ignoreRecommendations": false,
-	"[plaintext]": {},
-	"gitlens.advanced.messages": {
-		"suppressShowKeyBindingsNotice": true
+	*/
+	],
+	"todo-tree.general.tags": [
+		"BUG",
+		"HACK",
+		"FIXME",
+		"TODO",
+		"XXX",
+		"[ ]",
+		"[x]"
+	],
+	"todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+	"update.mode": "start",
+	"vale.doNotShowWarningForFileToBeSavedBeforeLinting": true,
+	"vs-kubernetes": {
+		"vs-kubernetes.crd-code-completion": "disabled",
+		"vscode-kubernetes.kubectl-path-mac": "/Users/dsiebel/.vs-kubernetes/tools/kubectl/kubectl",
+		"vscode-kubernetes.minikube-path-mac": "/Users/dsiebel/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
 	},
-	"gitlens.showWhatsNewAfterUpgrades": false,
-	"gitlens.hovers.enabled": false,
+	"window.autoDetectColorScheme": true,
+	"window.openFoldersInNewWindow": "on",
+	"window.zoomLevel": 0,
+	"workbench.colorTheme": "Default Light+",
+	"workbench.preferredDarkColorTheme": "Default Dark+",
+	"workbench.preferredLightColorTheme": "Default Light+",
 	"workbench.sideBar.location": "left",
 	"workbench.editor.closeEmptyGroups": false,
 	"workbench.editor.highlightModifiedTabs": true,
-	"php.suggest.basic": false,
-	"cloudcode.gke": {
-		"projectIds": [
-			"trv-hs-kubernetes-edge"
-		]
+	"workbench.colorCustomizations": {
+		"terminal.foreground": "#EFEFEF",
+		"terminal.background": "#1E1E1E",
+		"terminal.ansiBlack": "#000000",
+		"terminal.ansiBrightBlack": "#686966",
+		"terminal.ansiRed": "#c6341b",
+		"terminal.ansiBrightRed": "#e15140",
+		"terminal.ansiGreen": "#6fa430",
+		"terminal.ansiBrightGreen": "#a9e15d",
+		"terminal.ansiYellow": "#c9ae38",
+		"terminal.ansiBrightYellow": "#f9eb77",
+		"terminal.ansiBlue": "#4f78ae",
+		"terminal.ansiBrightBlue": "#8caed4",
+		"terminal.ansiMagenta": "#83668b",
+		"terminal.ansiBrightMagenta": "#b595b4",
+		"terminal.ansiCyan": "#46a4a8",
+		"terminal.ansiBrightCyan": "#73e2e6",
+		"terminal.ansiWhite": "#dbded8",
+		"terminal.ansiBrightWhite": "#f1f1ef",
 	},
-	"breadcrumbs.enabled": true,
-	"shellcheck.run": "onSave",
-	"workbench.colorTheme": "Default Light+"
+	"workbench.tree.indent": 14,
+	"workbench.startupEditor": "none",
+	"workbench.editor.openSideBySideDirection": "down",
+	"yaml.completion": false,
+	"yaml.schemas": {
+		"https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+	},
+	"yaml.format.printWidth": 120
 }
