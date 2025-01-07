@@ -64,6 +64,8 @@ alias gbav='git branch -av'
 alias gbll="git for-each-ref --format='%(refname)' 'refs/heads/**'"
 alias gbls="git branch --list --format='%(refname:short)'"
 alias gds='git diff --staged'
+alias gfu='git fetch upstream'
+alias grbum='git rebase upstream/main'
 alias glf="git log --oneline --abbrev-commit --date=relative --pretty=format:'%h %s (%cr) <%an>' | fzf --height 100% --multi --preview 'git show {+1}'"
 alias glfs="git log --oneline --abbrev-commit --date=relative --pretty=format:'%h %s (%cr) <%an>' | fzf --height 100% --multi --preview 'git show {+1}' | xargs -I1 git show"
 
