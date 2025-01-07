@@ -16,6 +16,16 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"
 
+# Ansible
+alias a="ansible"
+alias adoc="ansible-doc"
+alias ag="ansible-galaxy"
+alias ai="ansible-inventory"
+alias ap="ansible-playbook"
+alias apl="ansible-pull"
+alias ari="ansible-role-init"
+alias av="ansible-vault"
+
 alias g="git"
 alias h="history"
 # deactivated in favour of "autojump"
