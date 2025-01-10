@@ -198,7 +198,7 @@
 	"workbench.preferredLightColorTheme": "Default Light+",
 	"workbench.sideBar.location": "left",
 	"workbench.startupEditor": "none",
-	"workbench.tree.indent": 14,
+	"workbench.tree.indent": 10,
 	"yaml.completion": false,
 	"yaml.schemas": {
 		"https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
