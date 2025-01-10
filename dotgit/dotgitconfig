@@ -119,7 +119,9 @@
   attributesfile = ~/.gitattributes
 
   # Tells Git where to look for my Dotfiles managed Git Hooks XDG configuration
-  hooksPath = ~/.config/git/hooks
+  # FIXME: disabled, because it clashies with pre-commit
+  # see also: https://github.com/pre-commit/pre-commit/issues/1198
+  # hooksPath = ~/.config/git/hooks
 
   # Make `git rebase` safer on OS X
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
