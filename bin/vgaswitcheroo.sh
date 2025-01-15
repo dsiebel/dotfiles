@@ -4,7 +4,7 @@ if [[ "SHOW" = "$1" ]]; then
 	cat /sys/kernel/debug/vgaswitcheroo/switch
 else
 	if [[ "" != "$1" ]]; then
-		echo "$1" > /sys/kernel/debug/vgaswitcheroo/switch
+		echo "$1" >/sys/kernel/debug/vgaswitcheroo/switch
 	else
 		exit 2
 	fi

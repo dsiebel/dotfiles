@@ -1,6 +1,0 @@
-#!/bin/sh
-cat << EOF
-
-Create PR at: https://github.com/$(git remote get-url origin | grep -Eo '[^/:]+/[^/.]+')/compare/$(git rev-parse --abbrev-ref HEAD)?expand=1
-
-EOF

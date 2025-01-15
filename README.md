@@ -3,7 +3,7 @@
 ## Setup steps (order)
 
 - clone dotfiles repo
-- `just macos` 
+- `just macos`
 - `just homebrew`
 - `just homebrew-deps`
 - `just vim`
@@ -17,4 +17,3 @@
 ## TODO
 
 - [ ] export / import / backup gpg keys
-
