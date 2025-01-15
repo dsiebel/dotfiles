@@ -1,5 +1,4 @@
 bbenoist.nix
-4ops.terraform
 eamodio.gitlens
 editorconfig.editorconfig
 fnando.linter
@@ -22,14 +21,15 @@ ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode.makefile-tools
 ms-vscode.remote-explorer
+ms-vsliveshare.vsliveshare
+oderwat.indent-rainbow
+pkief.material-icon-theme
 pomdtr.excalidraw-editor
 postman.postman-for-vscode
-pkief.material-icon-theme
 redhat.ansible
 redhat.vscode-yaml
 skellock.just
 timonwong.shellcheck
 usernamehw.errorlens
-vsliveshare.vsliveshare
 wayou.vscode-todo-highlight
 yzhang.markdown-all-in-one
