@@ -85,18 +85,4 @@ test: shellcheck
 # Runs the shellcheck tests on the scripts.
 [script]
 shellcheck:
-	DOCKER_FLAGS=""
-	# if this session isn't interactive, then we don't want to allocate a
-	# TTY, which would fail, but if it is interactive, we do want to attach
-	# so that the user can send e.g. ^C through.
-	if [[ -t 0 ]]; then
-		DOCKER_FLAGS="--tty"
-	fi
-
-	docker run --rm --interactive "${DOCKER_FLAGS}" \
-		--name dotfiles-shellcheck \
-		--volume "{{ justfile_directory() }}:/opt/src:ro" \
-		--volume "{{justfile_directory() }}/test.sh:/opt/test.sh:ro" \
-		--workdir /opt/src \
-		--entrypoint /opt/test.sh \
-		ghcr.io/dsiebel/shellcheck-docker:latest
+	pre-commit run --all-files shellcheck

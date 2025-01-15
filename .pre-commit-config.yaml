@@ -1,5 +1,5 @@
 ---
-exclude: '^(\.sh-my-zsh|\.git|btt)$'
+exclude: '^(\.sh-my-zsh|\.git|btt|iTerm2)'
 repos:
   - repo: 'https://github.com/pre-commit/pre-commit-hooks'
     rev: 'v5.0.0'
