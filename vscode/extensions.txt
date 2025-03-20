@@ -29,6 +29,7 @@ postman.postman-for-vscode
 redhat.ansible
 redhat.vscode-yaml
 skellock.just
+thenuprojectcontributors.vscode-nushell-lang
 timonwong.shellcheck
 usernamehw.errorlens
 wayou.vscode-todo-highlight
