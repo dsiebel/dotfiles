@@ -11,6 +11,9 @@ export PATH="${HOME}/bin:${HOME}/.bin"
 # Golang $GOPATH bin
 export PATH="${PATH}:${GOPATH}/bin"
 
+# Cargo
+export PATH="${PATH}:${HOME}/.cargo/bin"
+
 # homebrew
 # TODO: `/usr/local/bin` might already be part of the original $PATH. If so, this handling can be removed.
 if [[ "$(/usr/bin/arch)" == "i386" ]]; then
