@@ -1,5 +1,5 @@
 ---
-exclude: '^(\.sh-my-zsh|\.git|btt|iTerm2)'
+exclude: '^(\.oh-my-zsh|\.git|btt|iTerm2|\.zprofile|\.zshenv|\.zshrc|\.fzf.zsh)'
 repos:
   - repo: 'https://github.com/pre-commit/pre-commit-hooks'
     rev: 'v5.0.0'
@@ -13,9 +13,9 @@ repos:
       - id: 'check-merge-conflict'
       - id: 'detect-private-key'
       - id: 'check-added-large-files'
-  - repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.10.0
+  - repo: 'https://github.com/koalaman/shellcheck-precommit'
+    rev: 'v0.10.0'
     hooks:
-      - id: shellcheck
+      - id: 'shellcheck'
         args:
           - '--severity=error'
