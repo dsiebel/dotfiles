@@ -189,7 +189,6 @@
 
 [init]
   defaultBranch = main
-  templateDir = ~/.config/git/template
 
 [interactive]
   # Ensures Delta is used to handle the diff filter for interactive commands
