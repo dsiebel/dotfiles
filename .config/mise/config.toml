@@ -1,0 +1,31 @@
+[settings]
+activate_aggressive = true
+# auto_install = true
+experimental=true # needed for hooks
+idiomatic_version_file_enable_tools = ["go", "java", "node", "python", "terraform", "helm"]
+# lockfile = true
+# paranoid = false
+# pin = false
+override_config_filenames = ["mise.{MISE_ENV}.toml"]
+
+[tools]
+actionlint = "1"
+grype = "0"
+helm = "3"
+jq = "1"
+just = "1"
+kbld = "0"
+kubeconform = "0"
+kustomize = "5"
+shellcheck = "0"
+skaffold = "2"
+terraform = "1"
+terraform-docs = "0"
+terragrunt = "0"
+tflint = "0"
+tfmigrate = "0"
+tfsec = "1"
+tfstate-lookup = "1"
+trivy = "0"
+yamllint = "1"
+yq = "4"
