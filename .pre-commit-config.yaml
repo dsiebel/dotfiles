@@ -2,7 +2,7 @@
 exclude: '^(\.oh-my-zsh|\.git|btt|iTerm2|\.zprofile|\.zshenv|\.zshrc|\.fzf.zsh)'
 repos:
   - repo: 'https://github.com/pre-commit/pre-commit-hooks'
-    rev: 'v5.0.0'
+    rev: 'v6.0.0'
     hooks:
       - id: 'end-of-file-fixer'
       - id: 'trailing-whitespace'
@@ -14,7 +14,7 @@ repos:
       - id: 'detect-private-key'
       - id: 'check-added-large-files'
   - repo: 'https://github.com/koalaman/shellcheck-precommit'
-    rev: 'v0.10.0'
+    rev: 'v0.11.0'
     hooks:
       - id: 'shellcheck'
         args:
