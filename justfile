@@ -39,12 +39,21 @@ dotfiles:
 	done< <(find {{ justfile_directory() }}/dotgit -name "dotgit*" -depth 1)
 
 	# special handling for directories
-	echo ln -sfn "{{ justfile_directory() }}/.oh-my-zsh" "${HOME}/.oh-my-zsh"
-	echo ln -sfn "{{ justfile_directory() }}/.zsh-custom" "${HOME}/.zsh-custom"
+	ln -sfn "{{ justfile_directory() }}/.oh-my-zsh" "${HOME}/.oh-my-zsh"
+	ln -sfn "{{ justfile_directory() }}/.zsh-custom" "${HOME}/.zsh-custom"
 
 	# we can not link the entire `.config` dir, it would only clutter up the git checkout
 	mkdir -p "${HOME}/.config"
-	echo ln -sfn "{{ justfile_directory() }}/.config/starship.toml" "${HOME}/.config/starship.toml"
+	ln -sfn "{{ justfile_directory() }}/.config/starship.toml" "${HOME}/.config/starship.toml"
+
+	mkdir -p "${HOME}/.config/direnv"
+	ln -sfn "{{ justfile_directory() }}/.config/direnv/direnv.toml" "${HOME}/.config/direnv/direnv.toml"
+
+	mkdir -p "${HOME}/.config/mise"
+	ln -sfn "{{ justfile_directory() }}/.config/mise/config.toml" "${HOME}/.config/mise/config.toml"
+
+	mkdir -p "${HOME}/.config/yamllint"
+	ln -sfn "{{ justfile_directory() }}/.config/yamllint/config.yaml" "${HOME}/.config/yamllint/config"
 
 # setup macos
 macos:
