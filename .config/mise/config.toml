@@ -10,6 +10,7 @@ override_config_filenames = ["mise.{MISE_ENV}.toml"]
 
 [tools]
 actionlint = "1"
+cosign = "2"
 grype = "0"
 helm = "3"
 jq = "1"
@@ -17,6 +18,7 @@ just = "1"
 kbld = "0"
 kubeconform = "0"
 kustomize = "5"
+pre-commit = "4"
 shellcheck = "0"
 skaffold = "2"
 terraform = "1"
