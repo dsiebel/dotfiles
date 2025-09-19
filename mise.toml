@@ -1,3 +1,4 @@
 [tools]
 just = "1"
 shellcheck = "0"
+pre-commit = "4"
