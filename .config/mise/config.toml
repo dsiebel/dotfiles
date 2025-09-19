@@ -10,8 +10,9 @@ override_config_filenames = ["mise.{MISE_ENV}.toml"]
 
 [tools]
 actionlint = "1"
-cosign = "2"
+auto-doc = "3"
 grype = "0"
+hadolint = "2"
 helm = "3"
 jq = "1"
 just = "1"
@@ -21,6 +22,7 @@ kustomize = "5"
 pre-commit = "4"
 shellcheck = "0"
 skaffold = "2"
+syft = "1"
 terraform = "1"
 terraform-docs = "0"
 terragrunt = "0"
