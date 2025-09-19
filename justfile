@@ -5,8 +5,6 @@ set shell := ["bash", "-euo", "pipefail", "-c"]
 set unstable
 set script-interpreter := ['bash', '-euxo', 'pipefail']
 
-docker_machine_name	:= "default"
-
 _default:
   @just --list
 
@@ -82,11 +80,6 @@ homebrew-fonts: homebrew
 # install vscode extensions
 vscode-ext:
 	"{{ justfile_directory() }}/vscode/install-vscode-extensions" "{{ justfile_directory() }}/vscode/extensions.txt"
-
-
-# set up docker-machine. Use docker_machine_name to overwrite machine name
-docker-machine:
-	"{{ justfile_directory() }}/docker-machine.sh" "{{ docker_machine_name }}"
 
 # Runs all the tests on the files in the repository.
 test: shellcheck
