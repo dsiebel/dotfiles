@@ -1,0 +1,64 @@
+---
+ignore:
+  - /kubernetes/helm/charts
+rules:
+  braces:
+    forbid: non-empty
+  brackets:
+    forbid: non-empty
+  colons:
+    max-spaces-before: 0
+    max-spaces-after: 1
+  commas:
+    max-spaces-before: 0
+    min-spaces-after: 1
+    max-spaces-after: 1
+  comments:
+    ignore-shebangs: true
+    level: warning
+    min-spaces-from-content: 1
+    require-starting-space: true
+  comments-indentation:
+    level: warning
+  document-start:
+    present: true
+  empty-lines:
+    max: 1
+    max-start: 0
+    max-end: 1
+  empty-values:
+    forbid-in-block-mappings: true
+    forbid-in-flow-mappings: true
+  float-values:
+    forbid-inf: true
+    forbid-nan: true
+    forbid-scientific-notation: true
+    require-numeral-before-decimal: true
+  hyphens:
+    max-spaces-after: 1
+  indentation:
+    spaces: 2
+    indent-sequences: true
+    check-multi-line-strings: true
+  key-duplicates: enable
+  line-length:
+    allow-non-breakable-inline-mappings: false
+    allow-non-breakable-words: true
+    level: warning
+    max: 120
+  new-line-at-end-of-file: enable
+  new-lines:
+    type: unix
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
+  quoted-strings:
+    quote-type: single
+    required: true
+    level: warning
+  trailing-spaces: enable
+  truthy:
+    allowed-values:
+    - 'true'
+    - 'false'
+    check-keys: true
