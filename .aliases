@@ -53,16 +53,6 @@ just_bootstrap() {
 	curl -sL "https://raw.githubusercontent.com/dsiebel/repository-template/main/Justfile" > justfile
 }
 
-# Make
-make_bootstrap() {
-	if [[ -f Makefile || -f .bootstrap.mk ]]; then
-		echo "Error: make-bootstrap seems to be installed already."
-		return 1
-	fi
-	curl -LO "https://raw.githubusercontent.com/dsiebel/make-bootstrap/master/.bootstrap.mk"
-	curl -LO "https://raw.githubusercontent.com/dsiebel/make-bootstrap/master/Makefile"
-}
-
 # Process chooser for caffeinate, to prevent mac from sleeping
 alias caf='ps | fzf | cut -w -f 1 | xargs caffeinate -dimw'
 
@@ -354,6 +344,6 @@ alias reload="exec $SHELL -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 # quickly generate a random hexadecimal 32 character password
-alias genpwd='openssl rand hex 32'
+alias genpwd='openssl rand -hex 32'
 
 alias x='extract'

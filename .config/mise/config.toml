@@ -35,4 +35,4 @@ trivy = "0"
 yamllint = "1"
 yq = "4"
 
-"github:GoogleCloudPlatform/docker-credential-gcr" = "latest"
+"github:nushell/nushell" = "0"
