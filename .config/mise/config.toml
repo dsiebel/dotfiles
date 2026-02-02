@@ -11,6 +11,7 @@ idiomatic_version_file_enable_tools = ["go", "java", "node", "python", "terrafor
 actionlint = "1"
 auto-doc = "3"
 copier = "9.10.2"
+fnox = "1"
 grype = "0"
 hadolint = "2"
 helm = "3"
