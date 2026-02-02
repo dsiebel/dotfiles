@@ -6,7 +6,6 @@ idiomatic_version_file_enable_tools = ["go", "java", "node", "python", "terrafor
 # lockfile = true
 # paranoid = false
 # pin = false
-override_config_filenames = ["mise.{MISE_ENV}.toml"]
 
 [tools]
 actionlint = "1"

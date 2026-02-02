@@ -49,6 +49,7 @@ dotfiles:
 
 	mkdir -p "${HOME}/.config/mise"
 	ln -sfn "{{ justfile_directory() }}/.config/mise/config.toml" "${HOME}/.config/mise/config.toml"
+	ln -sfn "{{ justfile_directory() }}/.config/mise/miserc.toml" "${HOME}/.config/mise/miserc.toml"
 
 	mkdir -p "${HOME}/.config/yamllint"
 	ln -sfn "{{ justfile_directory() }}/.config/yamllint/config.yaml" "${HOME}/.config/yamllint/config"
