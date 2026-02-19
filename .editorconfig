@@ -16,13 +16,13 @@ trim_trailing_whitespace    = true
 indent_size              = 2
 indent_style             = space
 
-[{Makefile, *.go}]
+[{Makefile,*.go,[Jj]ustfile}]
 indent_style                = tab
 
 [*.md]
 trim_trailing_whitespace    = false
 
-[{*.hcl,,*.json,*.md,*.neon,*.tf,*.toml,*.yaml,*.yml}]
+[{*.hcl,*.json,*.md,*.neon,*.tf,*.toml,*.yaml,*.yml}]
 indent_size                 = 2
 indent_style                = space
 tab_width                   = 2

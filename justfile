@@ -6,7 +6,7 @@ set unstable
 set script-interpreter := ['bash', '-euxo', 'pipefail']
 
 _default:
-  @just --list
+	@just --list
 
 # Installs everything
 all: bin dotfiles macos vim homebrew-dep
