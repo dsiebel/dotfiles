@@ -51,6 +51,10 @@ dotfiles:
 	ln -sfn "{{ justfile_directory() }}/.config/mise/config.toml" "${HOME}/.config/mise/config.toml"
 	ln -sfn "{{ justfile_directory() }}/.config/mise/miserc.toml" "${HOME}/.config/mise/miserc.toml"
 
+	mkdir -p "${HOME}/.config/nushell"
+	ln -sfn "{{ justfile_directory() }}/.config/nushell/config.nu" "${HOME}/.config/nushell/config.nu"
+	ln -sfn "{{ justfile_directory() }}/.config/nushell/config.nu" "${HOME}/Library/Application Support/nushell"
+
 	mkdir -p "${HOME}/.config/yamllint"
 	ln -sfn "{{ justfile_directory() }}/.config/yamllint/config.yaml" "${HOME}/.config/yamllint/config"
 
