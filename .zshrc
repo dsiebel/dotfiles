@@ -35,3 +35,9 @@ fi
 if command -v starship > /dev/null ; then
 	eval "$(starship init zsh)"
 fi
+
+# vscode shell integration (manual)
+# [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    source "/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh"
+fi
