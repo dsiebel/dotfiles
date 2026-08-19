@@ -33,7 +33,7 @@ dotfiles:
 	# special handling for .git* files to not mess with the repo
 	while IFS= read -r file; do
 		f="$(basename ${file})"
-		echo ln -sfn "${file}" "${HOME}/${f/#dot/\.}"
+		ln -sfn "${file}" "${HOME}/${f/#dot/\.}"
 	done< <(find {{ justfile_directory() }}/dotgit -name "dotgit*" -depth 1)
 
 	# special handling for directories
