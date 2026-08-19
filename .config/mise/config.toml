@@ -6,6 +6,9 @@ idiomatic_version_file_enable_tools = ["go", "java", "node", "python", "terrafor
 # lockfile = true
 # paranoid = false
 # pin = false
+# disable telemetry
+use_versions_host = false
+use_versions_host_track = false
 
 [tools]
 actionlint = "1"
