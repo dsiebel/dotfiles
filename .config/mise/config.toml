@@ -2,7 +2,7 @@
 activate_aggressive = true
 # auto_install = true
 experimental = true # needed for hooks
-idiomatic_version_file_enable_tools = ["go", "java", "node", "python", "terraform", "helm"]
+idiomatic_version_file_enable_tools = ["go", "java", "node", "python", "terraform", "helm", "opentofu", "terragrunt"]
 # lockfile = true
 # paranoid = false
 # pin = false
