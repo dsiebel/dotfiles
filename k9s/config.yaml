@@ -1,0 +1,45 @@
+k9s:
+  liveViewAutoRefresh: false
+  screenDumpDir: /Users/dsiebel/Library/Application Support/k9s/screen-dumps
+  refreshRate: 2
+  maxConnRetry: 5
+  readOnly: false
+  noExitOnCtrlC: true
+  ui:
+    enableMouse: false
+    headless: false
+    logoless: true
+    crumbsless: false
+    reactive: true
+    noIcons: false
+    skin: one-dark
+  skipLatestRevCheck: true
+  disablePodCounting: false
+  shellPod:
+    image: busybox:1.35.0
+    namespace: default
+    limits:
+      cpu: 100m
+      memory: 100Mi
+    tty: true
+  imageScans:
+    enable: false
+    exclusions:
+      namespaces:
+        - 'kube-system'
+        - 'gke-system'
+      labels: {}
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: -1
+    # fullScreen: false
+    textWrap: false
+    showTime: false
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
