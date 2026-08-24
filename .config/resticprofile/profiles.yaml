@@ -1,0 +1,113 @@
+---
+# resticprofile configuration: https://creativeprojects.github.io/resticprofile/
+# Usage: resticprofile [--dry-run] <profile>.backup   (e.g. resticprofile config.backup)
+#        resticprofile full.backup                    (runs every profile in the "full" group)
+#
+# Restore workflow (never restores straight over the live files):
+#   1. resticprofile <profile>.restore [snapshotID]   (defaults to "latest", extracts to a temp dir)
+#   2. inspect the restored files under the printed temp dir
+#   3. rsync -avn "<temp dir>/" "/"                    (dry-run: review what would change)
+#   4. rsync -av  "<temp dir>/" "/"                    (drop -n once you're happy with the diff)
+version: '1'
+
+groups:
+  full:
+    - 'config'
+    - 'documents'
+    - 'media'
+    - 'workspace'
+    - 'private'
+
+# base profile: shared repository, credentials and retention policy.
+# not meant to be run directly, other profiles inherit from it.
+default:
+  repository: '/Volumes/BackupMac/{{ .Hostname }}'
+  password-file: '~/.config/resticprofile/{{ .Hostname }}.password'
+  initialize: true
+  lock: '/tmp/resticprofile-{{ .Profile.Name }}.lock'
+
+  backup:
+    tag:
+      - '{{ .Profile.Name }}'
+    exclude-caches: true
+    exclude-file: '~/.config/resticprofile/excludes.txt'
+    one-file-system: false
+
+  retention:
+    after-backup: true
+    keep-daily: 7
+    keep-weekly: 4
+    keep-monthly: 6
+    keep-yearly: 1
+    prune: true
+
+  check:
+    read-data-subset: '10%'
+
+  # extracts into a scratch dir mirroring the original absolute paths, never the live files directly
+  restore:
+    tag:
+      - '{{ .Profile.Name }}'
+    target: '/tmp/resticprofile-restore/{{ .Profile.Name }}'
+    run-after: |
+      echo
+      echo 'Restored {{ .Profile.Name }} to: /tmp/resticprofile-restore/{{ .Profile.Name }}'
+      echo 'Review it, then copy back with:'
+      echo '  rsync -avn "/tmp/resticprofile-restore/{{ .Profile.Name }}/" "/"   # dry-run'
+      echo '  rsync -av  "/tmp/resticprofile-restore/{{ .Profile.Name }}/" "/"   # apply'
+
+config:
+  inherit: 'default'
+  backup:
+    source:
+      - '~/.agents'
+      - '~/.claude'
+      - '~/.codex'
+      - '~/.config'
+      - '~/.copilot'
+      - '~/.ssh'
+      - '~/.zsh_history'
+
+documents:
+  inherit: 'default'
+  backup:
+    source:
+      - '~/Desktop'
+      - '~/Documents'
+      - '~/Downloads'
+
+media:
+  inherit: 'default'
+  backup:
+    source:
+      - '~/Movies'
+      - '~/Pictures'
+    exclude:
+      - '**/node_modules'
+      - '**/.venv'
+      - '**/venv'
+      - '**/.terraform'
+      - '**/target'
+      - '**/dist'
+      - '**/build'
+
+workspace:
+  inherit: 'default'
+  backup:
+    source:
+      - '~/Development'
+      - '~/workspace'
+    exclude:
+      - '**/node_modules'
+      - '**/.venv'
+      - '**/venv'
+      - '**/.terraform'
+      - '**/target'
+      - '**/dist'
+      - '**/build'
+
+private:
+  inherit: 'default'
+  backup:
+    source:
+      - '~/Private'

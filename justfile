@@ -55,6 +55,10 @@ dotfiles:
 	ln -sfn "{{ justfile_directory() }}/.config/nushell/config.nu" "${HOME}/.config/nushell/config.nu"
 	ln -sfn "{{ justfile_directory() }}/.config/nushell/config.nu" "${HOME}/Library/Application Support/nushell"
 
+	mkdir -p "${HOME}/.config/resticprofile"
+	ln -sfn "{{ justfile_directory() }}/.config/resticprofile/profiles.yaml" "${HOME}/.config/resticprofile/profiles.yaml"
+	ln -sfn "{{ justfile_directory() }}/.config/resticprofile/excludes.txt" "${HOME}/.config/resticprofile/excludes.txt"
+
 	mkdir -p "${HOME}/.config/yamllint"
 	ln -sfn "{{ justfile_directory() }}/.config/yamllint/config.yaml" "${HOME}/.config/yamllint/config"
 
