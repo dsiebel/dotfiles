@@ -104,8 +104,8 @@ cask "google-chrome@canary"
 cask "gpg-suite"
 cask "iterm2"
 cask "joplin"
-cask "logi-options+" # to be replaced with openlogi
-# cask "openlogi"
+# cask "logi-options+" # replaced with openlogi
+cask "openlogi"
 cask "mqtt-explorer"
 cask "ngrok"
 cask "opensuperwhisper"
