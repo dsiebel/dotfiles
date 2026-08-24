@@ -22,7 +22,7 @@ groups:
 # not meant to be run directly, other profiles inherit from it.
 default:
   repository: '/Volumes/BackupMac/{{ .Hostname }}'
-  # op read <secret reference> > ~/.config/resticprofile/{{ .Hostname }}.password
+  # op read <secret reference> > ~/.config/resticprofile/{{ .Hostname }}.password && chmod 600 ~/.config/resticprofile/{{ .Hostname }}.password
   password-file: '~/.config/resticprofile/{{ .Hostname }}.password'
   initialize: true
   lock: '/tmp/resticprofile-{{ .Profile.Name }}.lock'
