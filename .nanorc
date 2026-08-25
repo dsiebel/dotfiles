@@ -29,5 +29,3 @@ bind ^S savefile main   # CTRL+S - Save
 
 # Syntax highlighting
 include "/opt/homebrew/share/nano/*.nanorc"
-include "/opt/homebrew/share/nano/extra/*.nanorc"
-include "/opt/homebrew/share/nanorc/*.nanorc"
