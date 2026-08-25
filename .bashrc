@@ -8,10 +8,6 @@ else
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# needs to happen before sourcing the other files, especially .path
-export HOMEBREW_PREFIX_X86="$(/usr/local/bin/brew --prefix)"
-export HOMEBREW_PREFIX_ARM64="$(/opt/homebrew/bin/brew --prefix)"
-
 for file in ~/.{aliases,bash_aliases,dockerfunc,extra,functions,fzf.bash,path}; do
     [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file";
 done;

@@ -15,23 +15,18 @@ export PATH="${PATH}:${GOPATH}/bin"
 export PATH="${PATH}:${HOME}/.cargo/bin"
 
 # homebrew
-# TODO: `/usr/local/bin` might already be part of the original $PATH. If so, this handling can be removed.
-if [[ "$(/usr/bin/arch)" == "i386" ]]; then
-export PATH="${PATH}:${HOMEBREW_PREFIX_X86}/bin:${HOMEBREW_PREFIX_X86}/sbin:${HOMEBREW_PREFIX_ARM64}/bin:${HOMEBREW_PREFIX_ARM64}/sbin"
-else
-export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/bin:${HOMEBREW_PREFIX_ARM64}/sbin:${HOMEBREW_PREFIX_X86}/bin:${HOMEBREW_PREFIX_X86}/sbin"
-fi
+export PATH="${PATH}:${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:/usr/local/bin"
 
 # GNU Tools
-export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/make/libexec/gnubin"
-export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/curl/bin"
-export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/gnu-sed/libexec/gnubin"
+export PATH="${PATH}:${HOMEBREW_PREFIX}/opt/make/libexec/gnubin"
+export PATH="${PATH}:${HOMEBREW_PREFIX}/opt/curl/bin"
+export PATH="${PATH}:${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin"
 
 # Google Cloud SDK
-export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/share/google-cloud-sdk/bin"
+export PATH="${PATH}:${HOMEBREW_PREFIX}/share/google-cloud-sdk/bin"
 
 # asdf version manager
-export PATH="${PATH}:${HOMEBREW_PREFIX_ARM64}/opt/asdf/libexec/bin"
+export PATH="${PATH}:${HOMEBREW_PREFIX}/opt/asdf/libexec/bin"
 
 # Volta
 export PATH="${PATH}:${HOME}/.volta/bin"

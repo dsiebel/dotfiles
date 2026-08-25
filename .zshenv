@@ -24,8 +24,6 @@ if [[ "$(/usr/bin/arch)" == "i386" ]]; then
 else
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-export HOMEBREW_PREFIX_X86="$(/usr/local/bin/brew --prefix)"
-export HOMEBREW_PREFIX_ARM64="$(/opt/homebrew/bin/brew --prefix)"
 
 # configure XDEBUG support
 # export XDEBUG_CONFIG="idekey=XDEBUG";
@@ -52,9 +50,6 @@ export LESS_TERMCAP_md="${yellow}";
 # Don't clear screen after quitting man page
 export MANPAGER='less -X';
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# setup java properly. Thanks, Steve!
-export JAVA_HOME="$(/usr/libexec/java_home)";
 
 # Golang $GOPATH. Do the kids still do it like this nowadays?
 export GOPATH="${HOME}/workspace/source/Go"
