@@ -25,6 +25,9 @@ dotfiles:
 	git submodule init
 	git submodule update
 
+	# required for .nanorc
+	mkdir -p "${HOME}/.cache/nano/backups/"
+
 	while IFS= read -r file; do
 		f="$(basename "${file}")"
 		ln -sfn "${file}" "${HOME}/$f"
@@ -80,11 +83,6 @@ homebrew:
 # install brews
 homebrew-dep: homebrew
 	"{{ justfile_directory() }}/homebrew-dep.sh"
-
-# install front via homebrew
-[script]
-homebrew-fonts: homebrew
-	brew bundle install --file "{{ justfile_directory() }}/Brewfile-fonts"
 
 # install vscode extensions
 vscode-ext:
