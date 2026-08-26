@@ -14,7 +14,7 @@ source $ZSH/oh-my-zsh.sh
 # # * ~/.dockerfunc   Docker specific helper functions
 # # * ~/.extra        Other setting that MUST NOT be committed
 # # * ~/.path         Extend `$PATH`. Always loaded last.
-for file in ~/.{aliases,functions,dockerfunc,extra,path}; do
+for file in ~/.{aliases,functions,dockerfunc,exports,extra,path}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
