@@ -1,5 +1,11 @@
 [tools]
 just = "1"
 shellcheck = "0"
-pre-commit = "4"
+prek = "latest"
 python = "3"
+
+[tool_alias]
+pre-commit = "prek"
+
+[hooks]
+postinstall = "prek install"
