@@ -71,6 +71,10 @@ config:
       - '~/.kube'
       - '~/.ssh'
       - '~/.zsh_history'
+    exclude:
+      - '._*'
+      - '.DS_Store'
+    exclude-caches: true
 
 documents:
   inherit: 'default'
@@ -79,6 +83,10 @@ documents:
       - '~/Desktop'
       - '~/Documents'
       - '~/Downloads'
+    exclude:
+      - '._*'
+      - '.DS_Store'
+    exclude-caches: true
 
 media:
   inherit: 'default'
@@ -87,13 +95,9 @@ media:
       - '~/Movies'
       - '~/Pictures'
     exclude:
-      - '**/node_modules'
-      - '**/.venv'
-      - '**/venv'
-      - '**/.terraform'
-      - '**/target'
-      - '**/dist'
-      - '**/build'
+      - '._*'
+      - '.DS_Store'
+    exclude-caches: true
 
 workspace:
   inherit: 'default'
