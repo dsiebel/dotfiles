@@ -54,8 +54,8 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # Set a fast KeyRepeat rate. We prefer 1 (15ms). The default minimum is 2 (30ms). May require reboot.
 defaults write NSGlobalDomain KeyRepeat -int 1
 
-# Set a fast initial key repeat. We prefer 4 (60ms). The default minimum is 15 (225ms). May require reboot.
-defaults write NSGlobalDomain InitialKeyRepeat -int 4
+# Set a fast initial key repeat. The default minimum is already 15 (225ms). May require reboot.
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
