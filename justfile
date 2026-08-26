@@ -67,7 +67,7 @@ dotfiles:
 
 # setup macos
 macos:
-	"{{ justfile_directory() }}/macos.sh"
+	"{{ justfile_directory() }}/macos-defaults.sh"
 
 # install amix/vimrc
 vim:
