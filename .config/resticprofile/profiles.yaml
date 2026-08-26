@@ -66,6 +66,9 @@ config:
       - '~/.codex'
       - '~/.config'
       - '~/.copilot'
+      - '~/.docker'
+      - '~/.extra'
+      - '~/.kube'
       - '~/.ssh'
       - '~/.zsh_history'
 
