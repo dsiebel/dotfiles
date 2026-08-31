@@ -101,6 +101,8 @@ media:
     exclude:
       - '._*'
       - '.DS_Store'
+      - 'Photo Booth Library'
+      - 'Photos Library.photoslibrary'
     exclude-caches: true
 
 workspace:
