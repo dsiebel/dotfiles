@@ -1,0 +1,59 @@
+background = #1A1A1A
+background-blur = 20
+background-opacity = 0.90
+background-opacity-cells = true
+
+copy-on-select = clipboard
+
+cursor-style = block
+cursor-style-blink = false
+
+font-family = FiraCode Nerd Font Mono
+font-family = JetBrainsMono Nerd Font Mono
+font-feature = +calt, +liga, +dlig
+font-size = 12
+font-thicken = true
+
+keybind = cmd+ctrl+k=text:sofka --context tools-prod-eu-dus1\n
+keybind = cmd+arrow_right=next_tab
+keybind = cmd+arrow_left=previous_tab
+keybind = cmd+shift+arrow_right=move_tab:1
+keybind = cmd+shift+arrow_left=move_tab:-1
+
+language = en
+
+macos-titlebar-style = tabs
+
+minimum-contrast = 1.1
+
+quit-after-last-window-closed = true
+quit-after-last-window-closed-delay = 2s
+
+scrollback-limit = 50000
+
+selection-clear-on-typing = false
+selection-clear-on-copy = false
+
+shell-integration-features = no-cursor,ssh-terminfo,ssh-env
+
+split-inherit-working-directory = true
+
+tab-inherit-working-directory = false
+
+theme = iTerm2 Tango Dark
+# theme = Matte Black
+# theme = Nord
+# theme = Nord Wave
+# theme = Spacedust
+
+unfocused-split-opacity = 0.40
+unfocused-split-fill = #000000
+
+window-inherit-font-size = false
+window-inherit-working-directory = false
+
+window-padding-balance = true
+window-padding-x = 5
+window-padding-y = 8
+
+working-directory = home

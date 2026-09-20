@@ -50,6 +50,9 @@ dotfiles:
 	mkdir -p "${HOME}/.config/direnv"
 	ln -sfn "{{ justfile_directory() }}/.config/direnv/direnv.toml" "${HOME}/.config/direnv/direnv.toml"
 
+	mkdir -p "${HOME}/.config/ghostty"
+	ln -sfn "{{ justfile_directory() }}/.config/ghostty/config" "${HOME}/.config/ghostty/config"
+
 	mkdir -p "${HOME}/.config/mise"
 	ln -sfn "{{ justfile_directory() }}/.config/mise/config.toml" "${HOME}/.config/mise/config.toml"
 	ln -sfn "{{ justfile_directory() }}/.config/mise/miserc.toml" "${HOME}/.config/mise/miserc.toml"
