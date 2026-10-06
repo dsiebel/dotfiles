@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Code status line: context bar, model, effort/thinking, dir, git, cost, duration, lines.
+# Claude Code status line: context | model + effort | repo + branch | cost + duration | lines changed.
 input=$(cat)
 command -v jq >/dev/null 2>&1 || { echo "statusline: jq missing"; exit 0; }
 
@@ -37,12 +37,15 @@ tok=""
 [ -n "$used" ] && [ -n "$size" ] && tok=" $(human "$used")/$(human "$size")"
 ctx="${col}${bar} ${p}%${X}${D}${tok}${X}"
 
+# order: context | model + effort | repo + branch | cost + duration | changes
+out="$ctx"
+
 # model + effort
 mdl="${C}${model}${X}"
 [ "$effort" != "-" ] && mdl="$mdl ${D}${effort}${X}"
+out="$out | $mdl"
 
 # repo (or dir name) + branch
-out="$ctx | $mdl"
 if [ -n "$dir" ]; then
   g() { git --no-optional-locks -C "$dir" "$@" 2>/dev/null; }
   name=$(basename "$dir"); gitinfo=""
@@ -55,7 +58,7 @@ if [ -n "$dir" ]; then
   out="$out | $name$gitinfo"
 fi
 
-# cost, duration, lines
+# cost + duration
 tail=""
 [ -n "$cost" ] && tail=$(awk -v c="$cost" 'BEGIN{printf "$%.2f", c}')
 if [ -n "$dur_ms" ]; then
@@ -64,6 +67,8 @@ if [ -n "$dur_ms" ]; then
   tail="${tail:+$tail }$t"
 fi
 [ -n "$tail" ] && out="$out | $tail"
+
+# lines changed
 { [ -n "$add" ] && [ "$add" != "0" ]; } || { [ -n "$del" ] && [ "$del" != "0" ]; } && out="$out | ${G}+${add:-0}${X} ${R}-${del:-0}${X}"
 
 printf '%s\n' "$out"
