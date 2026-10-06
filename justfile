@@ -68,6 +68,9 @@ dotfiles:
 	ln -sfn "{{ justfile_directory() }}/.config/resticprofile/profiles.yaml" "${HOME}/.config/resticprofile/profiles.yaml"
 	ln -sfn "{{ justfile_directory() }}/.config/resticprofile/excludes.txt" "${HOME}/.config/resticprofile/excludes.txt"
 
+	mkdir -p "${HOME}/.config/worktrunk"
+	ln -sfn "{{ justfile_directory() }}/.config/worktrunk/config.toml" "${HOME}/.config/worktrunk/config.toml"
+
 	mkdir -p "${HOME}/.config/yamllint"
 	ln -sfn "{{ justfile_directory() }}/.config/yamllint/config.yaml" "${HOME}/.config/yamllint/config"
 

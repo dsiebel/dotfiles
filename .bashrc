@@ -24,3 +24,6 @@ source "${HOME}/.orbstack/shell/init.zsh" 2>/dev/null || :
 if command -v starship > /dev/null ; then
 	eval "$(starship init bash)"
 fi
+
+# worktrunk shell integration
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi

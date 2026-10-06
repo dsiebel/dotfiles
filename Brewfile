@@ -73,6 +73,7 @@ brew "virtualenv"
 brew "watch"
 brew "wget"
 brew "wireguard-tools"
+brew "worktrunk"
 brew "xz"
 brew "zsh"
 

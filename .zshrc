@@ -41,3 +41,6 @@ fi
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
     source "/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh"
 fi
+
+# worktrunk shell integration
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
