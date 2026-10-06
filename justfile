@@ -43,6 +43,9 @@ dotfiles:
 	ln -sfn "{{ justfile_directory() }}/.oh-my-zsh" "${HOME}/.oh-my-zsh"
 	ln -sfn "{{ justfile_directory() }}/.zsh-custom" "${HOME}/.zsh-custom"
 
+	# claude code setup
+	just claude
+
 	# we can not link the entire `.config` dir, it would only clutter up the git checkout
 	mkdir -p "${HOME}/.config"
 	ln -sfn "{{ justfile_directory() }}/.config/starship.toml" "${HOME}/.config/starship.toml"
@@ -67,6 +70,26 @@ dotfiles:
 
 	mkdir -p "${HOME}/.config/yamllint"
 	ln -sfn "{{ justfile_directory() }}/.config/yamllint/config.yaml" "${HOME}/.config/yamllint/config"
+
+# install claude code config (statusline script + settings.json entry)
+[script]
+claude:
+	mkdir -p "${HOME}/.claude"
+	ln -sfn "{{ justfile_directory() }}/.claude/statusline.sh" "${HOME}/.claude/statusline.sh"
+
+	# set only `.statusLine` in settings.json: keeps every other key, backs up first, aborts on invalid JSON
+	claude_settings="${HOME}/.claude/settings.json"
+	claude_statusline='{"type":"command","command":"~/.claude/statusline.sh"}'
+	[[ -f "${claude_settings}" ]] || echo '{}' > "${claude_settings}"
+	if jq -e --argjson s "${claude_statusline}" '.statusLine == $s' "${claude_settings}" >/dev/null 2>&1; then
+		echo "claude statusLine already set"
+	elif jq -e 'type == "object"' "${claude_settings}" >/dev/null 2>&1; then
+		cp "${claude_settings}" "${claude_settings}.bak-statusline"
+		jq --argjson s "${claude_statusline}" '.statusLine = $s' "${claude_settings}" > "${claude_settings}.tmp"
+		mv -f "${claude_settings}.tmp" "${claude_settings}"
+	else
+		echo "skipping claude statusLine: ${claude_settings} is not a valid JSON object" >&2
+	fi
 
 # setup macos
 macos:
