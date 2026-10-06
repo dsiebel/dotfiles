@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Code status line: context | model + effort | repo + branch | cost + duration | lines changed.
+# Claude Code status line: context | model + effort | repo + branch | cost | lines changed.
 input=$(cat)
 command -v jq >/dev/null 2>&1 || { echo "statusline: jq missing"; exit 0; }
 
@@ -25,6 +25,28 @@ else
   R=; G=; Y=; C=; D=; X=
 fi
 
+# Nerd Font icons for the repo/branch/path segment only (bash 3.2-safe byte escapes); set STATUSLINE_NO_ICONS=1 to disable
+if [ -z "${STATUSLINE_NO_ICONS:-}" ]; then
+  I_REPO=$'\xef\x90\x81 '; I_BRANCH=$'\xee\x9c\xa5 '; I_DIR=$'\xef\x81\xbc '
+else
+  I_REPO=; I_BRANCH=; I_DIR=
+fi
+
+# trunc STRING MAX: cut to MAX chars, ending in … when shortened
+trunc() { if [ "${#1}" -gt "$2" ]; then printf '%s…' "${1:0:$(($2 - 1))}"; else printf '%s' "$1"; fi; }
+
+# abbrev_path PREFIX REL: fish-style, parent dirs shrink to their first letter (.config -> .c), leaf stays (cut at 18)
+abbrev_path() {
+  local leaf="${2##*/}" parent="" c
+  if [ "$2" != "$leaf" ]; then
+    local IFS=/
+    for c in ${2%/*}; do
+      [ "${c:0:1}" = "." ] && parent="$parent${c:0:2}/" || parent="$parent${c:0:1}/"
+    done
+  fi
+  printf '%s%s%s' "$1" "$parent" "$(trunc "$leaf" 18)"
+}
+
 human() { awk -v n="$1" 'BEGIN{ if (n>=1000000) printf "%.1fM", n/1000000; else if (n>=1000) printf "%.1fk", n/1000; else printf "%d", n }'; }
 
 # context bar (a fresh session has no usage data yet: show it as empty)
@@ -37,7 +59,7 @@ tok=""
 [ -n "$used" ] && [ -n "$size" ] && tok=" $(human "$used")/$(human "$size")"
 ctx="${col}${bar} ${p}%${X}${D}${tok}${X}"
 
-# order: context | model + effort | repo + branch | cost + duration | changes
+# order: context | model + effort | repo + branch | cost | changes
 out="$ctx"
 
 # model + effort
@@ -45,28 +67,27 @@ mdl="${C}${model}${X}"
 [ "$effort" != "-" ] && mdl="$mdl ${D}${effort}${X}"
 out="$out | $mdl"
 
-# repo (or dir name) + branch
+# repo + branch; outside a repo: ~-relative path if short enough, else fish-style ~/w/s/leaf; same for paths outside ~ (/v/l/leaf)
 if [ -n "$dir" ]; then
   g() { git --no-optional-locks -C "$dir" "$@" 2>/dev/null; }
-  name=$(basename "$dir"); gitinfo=""
   if br=$(g symbolic-ref --short -q HEAD || g rev-parse --short HEAD); then
     remote=$(g remote get-url origin)
     if [ -n "$remote" ]; then name=$(basename "${remote%.git}"); else name=$(basename "$(g rev-parse --show-toplevel)"); fi
+    br=$(trunc "$br" 24)
     [ -n "$(g status --porcelain | head -1)" ] && br="$br*"
-    gitinfo=" ${Y}${br}${X}"
+    out="$out | ${I_REPO}$(trunc "$name" 18) ${Y}${I_BRANCH}${br}${X}"
+  elif [ "$dir" = "$HOME" ]; then
+    out="$out | ${I_DIR}~"
+  else
+    if [[ "$dir" == "$HOME"/* ]]; then disp="~${dir#"$HOME"}"; pre="~/"; rel="${dir#"$HOME"/}"
+    else disp="$dir"; pre="/"; rel="${dir#/}"; fi
+    [ "${#disp}" -gt 24 ] && disp=$(abbrev_path "$pre" "$rel")
+    out="$out | ${I_DIR}$disp"
   fi
-  out="$out | $name$gitinfo"
 fi
 
-# cost + duration
-tail=""
-[ -n "$cost" ] && tail=$(awk -v c="$cost" 'BEGIN{printf "$%.2f", c}')
-if [ -n "$dur_ms" ]; then
-  s=$(( ${dur_ms%.*} / 1000 ))
-  t=$(printf '%dm%02ds' $((s / 60)) $((s % 60)))
-  tail="${tail:+$tail }$t"
-fi
-[ -n "$tail" ] && out="$out | $tail"
+# cost
+[ -n "$cost" ] && out="$out | $(awk -v c="$cost" 'BEGIN{printf "$%.2f", c}')"
 
 # lines changed
 { [ -n "$add" ] && [ "$add" != "0" ]; } || { [ -n "$del" ] && [ "$del" != "0" ]; } && out="$out | ${G}+${add:-0}${X} ${R}-${del:-0}${X}"
