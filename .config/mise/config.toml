@@ -10,6 +10,12 @@ idiomatic_version_file_enable_tools = ["go", "java", "node", "python", "terrafor
 use_versions_host = false
 use_versions_host_track = false
 
+[settings.github]
+# disable gh/hosts.yml lookup, doesn't work with SSH login anyway
+gh_cli_tokens = false
+# pull token via gh cli
+credential_command = "gh auth token"
+
 [tools]
 actionlint = "1"
 auto-doc = "3"
