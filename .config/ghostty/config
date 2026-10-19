@@ -22,7 +22,9 @@ keybind = cmd+shift+arrow_left=move_tab:-1
 
 language = en
 
-macos-titlebar-style = tabs
+# tabs display broken under golden gate, waiting for fix to be release
+# macos-titlebar-style = tabs
+macos-titlebar-style = native
 
 minimum-contrast = 1.1
 
