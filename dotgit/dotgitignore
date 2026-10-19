@@ -258,3 +258,6 @@ tags
 # scratch files & notes
 SCRATCH.md
 _.md
+
+# git worktrees
+.worktrees/
