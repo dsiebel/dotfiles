@@ -34,6 +34,7 @@
 #
 worktree-path = "{{ repo_path }}/.worktrees/{{ branch | sanitize }}"
 skip-shell-integration-prompt = true
+skip-commit-generation-prompt = true
 #
 # Friendly branch-derived names (`~/code/myproject.malleable-opah`):
 #
